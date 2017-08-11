@@ -218,9 +218,9 @@ public class Submit {
 
     private void sendSubmissionForm(HttpURLConnection http) throws IOException {
         try(OutputStream out = http.getOutputStream()) {
-            out.write(boundaryBytes);
             for (String filename : getFilenames()) {
                 try(InputStream file = new FileInputStream(filename)) {
+                    out.write(boundaryBytes);
                     sendFile(out, "code[]", file, filename);
                 }
             }
