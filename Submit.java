@@ -66,9 +66,16 @@ public class Submit {
             } else if (judging.equals("timeout")) {
                 System.out.println(
                     "Judging is taking too long (> " + timeout + " s). What's going on?");
+            } else if (judging.equals("compiler-error")) {
+                System.out.println(
+                    "Sorry, but the judge could not compile your solution!");
+            } else if (judging.equals("wrong-answer")) {
+                System.out.println(
+                    "Sorry, but your solution did not work on the hidden test cases.");
+                System.out.println("Find and fix the errors, and try submitting again!");
             } else {
                 System.out.println(
-                    "Sorry, but your solution is not working yet (" + judging + ")");
+                    "Sorry, but something is wrong with your solution (" + judging + ")");
             }
         } catch (IOException e) {
             e.printStackTrace();
