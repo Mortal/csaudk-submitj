@@ -4,7 +4,7 @@ import java.nio.charset.*;
 import java.util.*;
 
 public class Submit {
-    private static final String host = "http://domjudge.cs.au.dk";
+    private static final String host = "https://domjudge.cs.au.dk";
     private static final String data_filename = "submit_data.txt";
     private static final String extension = "java";
     private static final String contest = null;
