@@ -36,6 +36,8 @@ public class Submit {
     public static void submit() {
         try {
             Submit s = new Submit();
+            System.out.println(
+                "============================================================");
             try {
                 try(Reader file = new FileReader(data_filename)) {
                     BufferedReader in = new BufferedReader(file);
@@ -44,7 +46,8 @@ public class Submit {
                     s.password = in.readLine();
                 }
             } catch (FileNotFoundException e) {
-                System.out.println("No password saved. Run submit(username, password) instead.");
+                System.out.println("No password saved. " +
+                                   "Run submit(task, username, password) instead.");
                 return;
             }
             if (!s.getLoginCookie()) {
@@ -56,6 +59,13 @@ public class Submit {
             HttpURLConnection http = s.makePostSubmissionRequest();
             s.sendSubmissionForm(http);
             submissionId = s.readResponse(http);
+            if (submissionId.startsWith("error: ")) {
+                System.out.println(submissionId);
+                System.out.println(
+                    "Check your task name and call " +
+                    "submit(task, username, password) again.");
+                return;
+            }
             System.out.println("Submitted to " +
                                host + "/team/submission_details.php?id=" +
                                submissionId);
@@ -109,7 +119,6 @@ public class Submit {
             if (http.getResponseCode() >= 400)
                 throw new RuntimeException("Unexpected failure response code");
         } catch (IOException e) {
-            e.printStackTrace();
             return false;
         }
         cookie = http.getHeaderField("Set-Cookie");
@@ -274,6 +283,8 @@ public class Submit {
         }
         in.close();
         String result = sb.toString();
+        if (http.getResponseCode() == 500 && result.startsWith("error: "))
+            return result;
         if (http.getResponseCode() >= 300)
             throw new RuntimeException(
                 "HTTP " + http.getResponseCode() + ": " + result);
