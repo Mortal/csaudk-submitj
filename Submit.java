@@ -243,8 +243,11 @@ public class Submit {
     private List<String> getFilenames() {
         List<String> r = new ArrayList<String>();
         for (final File fileEntry : new File(".").listFiles()) {
-            if (fileEntry.getName().endsWith(".java")) {
-                r.add(fileEntry.getName());
+            String n = fileEntry.getName();
+            if (n.startsWith("_") || n.startsWith(".")) {
+                continue;
+            } else if (n.endsWith(".java")) {
+                r.add(n);
             }
         }
         return r;
