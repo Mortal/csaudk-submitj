@@ -1,75 +1,272 @@
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URLEncoder;
-import java.net.URL;
-import java.net.URLConnection;
-import java.nio.charset.Charset;
-import java.nio.charset.UnsupportedCharsetException;
-import java.util.UUID;
+import java.io.*;
+import java.net.*;
+import java.nio.charset.*;
+import java.util.*;
 
 public class Submit {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+    private static final String host = "http://domjudge.cs.au.dk";
+    private static final String data_filename = "submit_data.txt";
+    private static final String extension = "java";
+    private static final String contest = null;
+
+    private String filename;
+    private String task;
+    private String username;
+    private String password;
+
+    public static void submit(String filename, String task, String username, String password) {
+        try {
+            try(Writer file = new FileWriter(data_filename)) {
+                try(PrintWriter out = new PrintWriter(file)) {
+                    out.println(filename);
+                    out.println(task);
+                    out.println(username);
+                    out.println(password);
+                    out.println("");
+                    out.println("This file contains the filename, task, username and password");
+                    out.println("last used when submitting a solution.");
+                    out.println("This file is used when you call Submit.submit() with no arguments.");
+                }
+            }
+            submit();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
-    // From https://stackoverflow.com/a/35013372/1570972
-    private void sendPost() throws IOException {
-        URL url = new URL("https://www.example.com/login");
-        URLConnection con = url.openConnection();
-        HttpURLConnection http = (HttpURLConnection)con;
+    public static void submit() {
+        try {
+            Submit s = new Submit();
+            try {
+                try(Reader file = new FileReader(data_filename)) {
+                    BufferedReader in = new BufferedReader(file);
+                    s.filename = in.readLine();
+                    s.task = in.readLine();
+                    s.username = in.readLine();
+                    s.password = in.readLine();
+                }
+            } catch (FileNotFoundException e) {
+                System.out.println("No password saved. Run submit(username, password) instead.");
+                return;
+            }
+            if (!s.getLoginCookie()) {
+                System.out.println("Wrong username or password. " +
+                                   "Please run submit(filename, task, username, password) again.");
+                return;
+            }
+            String submissionId;
+            HttpURLConnection http = s.makePostSubmissionRequest();
+            s.sendSubmissionForm(http);
+            submissionId = s.readResponse(http);
+            System.out.println("Submitted to " +
+                               host + "/team/submission_details.php?id=" +
+                               submissionId);
+            int timeout = 60;
+            String judging = s.pollJudging(submissionId, timeout);
+            if (judging.equals("correct")) {
+                System.out.println("Congratulations, your solution is correct!");
+            } else if (judging.equals("timeout")) {
+                System.out.println(
+                    "Judging is taking too long (> " + timeout + " s). What's going on?");
+            } else {
+                System.out.println(
+                    "Sorry, but your solution is not working yet (" + judging + ")");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String cookie;
+    private String boundary;
+    private byte[] boundaryBytes;
+    private byte[] finishBoundaryBytes;
+
+    public Submit() throws IOException {
+        boundary = UUID.randomUUID().toString();
+        boundaryBytes =
+            ("--" + boundary + "\r\n").getBytes("UTF-8");
+        finishBoundaryBytes =
+            ("--" + boundary + "--").getBytes("UTF-8");
+    }
+
+    private boolean getLoginCookie() throws IOException {
+        HttpURLConnection http = makePostLoginRequest();
+        try(OutputStream out = http.getOutputStream()) {
+            try(PrintWriter print = new PrintWriter(out)) {
+                print.print("cmd=login&login=" + username + "&passwd=" + password);
+            }
+        }
+        InputStream inputStream;
+        try {
+            inputStream = http.getInputStream();
+            if (http.getResponseCode() >= 400)
+                throw new RuntimeException("Unexpected failure response code");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        cookie = http.getHeaderField("Set-Cookie");
+        if (cookie == null) {
+            throw new RuntimeException("Got success response from login.php " +
+                                       "but no Set-Cookie header");
+        }
+        return true;
+    }
+
+    private String pollJudging(String submissionId, int timeout) throws IOException {
+        int waitTime = 0;
+        int polls = 0;
+        while (true) {
+            int t = Math.min(5, polls);
+            try {
+                if (t > 0) {
+                    Thread.sleep(t * 1000);
+                }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            String judging = getSubmissionJudging(submissionId);
+            waitTime += t;
+            polls += 1;
+            if (judging == null) {
+                if (waitTime >= timeout) {
+                    return "timeout";
+                }
+                continue;
+            }
+            return judging;
+        }
+    }
+
+    private String getSubmissionJudging(String submissionId) throws IOException {
+        HttpURLConnection http = makeGetSubmissionRequest(submissionId);
+        String contents = readResponse(http);
+        final String notFound = "<p>Submission not found for this team or not judged yet.</p>";
+        if (contents.indexOf(notFound) != -1)
+            return null;  // Try again
+        final String pending = "<p>Result: <span class=\"sol sol_queued\">";
+        if (contents.indexOf(pending) != -1)
+            return null;  // Try again
+        // <p>Result: <span class="sol sol_incorrect">wrong-answer</span></p>
+        final String incorrect = "<p>Result: <span class=\"sol sol_incorrect\">";
+        int pos = contents.indexOf(incorrect);
+        if (pos != -1) {
+            pos += incorrect.length();
+            int i = contents.indexOf('<', pos);
+            if (i == -1) throw new RuntimeException("No </span> found");
+            String code = contents.substring(pos, i);
+            if (code.equals("correct")) throw new RuntimeException("Incorrect and correct");
+            return code;
+        }
+        final String correct = "<p>Result: <span class=\"sol sol_correct\">";
+        if (contents.indexOf(correct) != -1)
+            return "correct";
+        System.out.println(contents);
+        throw new RuntimeException("Failed to parse submission_details.php output");
+    }
+
+    private HttpURLConnection makePostLoginRequest() throws IOException {
+        URL url = new URL(host + "/public/login.php");
+        URLConnection conn = url.openConnection();
+        HttpURLConnection http = (HttpURLConnection) conn;
         http.setRequestMethod("POST"); // PUT is another valid option
         http.setDoOutput(true);
-        sendForm(http);
-    }
-
-    private void sendForm(HttpURLConnection http) throws IOException {
-        String boundary = UUID.randomUUID().toString();
-        byte[] boundaryBytes =
-            ("--" + boundary + "\r\n").getBytes("UTF-8");
-        byte[] finishBoundaryBytes =
-            ("--" + boundary + "--").getBytes("UTF-8");
+        http.setInstanceFollowRedirects(false);
         http.setRequestProperty(
-            "Content-Type",
-            "multipart/form-data; charset=UTF-8; boundary=" + boundary);
-
+                "Content-Type",
+                "application/x-www-form-urlencoded");
         // Enable streaming mode with default settings
         http.setChunkedStreamingMode(0);
+        return http;
+    }
 
-        // Send our fields:
+    private HttpURLConnection makePostSubmissionRequest() throws IOException {
+        URL url = new URL(host + "/api/submissions");
+        URLConnection conn = url.openConnection();
+        HttpURLConnection http = (HttpURLConnection) conn;
+        http.setRequestMethod("POST"); // PUT is another valid option
+        http.setDoOutput(true);
+        String authorization = username + ":" + password;
+        String authEncoded = Base64.getEncoder().encodeToString(authorization.getBytes("UTF-8"));
+        http.setRequestProperty("Authorization", "Basic " + authEncoded);
+        http.setRequestProperty(
+                "Content-Type",
+                "multipart/form-data; charset=UTF-8; boundary=" + boundary);
+        // Enable streaming mode with default settings
+        http.setChunkedStreamingMode(0);
+        return http;
+    }
+
+    private HttpURLConnection makeGetSubmissionRequest(String submissionId) throws IOException {
+        URL url = new URL(host + "/team/submission_details.php?id=" + submissionId);
+        URLConnection conn = url.openConnection();
+        HttpURLConnection http = (HttpURLConnection) conn;
+        http.setDoOutput(true);
+        if (cookie != null)
+            http.setRequestProperty("Cookie", cookie);
+        // Enable streaming mode with default settings
+        http.setChunkedStreamingMode(0);
+        return http;
+    }
+
+    private void sendSubmissionForm(HttpURLConnection http) throws IOException {
         try(OutputStream out = http.getOutputStream()) {
-            // Send our header (thx Algoman)
             out.write(boundaryBytes);
-
-            // Send our first field
-            sendField(out, "username", "root");
-
-            // Send a separator
-            out.write(boundaryBytes);
-
-            // Send our second field
-            sendField(out, "password", "toor");
-
-            // Send another separator
-            out.write(boundaryBytes);
-
-            // Send our file
-            try(InputStream file = new FileInputStream("test.txt")) {
-                sendFile(out, "identification", file, "text.txt");
+            try(InputStream file = new FileInputStream(filename)) {
+                sendFile(out, "code[]", file, filename);
             }
 
-            // Finish the request
+            out.write(boundaryBytes);
+            sendField(out, "shortname", task);
+
+            out.write(boundaryBytes);
+            sendField(out, "langid", extension);
+
+            if (contest != null) {
+                out.write(boundaryBytes);
+                sendField(out, "contest", contest);
+            }
+
             out.write(finishBoundaryBytes);
         }
     }
 
+    private String readResponse(HttpURLConnection http) throws IOException {
+        InputStream inputStream;
+        try {
+            inputStream = http.getInputStream();
+            if (http.getResponseCode() >= 300)
+                throw new RuntimeException("Unexpected failure response code");
+        } catch (IOException e) {
+            inputStream = http.getErrorStream();
+            if (inputStream == null)
+                throw new RuntimeException(e);
+            if (http.getResponseCode() < 300)
+                throw new RuntimeException("Unexpected success response code");
+        }
+        BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+        StringBuilder sb = new StringBuilder();
+        String line = null;
+        while ((line = in.readLine()) != null) {
+            sb.append(line + "\n");
+        }
+        in.close();
+        String result = sb.toString();
+        if (http.getResponseCode() >= 300)
+            throw new RuntimeException(
+                "HTTP " + http.getResponseCode() + ": " + result);
+        return result;
+    }
+
     private void sendFile(OutputStream out, String name, InputStream in, String filename) throws IOException {
+        // XXX: This doesn't strip whitespace characters such as CR and LF.
         String o = "Content-Disposition: form-data; name=\"" +
-            URLEncoder.encode(name, "UTF-8") +
+            name.replace("\\", "\\\\").replace("\"", "\\\"") +
             "\"; filename=\"" +
-            URLEncoder.encode(filename, "UTF-8") +
+            filename.replace("\\", "\\\\").replace("\"", "\\\"") +
             "\"\r\n\r\n";
         out.write(o.getBytes("UTF-8"));
         byte[] buffer = new byte[2048];
@@ -79,8 +276,10 @@ public class Submit {
     }
 
     private void sendField(OutputStream out, String name, String field) throws IOException {
+        // XXX: This doesn't strip whitespace characters such as CR and LF.
         String o = "Content-Disposition: form-data; name=\"" +
-            URLEncoder.encode(name, "UTF-8") + "\"\r\n\r\n";
+            name.replace("\\", "\\\\").replace("\"", "\\\"") +
+            "\"\r\n\r\n";
         out.write(o.getBytes("UTF-8"));
         out.write(URLEncoder.encode(field, "UTF-8").getBytes("UTF-8"));
         out.write("\r\n".getBytes("UTF-8"));
