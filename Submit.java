@@ -9,21 +9,19 @@ public class Submit {
     private static final String extension = "java";
     private static final String contest = null;
 
-    private String filename;
     private String task;
     private String username;
     private String password;
 
-    public static void submit(String filename, String task, String username, String password) {
+    public static void submit(String task, String username, String password) {
         try {
             try(Writer file = new FileWriter(data_filename)) {
                 try(PrintWriter out = new PrintWriter(file)) {
-                    out.println(filename);
                     out.println(task);
                     out.println(username);
                     out.println(password);
                     out.println("");
-                    out.println("This file contains the filename, task, username and password");
+                    out.println("This file contains the task, username and password");
                     out.println("last used when submitting a solution.");
                     out.println("This file is used when you call Submit.submit() with no arguments.");
                 }
@@ -41,7 +39,6 @@ public class Submit {
             try {
                 try(Reader file = new FileReader(data_filename)) {
                     BufferedReader in = new BufferedReader(file);
-                    s.filename = in.readLine();
                     s.task = in.readLine();
                     s.username = in.readLine();
                     s.password = in.readLine();
@@ -52,7 +49,7 @@ public class Submit {
             }
             if (!s.getLoginCookie()) {
                 System.out.println("Wrong username or password. " +
-                                   "Please run submit(filename, task, username, password) again.");
+                                   "Please run submit(task, username, password) again.");
                 return;
             }
             String submissionId;
@@ -215,8 +212,10 @@ public class Submit {
     private void sendSubmissionForm(HttpURLConnection http) throws IOException {
         try(OutputStream out = http.getOutputStream()) {
             out.write(boundaryBytes);
-            try(InputStream file = new FileInputStream(filename)) {
-                sendFile(out, "code[]", file, filename);
+            for (String filename : getFilenames()) {
+                try(InputStream file = new FileInputStream(filename)) {
+                    sendFile(out, "code[]", file, filename);
+                }
             }
 
             out.write(boundaryBytes);
@@ -232,6 +231,16 @@ public class Submit {
 
             out.write(finishBoundaryBytes);
         }
+    }
+
+    private List<String> getFilenames() {
+        List<String> r = new ArrayList<String>();
+        for (final File fileEntry : new File(".").listFiles()) {
+            if (fileEntry.getName().endsWith(".java")) {
+                r.add(fileEntry.getName());
+            }
+        }
+        return r;
     }
 
     private String readResponse(HttpURLConnection http) throws IOException {
