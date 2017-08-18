@@ -19,11 +19,7 @@ public class Maximum {
         int output = new Maximum().computeMaximum(list);
         int correctAnswer = 100;
 
-        if (output != correctAnswer)
-            throw new RuntimeException("Expected output " + correctAnswer +
-                                       "but got " + output);
-        else
-            System.out.println("test1: OK");
+        assertEquals(output, correctAnswer, "test1");
     }
 
     public static void test2() {
@@ -34,11 +30,15 @@ public class Maximum {
         int output = new Maximum().computeMaximum(list);
         int correctAnswer = 95;
 
+        assertEquals(output, correctAnswer, "test2");
+    }
+
+    private static void assertEquals(int output, int correctAnswer, String functionName) {
         if (output != correctAnswer)
             throw new RuntimeException("Expected output " + correctAnswer +
-                                       "but got " + output);
+                                       " but got " + output);
         else
-            System.out.println("test2: OK");
+            System.out.println(functionName + ": OK");
     }
 
     public static void main(String[] args) {
