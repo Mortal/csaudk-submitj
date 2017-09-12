@@ -32,6 +32,7 @@ inside BlueJ (right click and choose "Save link as").
   * Every subarray sum fits in a Java `int` without overflowing
 
 **Scoring:**
+This demo exercise doesn't count towards your grade.
 
   * 1 point for correct algorithm
   * 1 extra point for correct linear-time algorithm
