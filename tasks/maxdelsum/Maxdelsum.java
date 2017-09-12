@@ -13,6 +13,9 @@ public class Maxdelsum {
         testAllPositive();
         testAllNegative();
         test1();
+        test2();
+        test3();
+        test4();
         testQuadraticTime();
     }
 
@@ -101,9 +104,60 @@ public class Maxdelsum {
             outputPass("test1");
     }
 
+    public static void test2() {
+        int[] input = { 59, 26, -53, 58, 97, -93, -23, 84 };
+        int correctAnswer = 59 + 26 + -53 + 58 + 97;
+
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i : input) list.add(i);
+
+        int output = new Maxdelsum().maxdelsum(list);
+
+        if (output != correctAnswer)
+            outputFail("test2",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test2");
+    }
+
+    public static void test3() {
+        int[] input = { 31, -41, 59, 26, -53, 58, 97 };
+        int correctAnswer = 59 + 26 + -53 + 58 + 97;
+
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i : input) list.add(i);
+
+        int output = new Maxdelsum().maxdelsum(list);
+
+        if (output != correctAnswer)
+            outputFail("test3",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test3");
+    }
+
+    public static void test4() {
+        int[] input = { -1, -2, -1, 10, -1, -2 };
+        int correctAnswer = 10;
+
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i : input) list.add(i);
+
+        int output = new Maxdelsum().maxdelsum(list);
+
+        if (output != correctAnswer)
+            outputFail("test4",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test4");
+    }
+
     public static void testQuadraticTime() {
         int n1 = 1000;
-        int n2 = 10000;
+        int n2 = 3000;
         long t11 = timeTest(n1);
         long t12 = timeTest(n1);
         long t13 = timeTest(n1);
