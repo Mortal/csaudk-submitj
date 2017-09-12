@@ -4,21 +4,21 @@ Max delsum
 **Problem ID: `maxdelsum-2`**
 
 This problem is based on *Bentley* Chp. 8.
-The input is an array of N integers;
-the output is the maximum sum found
+
+In this problem, the input to your program is an array of N integers,
+and your program must output the maximum sum found
 in any *contiguous* subarray of the input.
 For instance, if the input array contains these ten elements
 ```
   31, -41, 59, 26, -53, 58, 97, -93, -23, 84
 ```
-then the program should return the sum `187 = 59 + 26 + (-53) + 58 + 97`.
+then your program should return the sum `187 = 59 + 26 + (-53) + 58 + 97`.
 
 Concretely, you must implement a public method named
 `maxdelsum` that takes an `ArrayList<Integer> list` as argument
 and returns an `int`.
-
 Use the skeleton [`Maxdelsum.java`](Maxdelsum.java)
-and the [`Submit` program](../../Submit.java) in BlueJ.
+and the [`Submit` program](../../Submit.java) inside BlueJ.
 
 **Submitting:**
 Remember to compile your program and run `testAll()` in BlueJ
