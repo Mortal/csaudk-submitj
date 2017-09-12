@@ -16,13 +16,13 @@ Once you have compiled and tested your solution and got all local testcases pass
 it is time to upload your solution.
 
 You need to use the username and password for the judge system that your TA has hopefully given to you.
-If you have technical problems, contact Mathias Rav <rav@cs.au.dk>.
+If you have technical problems, contact Mathias Rav on the Blackboard discussion board.
 
 1. Open BlueJ
 
    ![Blank BlueJ](screenshots/001-blank-bluej.png)
 
-1. Click "New project"
+1. Click "New Project..."
 
    ![Project menu](screenshots/002-project-menu.png)
 
@@ -34,11 +34,11 @@ If you have technical problems, contact Mathias Rav <rav@cs.au.dk>.
 
    ![Edit menu](screenshots/004-edit-menu.png)
 
-1. Select the skeleton Java file and the Submit.java file for the problem you're solving
+1. Select the skeleton Java file for the problem you're solving and the Submit.java file
 
    ![Select Java files](screenshots/005-select-java-files.png)
 
-1. Click "Compile" to ensure that the code you're given can compile
+1. Click "Compile" to ensure that the code you're given can compile. If it doesn't compile, write to Mathias Rav on the Blackboard discussion board.
 
    ![Click compile](screenshots/006-click-compile.png)
 
