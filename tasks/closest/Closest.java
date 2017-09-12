@@ -91,21 +91,22 @@ public class Closest {
         long t14 = timeTest(n1);
         long t15 = timeTest(n1);
         long t1 = Math.min(Math.min(Math.min(Math.min(t11, t12), t13), t14), t15);
+        System.out.println("");
+        System.out.println("Testing time complexity.");
+        System.out.println("Elapsed time on input size n1 = " + n1 + ": t1 = " + t1);
         long t21 = timeTest(n2);
         long t22 = timeTest(n2);
         long t23 = timeTest(n2);
-        long t24 = timeTest(n2);
-        long t25 = timeTest(n2);
-        long t2 = Math.min(Math.min(Math.min(Math.min(t21, t22), t23), t24), t25);
+        long t2 = Math.min(Math.min(t21, t22), t23);
+        System.out.println("Elapsed time on input size n2 = " + n2 + ": t2 = " + t2);
         double slowdown = ((double) t2) / t1;
-        double expectedSlowdown = ((double) n2) / n1;
-        if (slowdown > Math.pow(expectedSlowdown, 1.5))
-            outputFail("testQuadraticTime",
-                       "When n increases from " + n1 + " to " + n2 + ", " +
-                       "time increases by a factor " + slowdown + ", " +
-                       "which is too slow!");
+        double linearSlowdown = ((double) n2) / n1;
+        System.out.println("Expected slowdown (for linear time): n2 / n1 = " + linearSlowdown);
+        System.out.println("Measured slowdown: t2 / t1 = " + slowdown);
+        if (slowdown > Math.pow(linearSlowdown, 1.2))
+            System.out.println("That's not linear time!");
         else
-            outputPass("testQuadraticTime");
+            System.out.println("OK.");
     }
 
     private static long timeTest(int n) {
