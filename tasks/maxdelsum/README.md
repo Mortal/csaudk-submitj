@@ -17,8 +17,13 @@ then your program should return the sum `187 = 59 + 26 + (-53) + 58 + 97`.
 Concretely, you must implement a public method named
 `maxdelsum` that takes an `ArrayList<Integer> list` as argument
 and returns an `int`.
-Use the skeleton [`Maxdelsum.java`](Maxdelsum.java)
-and the [`Submit` program](../../Submit.java) inside BlueJ.
+Use the skeleton
+<a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/maxdelsum/Maxdelsum.java" download>
+`Maxdelsum.java`</a>
+and the
+<a href="https://github.com/Mortal/csaudk-submitj/raw/master/Submit.java" download>
+`Submit` program</a>
+inside BlueJ.
 
 **Input constraints:**
 
