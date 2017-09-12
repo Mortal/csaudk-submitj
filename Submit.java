@@ -13,6 +13,12 @@ public class Submit {
     private String username;
     private String password;
 
+    // 0: not a multi task; i >= 1: part i (out of "variants") of a multi task.
+    private int multiTask;
+    private int variants;
+    // Delimiter used between the problem id and the number of variants.
+    private static final char DELIMITER = '-';
+
     public static void submit(String task, String username, String password) {
         try {
             try(Writer file = new FileWriter(data_filename)) {
@@ -36,12 +42,13 @@ public class Submit {
     public static void submit() {
         try {
             Submit s = new Submit();
+            String task;
             System.out.println(
                 "============================================================");
             try {
                 try(Reader file = new FileReader(data_filename)) {
                     BufferedReader in = new BufferedReader(file);
-                    s.task = in.readLine();
+                    task = in.readLine();
                     s.username = in.readLine();
                     s.password = in.readLine();
                 }
@@ -55,37 +62,19 @@ public class Submit {
                                    "Please run submit(task, username, password) again.");
                 return;
             }
-            String submissionId;
-            HttpURLConnection http = s.makePostSubmissionRequest();
-            s.sendSubmissionForm(http);
-            submissionId = s.readResponse(http);
-            if (submissionId.startsWith("error: ")) {
-                System.out.println(submissionId);
-                System.out.println(
-                    "Check your task name and call " +
-                    "submit(task, username, password) again.");
-                return;
-            }
-            System.out.println("Submitted to " +
-                               host + "/team/submission_details.php?id=" +
-                               submissionId);
-            int timeout = 60;
-            String judging = s.pollJudging(submissionId, timeout);
-            if (judging.equals("correct")) {
-                System.out.println("Congratulations, your solution is correct!");
-            } else if (judging.equals("timeout")) {
-                System.out.println(
-                    "Judging is taking too long (> " + timeout + " s). What's going on?");
-            } else if (judging.equals("compiler-error")) {
-                System.out.println(
-                    "Sorry, but the judge could not compile your solution!");
-            } else if (judging.equals("wrong-answer")) {
-                System.out.println(
-                    "Sorry, but your solution did not work on the hidden test cases.");
-                System.out.println("Find and fix the errors, and try submitting again!");
+            int delimiter = task.indexOf(DELIMITER);
+            if (delimiter == -1) {
+                s.task = task;
+                s.multiTask = 0;
+                s.submit();
             } else {
-                System.out.println(
-                    "Sorry, but something is wrong with your solution (" + judging + ")");
+                s.variants = Integer.parseInt(task.substring(delimiter+1));
+                task = task.substring(0, delimiter);
+                for (int i = 1; i <= s.variants; i += 1) {
+                    s.task = task + i;
+                    s.multiTask = 1;
+                    if (!s.submit()) break;
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -104,6 +93,58 @@ public class Submit {
             ("--" + boundary + "\r\n").getBytes("UTF-8");
         finishBoundaryBytes =
             ("--" + boundary + "--").getBytes("UTF-8");
+    }
+
+    public boolean submit() throws IOException {
+        String submissionId;
+        HttpURLConnection http = makePostSubmissionRequest();
+        sendSubmissionForm(http);
+        submissionId = readResponse(http);
+        if (submissionId.startsWith("error: ")) {
+            System.out.println(submissionId);
+            System.out.println(
+                "Check your task name and call " +
+                "submit(task, username, password) again.");
+            if (multiTask > 1) {
+                System.out.println("Maybe this problem only has " + (multiTask-1) + " parts.");
+            }
+            return false;
+        }
+        System.out.println("Submitted to " +
+                           host + "/team/submission_details.php?id=" +
+                           submissionId);
+        int timeout = 60;
+        String judging = pollJudging(submissionId, timeout);
+        if (judging.equals("correct")) {
+            if (multiTask > 1) {
+                System.out.println("Congratulations, you get an additional point for speed!");
+            } else {
+                System.out.println("Congratulations, your solution is correct!");
+            }
+            return true;
+        } else if (judging.equals("timelimit")) {
+            if (multiTask > 1) {
+                System.out.println("Although your solution is correct, " +
+                                   "you do not get extra points for speed.");
+            } else {
+                System.out.println("Sorry, but your solution is not efficient enough " +
+                                   "(time limit exceeded).");
+            }
+        } else if (judging.equals("timeout")) {
+            System.out.println(
+                "Judging is taking too long (> " + timeout + " s). What's going on?");
+        } else if (judging.equals("compiler-error")) {
+            System.out.println(
+                "Sorry, but the judge could not compile your solution!");
+        } else if (judging.equals("wrong-answer")) {
+            System.out.println(
+                "Sorry, but your solution did not work on the hidden test cases.");
+            System.out.println("Find and fix the errors, and try submitting again!");
+        } else {
+            System.out.println(
+                "Sorry, but something is wrong with your solution (" + judging + ")");
+        }
+        return false;
     }
 
     private boolean getLoginCookie() throws IOException {
