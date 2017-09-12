@@ -73,7 +73,7 @@ public class Submit {
                 for (int i = 1; i <= s.variants; i += 1) {
                     s.task = task + i;
                     s.multiTask = 1;
-                    if (!s.submit()) break;
+                    if (!s.doSubmit()) break;
                 }
             }
         } catch (IOException e) {
@@ -95,7 +95,7 @@ public class Submit {
             ("--" + boundary + "--").getBytes("UTF-8");
     }
 
-    public boolean submit() throws IOException {
+    public boolean doSubmit() throws IOException {
         String submissionId;
         HttpURLConnection http = makePostSubmissionRequest();
         sendSubmissionForm(http);
