@@ -18,12 +18,12 @@ Concretely, you must implement a public method named
 `maxdelsum` that takes an `ArrayList<Integer> list` as argument
 and returns an `int`.
 Use the skeleton
-<a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/maxdelsum/Maxdelsum.java" download>
+<a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/maxdelsum/Maxdelsum.java">
 `Maxdelsum.java`</a>
 and the
-<a href="https://github.com/Mortal/csaudk-submitj/raw/master/Submit.java" download>
+<a href="https://github.com/Mortal/csaudk-submitj/raw/master/Submit.java">
 `Submit` program</a>
-inside BlueJ.
+inside BlueJ (right click and choose "Save link as").
 
 **Input constraints:**
 
