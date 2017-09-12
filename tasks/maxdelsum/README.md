@@ -1,7 +1,7 @@
 Max delsum
 ==========
 
-**Problem ID: maxdelsum-2**
+**Problem ID: `maxdelsum-2`**
 
 This problem is based on *Bentley* Chp. 8.
 The input is an array of N integers;
