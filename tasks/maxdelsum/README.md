@@ -20,8 +20,11 @@ and returns an `int`.
 Use the skeleton [`Maxdelsum.java`](Maxdelsum.java)
 and the [`Submit` program](../../Submit.java) in BlueJ.
 
+**Submitting:**
 Remember to compile your program and run `testAll()` in BlueJ
 before uploading your solution using `Submit`.
+Use the username and password you got from your TA.
+Use the problem ID given above.
 
 **Input constraints:**
 
