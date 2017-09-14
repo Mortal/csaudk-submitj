@@ -1,4 +1,4 @@
-// Version: 2017091401
+// Version: 2017091402
 import java.io.*;
 import java.util.*;
 
@@ -96,6 +96,28 @@ public class ClosestBall {
                        " but got " + output);
         else
             outputPass("test2");
+    }
+
+    public static void test3() {
+        int[][] input = {
+            { 95, 66, 82, 63, 17 },
+            { 75, 38, 25, 77 }
+        };
+        int correctAnswer = 82 - 77;
+
+        ArrayList<Integer> players = new ArrayList<Integer>();
+        ArrayList<Integer> balls = new ArrayList<Integer>();
+        for (int i : input[0]) players.add(i);
+        for (int i : input[1]) balls.add(i);
+
+        int output = new ClosestBall().computeClosest(players, balls);
+
+        if (output != correctAnswer)
+            outputFail("test3",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test3");
     }
 
     public static void testQuadraticTime() {

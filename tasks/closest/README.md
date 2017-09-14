@@ -22,8 +22,6 @@ and the
 `Submit` program</a>
 inside BlueJ (right click and choose "Save link as").
 
-**Hint:** You're allowed to use `Collections.sort()`.
-
 **Input constraints:**
 
   * 2 ≤ N ≤ 100 000
@@ -33,3 +31,5 @@ inside BlueJ (right click and choose "Save link as").
 
   * 1 point for correct algorithm
   * 1 extra point for correct O(N log N) algorithm
+
+**Hint** for the fast solution: You're allowed to use `Collections.sort()`.
