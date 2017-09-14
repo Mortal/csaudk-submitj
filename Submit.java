@@ -19,15 +19,15 @@ public class Submit {
     // Delimiter used between the problem id and the number of variants.
     private static final char DELIMITER = '-';
 
-    public static void submit(String task, String username, String password) {
+    public static void submit(String taskID, String username, String password) {
         try {
             try(Writer file = new FileWriter(data_filename)) {
                 try(PrintWriter out = new PrintWriter(file)) {
-                    out.println(task);
+                    out.println(taskID);
                     out.println(username);
                     out.println(password);
                     out.println("");
-                    out.println("This file contains the task, username and password");
+                    out.println("This file contains the Task ID, username and password");
                     out.println("last used when submitting a solution.");
                     out.println("This file is used when you call Submit.submit() with no arguments.");
                 }
@@ -54,12 +54,12 @@ public class Submit {
                 }
             } catch (FileNotFoundException e) {
                 System.out.println("No password saved. " +
-                                   "Run submit(task, username, password) instead.");
+                                   "Run submit(taskID, username, password) instead.");
                 return;
             }
             if (!s.getLoginCookie()) {
                 System.out.println("Wrong username or password. " +
-                                   "Please run submit(task, username, password) again.");
+                                   "Please run submit(taskID, username, password) again.");
                 return;
             }
             int delimiter = task.indexOf(DELIMITER);
@@ -103,8 +103,8 @@ public class Submit {
         if (submissionId.startsWith("error: ")) {
             System.out.println(submissionId);
             System.out.println(
-                "Check your task name and call " +
-                "submit(task, username, password) again.");
+                "Check your Task ID and call " +
+                "submit(taskID, username, password) again.");
             if (multiTask > 1) {
                 System.out.println("Maybe this problem only has " + (multiTask-1) + " parts.");
             }
