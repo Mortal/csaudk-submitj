@@ -77,7 +77,9 @@ If you have technical problems, contact Mathias Rav on the Blackboard discussion
 
    ![Test successes](screenshots/015-test-successes.png)
 
-1. Right click `Submit` and choose `submit(String task, String username, String password)`
+1. Right click `Submit` and choose `submit(String taskID, String username, String password)`.
+   Remember to put "quotes" around the three strings.
+   Find the Task ID in the task description.
 
    ![Click submit](screenshots/016-click-submit.png)
 
