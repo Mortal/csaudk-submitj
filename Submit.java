@@ -70,7 +70,7 @@ public class Submit {
             } else {
                 s.variants = Integer.parseInt(task.substring(delimiter+1));
                 task = task.substring(0, delimiter);
-                String judging;
+                String judging = null;
                 for (int i = 1; i <= s.variants; i += 1) {
                     s.task = task + i;
                     s.multiTask = i;
@@ -121,7 +121,7 @@ public class Submit {
     }
 
     public boolean outputFeedback(String judging) {
-        if (judging == null) return;
+        if (judging == null) return false;
         if (judging.equals("correct")) {
             System.out.println("Points: " + multiTask + " out of " + variants);
             if (multiTask > 1) {
@@ -142,7 +142,7 @@ public class Submit {
             }
         } else if (judging.equals("timeout")) {
             System.out.println(
-                "Judging is taking too long (> " + timeout + " s). What's going on?");
+                "Judging is taking too long. What's going on?");
         } else if (judging.equals("compiler-error")) {
             System.out.println(
                 "Sorry, but the judge could not compile your solution!");
