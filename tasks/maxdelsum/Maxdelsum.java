@@ -1,3 +1,4 @@
+// Version: 2017091401
 import java.io.*;
 import java.util.*;
 public class Maxdelsum {
@@ -16,7 +17,7 @@ public class Maxdelsum {
         test2();
         test3();
         test4();
-        testQuadraticTime();
+        // testQuadraticTime();  // This is confusing, so don't run it by default
     }
 
     public static void testSinglePositive() {

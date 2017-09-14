@@ -1,3 +1,4 @@
+// Version: 2017091401
 import java.io.*;
 import java.util.*;
 public class Closest {
@@ -11,7 +12,7 @@ public class Closest {
         testSinglePairInv();
         test1();
         test2();
-        testQuadraticTime();
+        // testQuadraticTime();  // This is confusing, so don't run it by default
     }
 
     public static void testSinglePair() {
