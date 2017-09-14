@@ -19,6 +19,9 @@ To upload your solution, you need three things:
 
 If you have technical problems, contact Mathias Rav on the Blackboard discussion board.
 
+Step-by-step guide
+------------------
+
 1. Open BlueJ
 
    ![Blank BlueJ](screenshots/001-blank-bluej.png)
