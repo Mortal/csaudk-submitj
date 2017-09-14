@@ -134,8 +134,8 @@ public class Submit {
         System.out.println("Points: " + (multiTask-1) + " out of " + variants);
         if (judging.equals("timelimit")) {
             if (multiTask > 1) {
-                System.out.println("Although your solution is correct, " +
-                                   "you do not get extra points for speed.");
+                System.out.println("Your solution is correct, " +
+                                   "but you do not get extra points for speed.");
             } else {
                 System.out.println("Sorry, but your solution is not efficient enough " +
                                    "(time limit exceeded).");
