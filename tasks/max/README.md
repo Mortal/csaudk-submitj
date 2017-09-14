@@ -1,7 +1,7 @@
 Maximum
 =======
 
-**Task ID: `max`**
+**Task ID: `"max"`**
 
 In this problem, the input to your program is an array of N positive integers,
 and your program must output the largest integer in the input.
