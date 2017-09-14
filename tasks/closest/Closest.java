@@ -123,7 +123,7 @@ public class Closest {
     }
 
     private static void outputPass(String testName) {
-        System.out.println("[PASS " + testName + "]");
+        System.out.println("[Pass " + testName + "]");
     }
 
     private static void outputFail(String testName, String message) {
