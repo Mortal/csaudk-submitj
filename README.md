@@ -1,5 +1,5 @@
-FADS Submit program for BlueJ
-=============================
+FADS programming exercises
+==========================
 
 Intended audience: Students of *Grundlæggende Algoritmer og Datastrukturer* (FADS), Aarhus University.
 
