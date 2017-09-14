@@ -66,15 +66,18 @@ public class Submit {
             if (delimiter == -1) {
                 s.task = task;
                 s.multiTask = 0;
-                s.doSubmit();
+                s.outputFeedback(s.doSubmit());
             } else {
                 s.variants = Integer.parseInt(task.substring(delimiter+1));
                 task = task.substring(0, delimiter);
+                String judging;
                 for (int i = 1; i <= s.variants; i += 1) {
                     s.task = task + i;
-                    s.multiTask = 1;
-                    if (!s.doSubmit()) break;
+                    s.multiTask = i;
+                    judging = s.doSubmit();
+                    if (!"correct".equals(judging)) break;
                 }
+                s.outputFeedback(judging);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -95,7 +98,7 @@ public class Submit {
             ("--" + boundary + "--").getBytes("UTF-8");
     }
 
-    public boolean doSubmit() throws IOException {
+    public String doSubmit() throws IOException {
         String submissionId;
         HttpURLConnection http = makePostSubmissionRequest();
         sendSubmissionForm(http);
@@ -108,21 +111,28 @@ public class Submit {
             if (multiTask > 1) {
                 System.out.println("Maybe this problem only has " + (multiTask-1) + " parts.");
             }
-            return false;
+            return null;
         }
         System.out.println("Submitted to " +
                            host + "/team/submission_details.php?id=" +
                            submissionId);
         int timeout = 60;
-        String judging = pollJudging(submissionId, timeout);
+        return pollJudging(submissionId, timeout);
+    }
+
+    public boolean outputFeedback(String judging) {
+        if (judging == null) return;
         if (judging.equals("correct")) {
+            System.out.println("Points: " + multiTask + " out of " + variants);
             if (multiTask > 1) {
                 System.out.println("Congratulations, you get an additional point for speed!");
             } else {
                 System.out.println("Congratulations, your solution is correct!");
             }
             return true;
-        } else if (judging.equals("timelimit")) {
+        }
+        System.out.println("Points: " + (multiTask-1) + " out of " + variants);
+        if (judging.equals("timelimit")) {
             if (multiTask > 1) {
                 System.out.println("Although your solution is correct, " +
                                    "you do not get extra points for speed.");
