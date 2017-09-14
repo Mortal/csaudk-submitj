@@ -9,13 +9,14 @@ The programming tasks should be solved in Java using the [BlueJ](https://www.blu
 To solve a programming task, first find the task either in
 [Blackboard](https://blackboard.au.dk/webapps/blackboard/execute/launcher?type=Course&id=_66529_1)
 or in the [tasks](tasks) directory of this repository.
+Read the task description, and start solving the task!
 
-Then read the task description, download the skeleton Java file, and start coding!
+To upload your solution, you need three things:
 
-Once you have compiled and tested your solution and got all local testcases passed,
-it is time to upload your solution.
+  * Task ID (from the task description)
+  * Username (`fads17-daN-MM`, where `N` is your class and `MM` is your Blackboard group number)
+  * Password (from your TA)
 
-You need to use the username and password for the judge system that your TA has hopefully given to you.
 If you have technical problems, contact Mathias Rav on the Blackboard discussion board.
 
 1. Open BlueJ

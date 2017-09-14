@@ -1,7 +1,7 @@
 Max delsum
 ==========
 
-**Problem ID: `maxdelsum-2`**
+**Task ID: `maxdelsum-2`**
 
 This problem is based on *Bentley* Chp. 8.
 
