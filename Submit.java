@@ -67,6 +67,7 @@ public class Submit {
             if (delimiter == -1) {
                 s.task = task;
                 s.multiTask = 0;
+                s.variants = 1;
                 s.outputFeedback(s.doSubmit());
             } else {
                 s.variants = Integer.parseInt(task.substring(delimiter+1));
@@ -124,15 +125,23 @@ public class Submit {
     public boolean outputFeedback(String judging) {
         if (judging == null) return false;
         if (judging.equals("correct")) {
-            System.out.println("Points: " + multiTask + " out of " + variants);
-            if (multiTask > 1) {
+            if (variants <= 1) {
+                System.out.println("Points: 1 out of 1");
+                System.out.println("Congratulations, your solution is correct!");
+            } else if (multiTask > 1) {
+                System.out.println("Points: " + multiTask + " out of " + variants);
                 System.out.println("Congratulations, you get an additional point for speed!");
             } else {
+                System.out.println("Points: " + multiTask + " out of " + variants);
                 System.out.println("Congratulations, your solution is correct!");
             }
             return true;
         }
-        System.out.println("Points: " + (multiTask-1) + " out of " + variants);
+        if (variants <= 1) {
+            System.out.println("Points: 0 out of 1");
+        } else {
+            System.out.println("Points: " + (multiTask-1) + " out of " + variants);
+        }
         if (judging.equals("timelimit")) {
             if (multiTask > 1) {
                 System.out.println("Your solution is correct, " +
