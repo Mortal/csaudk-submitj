@@ -9,6 +9,7 @@ public class ClosestBall {
     }
 
     public static void testAll() {
+        clearTerminal();
         testSinglePair();
         testSinglePairInv();
         test1();
@@ -160,6 +161,10 @@ public class ClosestBall {
         // For debugging, output the individual times:
         // System.out.println(n + " " + (t2 - t1));
         return t2 - t1;
+    }
+
+    private static void clearTerminal() {
+        System.out.print('\u000C');
     }
 
     private static void outputPass(String testName) {

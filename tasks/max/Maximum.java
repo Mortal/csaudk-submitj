@@ -8,6 +8,7 @@ public class Maximum {
     }
 
     public static void testAll() {
+        clearTerminal();
         test1();
         test2();
     }
@@ -46,8 +47,12 @@ public class Maximum {
             outputPass("test2");
     }
 
+    private static void clearTerminal() {
+        System.out.print('\u000C');
+    }
+
     private static void outputPass(String testName) {
-        System.out.println("[PASS " + testName + "]");
+        System.out.println("[Pass " + testName + "]");
     }
 
     private static void outputFail(String testName, String message) {
