@@ -66,7 +66,7 @@ public class Submit {
             if (delimiter == -1) {
                 s.task = task;
                 s.multiTask = 0;
-                s.submit();
+                s.doSubmit();
             } else {
                 s.variants = Integer.parseInt(task.substring(delimiter+1));
                 task = task.substring(0, delimiter);
