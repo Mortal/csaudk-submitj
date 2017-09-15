@@ -1,4 +1,4 @@
-// Version: 2017091402
+// Version: 2017091501
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
@@ -46,6 +46,7 @@ public class Submit {
             String task;
             System.out.println(
                 "============================================================");
+            if (!s.validateFilenames()) return;
             try {
                 try(Reader file = new FileReader(data_filename)) {
                     BufferedReader in = new BufferedReader(file);
@@ -284,6 +285,43 @@ public class Submit {
         // Enable streaming mode with default settings
         http.setChunkedStreamingMode(0);
         return http;
+    }
+
+    private static String join(String delimiter, List<String> items) {
+        String s = "";
+        StringBuilder b = new StringBuilder();
+        for (String x : items) {
+            b.append(s);
+            b.append(x);
+            s = delimiter;
+        }
+        return b.toString();
+    }
+
+    private boolean validateFilenames() throws IOException {
+        List<String> r = new ArrayList<String>();
+        for (String fileName : getFilenames()) {
+            try(FileReader file = new FileReader(fileName)) {
+                BufferedReader rd = new BufferedReader(file);
+                while (true) {
+                    String line = rd.readLine();
+                    if (line == null) break;
+                    // Note, we must break the following string into two pieces
+                    // to avoid Submit.java detecting itself as a task file.
+                    String needle = "public static void " + "main(String[]";
+                    if (line.indexOf(needle) != -1)
+                        r.add(fileName);
+                }
+            }
+        }
+        if (r.size() > 1) {
+            System.out.println("Error: Multiple task files found (" +
+                               join(", ", r) + ").");
+            System.out.println("       You need to make a new " +
+                               "BlueJ project for each task.");
+            return false;
+        }
+        return true;
     }
 
     private void sendSubmissionForm(HttpURLConnection http) throws IOException {
