@@ -1,0 +1,12 @@
+#!/bin/bash
+set -euo pipefail
+cd "$(dirname "$0")"
+
+cd ../tasks
+for t in *; do
+	d=../projects/"$t"
+	mkdir -p "$d"
+	cp ../Submit.java "$d"
+	cp "$t"/*.java "$d"
+	echo > "$d"/package.bluej
+done
