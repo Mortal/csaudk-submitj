@@ -1,9 +1,7 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-mkdir -p projects
-
-cd tasks
+cd ../tasks
 for t in *; do
 	d=../projects/"$t"
 	mkdir -p "$d"
