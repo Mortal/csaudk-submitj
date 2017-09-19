@@ -177,11 +177,13 @@ public class Submit {
         }
         InputStream inputStream;
         try {
+            if (http.getResponseCode() == 403)
+                return false;
             inputStream = http.getInputStream();
             if (http.getResponseCode() >= 400)
                 throw new RuntimeException("Unexpected failure response code");
         } catch (IOException e) {
-            return false;
+            throw new RuntimeException("Failed to login", e);
         }
         cookie = http.getHeaderField("Set-Cookie");
         if (cookie == null) {
