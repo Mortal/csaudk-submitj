@@ -30,6 +30,21 @@ inside BlueJ (right click and choose "Save link as").
 **Scoring:**
 
   * 1 point for correct algorithm
-  * 1 extra point for correct O(N log N) algorithm
+  * 1 extra point for correct and fast algorithm
 
-**Hint** for the fast solution: You're allowed to use `Collections.sort()`.
+An O(N log N) solution is fast enough to get the extra point.
+
+
+Hint for the fast solution
+--------------------------
+
+You are allowed to use `Collections.sort()`
+to sort the input list (or any list you may create as part of your solution).
+
+That is, after running `Collections.sort(input);` in `computeClosest()`,
+the `input` list is sorted into ascending order.
+This might be useful to you when solving the exercise.
+
+Remember to have `import java.util.*;` in the beginning of your solution
+in order to be able to use `Collections.sort()`
+(which is defined in `java.util`).
