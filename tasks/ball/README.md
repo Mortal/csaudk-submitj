@@ -48,6 +48,9 @@ inside BlueJ (right click and choose "Save link as").
 **Scoring:**
 
   * 1 point for correct algorithm
-  * 1 extra point for correct O(N log N + M log M) algorithm
+  * 1 extra point for correct and fast algorithm
 
-**Hint** for the fast solution: You're allowed to use `Collections.sort()`.
+An O(N log N + M log M) solution is fast enough to get the extra point.
+
+**Hint** for the fast solution: You're allowed to use `Collections.sort()`
+just like in [the `closest` exercise](../closest).
