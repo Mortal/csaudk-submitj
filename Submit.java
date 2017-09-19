@@ -183,8 +183,9 @@ public class Submit {
             if (http.getResponseCode() >= 400)
                 throw new RuntimeException("Unexpected failure response code");
         } catch (ConnectException e) {
-            throw new RuntimeException(
-                "Could not connect. Is your internet connection working?", e);
+            String msg = "Could not connect. Is your internet connection working?";
+            System.out.println(msg);
+            throw new RuntimeException(msg, e);
         } catch (IOException e) {
             throw new RuntimeException("Failed to login", e);
         }
