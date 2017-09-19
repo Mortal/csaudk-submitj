@@ -170,13 +170,13 @@ public class Submit {
 
     private boolean getLoginCookie() throws IOException {
         HttpURLConnection http = makePostLoginRequest();
-        try(OutputStream out = http.getOutputStream()) {
-            try(PrintWriter print = new PrintWriter(out)) {
-                print.print("cmd=login&login=" + username + "&passwd=" + password);
-            }
-        }
         InputStream inputStream;
         try {
+            try(OutputStream out = http.getOutputStream()) {
+                try(PrintWriter print = new PrintWriter(out)) {
+                    print.print("cmd=login&login=" + username + "&passwd=" + password);
+                }
+            }
             if (http.getResponseCode() == 403)
                 return false;
             inputStream = http.getInputStream();
