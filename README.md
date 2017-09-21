@@ -46,7 +46,7 @@ Step-by-step guide
 
    ![Click compile](screenshots/006-click-compile.png)
 
-1. Click `testAll()` on `Submit` to see that some or all of the tests currently fail
+1. Click `testAll()` on the task class to see that some or all of the tests currently fail
 
    ![Click testAll](screenshots/007-click-testall.png)
 
