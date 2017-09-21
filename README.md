@@ -96,3 +96,16 @@ Step-by-step guide
    Remember to switch to the console window of BlueJ if it doesn't appear automatically.
 
    ![Submit success](screenshots/018-submit-success.png)
+
+Common mistakes
+---------------
+
+**Submitting code that calls System.out for debugging.**
+System.out.println() is a good tool to use if you can't find out why your solution doesn't work.
+However, the judge gets confused if you leave in calls to System.out.println()
+when submitting your code, since it looks at the output of the main() method
+to determine if your solution is correct.
+Remember to comment out any System.out-lines in your own code before calling submit()!
+
+If you believe there are other common mistakes that should be mentioned in this list,
+let us know on the Blackboard discussion board.
