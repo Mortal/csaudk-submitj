@@ -18,6 +18,7 @@ To upload your solution, you need three things:
   * Password (from your TA)
 
 If you have technical problems, contact Mathias Rav on the Blackboard discussion board.
+See also the list of [common mistakes](#common-mistakes).
 
 Step-by-step guide
 ------------------
