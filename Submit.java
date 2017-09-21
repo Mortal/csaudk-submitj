@@ -1,4 +1,4 @@
-// Version: 2017091901
+// Version: 2017092101
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
@@ -159,8 +159,14 @@ public class Submit {
                 "Sorry, but the judge could not compile your solution!");
         } else if (judging.equals("wrong-answer")) {
             System.out.println(
-                "Sorry, but your solution did not work on the hidden test cases.");
-            System.out.println("Find and fix the errors, and try submitting again!");
+                "Sorry, but your solution gives the wrong answer on one or more of the " +
+                "hidden test cases.");
+            System.out.println(
+                "If you have used System.out.println() in your solution, then you must " +
+                "remove these lines before submitting to the judge!");
+            System.out.println(
+                "If not, you need to find and fix the errors in your solution, " +
+                "and try submitting again.");
         } else {
             System.out.println(
                 "Sorry, but something is wrong with your solution (" + judging + ")");
