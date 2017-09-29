@@ -38,6 +38,12 @@ The following array is NOT properly matched since the round parenthesis matches 
   ( [ ] ]
 ```
 
+The following array is NOT properly matched since the round parenthesis intersect the square parentheses:
+
+```
+  ( [ ) ]
+```
+
 **Concretely,** you should use the skeleton
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/dyck/Dyck.java">
 `Dyck.java`</a>

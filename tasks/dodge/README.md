@@ -19,8 +19,8 @@ and the following two things can happen:
 In this exercise you must implement a class named `Dodgeball`
 with the following methods:
 
-* `void add(int x)` -> adds a new player at position *x* in the game
-* `int ball(int x)` -> updates the set of players when a ball is thrown at position *x*
+* `void addPlayer(int x)` -> adds a new player at position *x* in the game
+* `int throwBall(int x)` -> updates the set of players when a ball is thrown at position *x*
 
 At no point in time are there two players that stand at the same position.
 
@@ -41,7 +41,7 @@ and the
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/Submit.java">
 `Submit` program</a>
 inside BlueJ (right click and choose "Save link as").
-You must implement the methods `add` and `ball` in `Dodgeball`,
+You must implement the methods `addPlayer` and `throwBall` in `Dodgeball`,
 and you are allowed to add your own private fields to the class.
 
 **Scoring:**
@@ -49,7 +49,7 @@ and you are allowed to add your own private fields to the class.
   * 1 point for correct algorithm
   * 1 extra point for correct and fast algorithm
 
-An algorithm that spends O(log N) time on `add()` and `ball()`
+An algorithm that spends O(log N) time on `addPlayer()` and `throwBall()`
 is fast enough for the extra point.
 
 **Hint** for the fast solution: Use a balanced binary search tree.
