@@ -24,6 +24,7 @@ The class supports the following operations:
 | Does `tree` contain *x*? | `if (tree.contains(x)) { ... }` | O(log N) |
 | Predecessor of *x* (see below) | `Integer p = tree.floor(x);` | O(log N) |
 | Successor of *x* (see below) | `Integer s = tree.ceiling(x);` | O(log N) |
+| Number of elements | `int size = queue.size();` | O(1) |
 
 The predecessor and successor operations work as follows:
 If *x* is contained in `tree`, then `tree.floor(x)` and `tree.ceiling(x)` both return *x* itself.

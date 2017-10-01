@@ -19,6 +19,7 @@ Using Deque as a queue
 | Get front (when empty, throws exception) | `int f = queue.getFirst();` | O(1) |
 | Get front (when empty, returns null) | `Integer f = queue.peekFirst();` | O(1) |
 | Pop | `queue.removeFirst();` | O(1) |
+| Number of elements | `int size = queue.size();` | O(1) |
 
 Using Deque as a stack
 ----------------------
@@ -30,3 +31,4 @@ Using Deque as a stack
 | Get top of stack (when empty, throws exception) | `int f = stack.getLast();` | O(1) |
 | Get top of stack (when empty, returns null) | `Integer f = stack.peekLast();` | O(1) |
 | Pop | `stack.removeLast();` | O(1) |
+| Number of elements | `int size = queue.size();` | O(1) |
