@@ -14,19 +14,19 @@ Using Deque as a queue
 
 | Operation | Java code | Complexity |
 | --- | --- | --- |
-| New queue | `Deque<Integer> q = new ArrayDeque<>();` | O(1) |
-| Push *x* | `q.addLast(x);` | O(1) |
-| Get front (when empty, throws exception) | `int f = q.getFirst();` | O(1) |
-| Get front (when empty, returns null) | `Integer f = q.peekFirst();` | O(1) |
-| Pop | `q.removeFirst();` | O(1) |
+| New queue | `Deque<Integer> queue = new ArrayDeque<>();` | O(1) |
+| Push *x* | `queue.addLast(x);` | O(1) |
+| Get front (when empty, throws exception) | `int f = queue.getFirst();` | O(1) |
+| Get front (when empty, returns null) | `Integer f = queue.peekFirst();` | O(1) |
+| Pop | `queue.removeFirst();` | O(1) |
 
 Using Deque as a stack
 ----------------------
 
 | Operation | Java code | Complexity |
 | --- | --- | --- |
-| New stack | `Deque<Integer> q = new ArrayDeque<>();` | O(1) |
-| Push *x* | `q.addLast(x);` | O(1) |
-| Get top of stack (when empty, throws exception) | `int f = q.getLast();` | O(1) |
-| Get top of stack (when empty, returns null) | `Integer f = q.peekLast();` | O(1) |
-| Pop | `q.removeLast();` | O(1) |
+| New stack | `Deque<Integer> stack = new ArrayDeque<>();` | O(1) |
+| Push *x* | `stack.addLast(x);` | O(1) |
+| Get top of stack (when empty, throws exception) | `int f = stack.getLast();` | O(1) |
+| Get top of stack (when empty, returns null) | `Integer f = stack.peekLast();` | O(1) |
+| Pop | `stack.removeLast();` | O(1) |
