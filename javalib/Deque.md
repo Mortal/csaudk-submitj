@@ -12,7 +12,7 @@ import java.util.*;
 Using Deque as a queue
 ----------------------
 
-| Operation | Java code | Complexity |
+| Operation | Java code | Time complexity |
 | --- | --- | --- |
 | New queue | `Deque<Integer> queue = new ArrayDeque<>();` | O(1) |
 | Push *x* | `queue.addLast(x);` | O(1) |
@@ -23,7 +23,7 @@ Using Deque as a queue
 Using Deque as a stack
 ----------------------
 
-| Operation | Java code | Complexity |
+| Operation | Java code | Time complexity |
 | --- | --- | --- |
 | New stack | `Deque<Integer> stack = new ArrayDeque<>();` | O(1) |
 | Push *x* | `stack.addLast(x);` | O(1) |
