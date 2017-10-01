@@ -14,7 +14,6 @@ to see how to use it.
 | Name in CLRS | Corresponding Java class |
 | --- | --- |
 | Balanced binary search tree | [TreeSet](TreeSet.md) |
-| Linked list | [LinkedList](LinkedList.md) |
 | Max-heap | [PriorityQueue](PriorityQueue.md) with custom [comparator](maxheap.md) |
 | Min-heap | [PriorityQueue](PriorityQueue.md) |
 | Priority queue | [PriorityQueue](PriorityQueue.md) |
