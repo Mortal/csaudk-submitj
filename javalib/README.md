@@ -1,6 +1,16 @@
 Data structures in the Java standard library
 ============================================
 
+In FADS we see a number of different data structures, such as queues, stacks,
+priority queues, balanced binary search trees (red/black trees), and more.
+
+Most of the data structures are available in the Java standard library,
+but sometimes the names of the appropriate classes are not straightforward.
+
+Here is a list of some data structures that might be useful to you
+when solving the FADS coding exercises. Click on the individual class
+to see how to use it.
+
 | Name in CLRS | Corresponding Java class |
 | --- | --- |
 | Balanced binary search tree | [TreeSet](TreeSet.md) |
