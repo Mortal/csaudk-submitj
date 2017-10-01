@@ -11,10 +11,10 @@ that supports the two operations:
 * `void add(int v)` - add a number to the data structure
 * `int median()` - return the median of the numbers in the data structure
 
-In this exercise, the **median** of a list of *N* numbers is the number in the
-list that comes after the first *N*/2 (rounded down) numbers in the sorted order.
+In this exercise, the **median** of a set of *N* numbers is the number in the
+set that comes after the first *N*/2 (rounded down) numbers in the sorted order.
 
-**Example 1**: If the list contains the numbers:
+**Example 1**: If the set contains the numbers:
 
 ```
   2, 5, 3, 7
@@ -22,7 +22,7 @@ list that comes after the first *N*/2 (rounded down) numbers in the sorted order
 
 then the sorted order is `[2, 3, 5, 7]`, so the median is 5.
 
-**Example 2**: If the list contains the numbers:
+**Example 2**: If the set contains the numbers:
 
 ```
   1, 7, 2, 3, 5
@@ -30,10 +30,10 @@ then the sorted order is `[2, 3, 5, 7]`, so the median is 5.
 
 then the median is 3.
 
-**Example 3**: If the list contains the numbers:
+**Example 3**: If the set contains the numbers:
 
 ```
-  4, 4, 7, 9, 4
+  2, 4, 7, 9, 3
 ```
 
 then the median is 4.
@@ -51,6 +51,12 @@ inside BlueJ (right click and choose "Save link as").
 You must implement the methods `add` and `median` in `Median`,
 and you are allowed to add your own private fields to the class.
 
+**Input constraints:**
+
+  * Number of insertions is at most 500000
+  * All numbers added are distinct (that is, the same number is not added multiple times to the data structure)
+  * Each number is an integer between 1 and 1000000000
+
 **Scoring:**
 
   * 1 point for correct algorithm
@@ -59,4 +65,5 @@ and you are allowed to add your own private fields to the class.
 An algorithm that spends O(log N) time per insertion and O(1) time to return the median
 is fast enough for the extra point.
 
-**Hint** for the fast solution: Use two priority queues.
+**Hint** for the fast solution: Use two priority queues
+OR use a balanced binary search tree.
