@@ -1,10 +1,13 @@
 Data structures in the Java standard library
 ============================================
 
-* [Deque](Deque.md)
-* [LinkedList](LinkedList.md)
-* Max-heap: See [PriorityQueue](PriorityQueue.md)
-* Min-heap: See [PriorityQueue](PriorityQueue.md)
-* [PriorityQueue](PriorityQueue.md)
-* [Queue](Queue.md)
-* Stack: See [Deque](Deque.md)
+| Name in CLRS | Corresponding Java class |
+| --- | --- |
+| Balanced binary search tree | [TreeSet](TreeSet.md) |
+| Linked list | [LinkedList](LinkedList.md) |
+| Max-heap | [PriorityQueue](PriorityQueue.md) with custom [comparator](maxheap.md) |
+| Min-heap | [PriorityQueue](PriorityQueue.md) |
+| Priority queue | [PriorityQueue](PriorityQueue.md) |
+| Queue | [Deque](Deque.md) |
+| Red/black search tree | [TreeSet](TreeSet.md) |
+| Stack | [Deque](Deque.md) |
