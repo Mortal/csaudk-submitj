@@ -1,4 +1,4 @@
-// Here be dragons -- work in progress -- not ready for use in FADS 2017!
+// Version: 2017100201
 import java.io.*;
 import java.util.*;
 
@@ -82,11 +82,10 @@ public class MedianTest {
 
     private static long timeTest(int n) {
         long t1 = System.nanoTime();
-        ArrayList<Integer> list = new ArrayList<Integer>(n);
+        Median m = new Median();
         for (int i = 0; i < n; ++i) {
-            list.add((int) (i * 982451653L % 413158511L));
+            m.add((int) (i * 982451653L % 413158511L));
         }
-        new MedianTest().countInversions(list);
         long t2 = System.nanoTime();
         // For debugging, output the individual times:
         // System.out.println(n + " " + (t2 - t1));

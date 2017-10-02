@@ -3,8 +3,6 @@ Queue simulation
 
 **Task ID: `"queue"`**
 
-**Here be dragons! This description is a WORK IN PROGRESS and not yet ready for FADS 2017.**
-
 In this problem, the input to your program is an array of N integers,
 and your program should repeat the following operation as long as there are at least two integers:
 
@@ -20,12 +18,12 @@ For example, if the input is the list
 
 then your program should perform the above operation four times:
 
-* After the 1st operation, the list contains: 3 4 5 2
-* After the 2nd operation, the list contains: 5 2 4
-* After the 3rd operation, the list contains: 4 2
-* After the 4th operation, the list contains: 4
+* After the 1st operation, 1 and 2 are removed and 2 is added, so the list contains: 3 4 5 2
+* After the 2nd operation, 3 and 4 are removed and 4 is added, so the list contains: 5 2 4
+* After the 3rd operation, 5 and 2 are removed and 2 is added, so the list contains: 4 2
+* After the 4th operation, 4 and 2 are removed and 2 is added, so the list contains: 2
 
-That means your program should return 4.
+That means your program should return 2.
 
 Concretely, you must implement a public method named
 `simulate` that takes an `ArrayList<Integer> input` as argument

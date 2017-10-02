@@ -3,8 +3,6 @@ Balanced parenthesis checking
 
 **Task ID: `"dyck"`**
 
-**Here be dragons! This description is a WORK IN PROGRESS and not yet ready for FADS 2017.**
-
 In this problem, the input to your program is an array of N characters,
 each of which is either `(`, `)`, `[` or `]`,
 and your program must return `true` if the parentheses are properly matched,
@@ -51,7 +49,8 @@ and the
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/Submit.java">
 `Submit` program</a>
 inside BlueJ (right click and choose "Save link as").
-You must implement the method `checkParentheses` in `Dyck`.
+You must implement the method `checkParentheses` in `Dyck`
+which takes an `ArrayList<Character>` and returns a `boolean`.
 
 **Hint:** Use a stack containing the open parentheses.
 

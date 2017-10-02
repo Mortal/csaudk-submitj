@@ -3,8 +3,6 @@ Reverse Polish Notation
 
 **Task ID: `"rpn"`**
 
-**Here be dragons! This description is a WORK IN PROGRESS and not yet ready for FADS 2017.**
-
 When writing an arithmetic formula such as 1 - (2 * 3) in
 [*Reverse Polish notation* (RPN)](https://en.wikipedia.org/wiki/Reverse_Polish_notation),
 we write the operator, e.g. minus, *after* the operands.

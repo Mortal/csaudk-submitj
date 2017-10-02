@@ -3,8 +3,6 @@ Dodgeball
 
 **Task ID: `"dodge-2"`**
 
-**Here be dragons! This description is a WORK IN PROGRESS and not yet ready for FADS 2017.**
-
 Crazy Dodgeball is a game in which two teams play against each other using a ball.
 At any point in time, the players on your team stand on a line,
 and the following two things can happen:
