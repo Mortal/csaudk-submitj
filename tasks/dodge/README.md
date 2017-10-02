@@ -16,11 +16,19 @@ and the following two things can happen:
   * Otherwise, the player that is closest to position *x* moves to position *x*
     and throws the ball back at the other team.
 
+Here is an example, starting with four players at positions 1, 7, 10 and 20:
+
+* Ball thrown at 10: 1, 7, 20 (10 dead; distance 0)
+* Ball thrown at 18: 1, 7, 18 (moved from 20 to 18; distance 2)
+* Ball thrown at 5: 1, 5, 18 (moved from 7 to 5; distance 2)
+* New player at 11: 1, 5, 11, 18
+* Ball thrown at 8: 1, 8, 11, 18 (moved from 5 to 8; distance 3)
+
 In this exercise you must implement a class named `Dodgeball`
 with the following methods:
 
 * `void addPlayer(int x)` -> adds a new player at position *x* in the game
-* `int throwBall(int x)` -> updates the set of players when a ball is thrown at position *x*
+* `int throwBall(int x)` -> updates the set of players when a ball is thrown at position *x* and returns the distance from the closest player to the ball
 
 At no point in time are there two players that stand at the same position.
 

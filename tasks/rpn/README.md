@@ -55,6 +55,10 @@ Your implementation is allowed to throw an exception if a method is called at a
 wrong time, for instance if `read()` is called when the stack is empty or if
 `plus()` is called when the stack has fewer than two elements.
 
+Note that for `minus`, the top element on the stack should be subtracted from
+the second-from-top element.
+In the previous example, the top of stack was the rightmost element.
+
 **Concretely,** you should use the skeleton
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/rpn/ReversePolishCalculator.java">
 `ReversePolishCalculator.java`</a>,

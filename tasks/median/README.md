@@ -62,7 +62,7 @@ and you are allowed to add your own private fields to the class.
   * 1 point for correct algorithm
   * 1 extra point for correct and fast algorithm
 
-An algorithm that spends O(log N) time per insertion and O(1) time to return the median
+An algorithm that spends O(log N) time per operation
 is fast enough for the extra point.
 
 **Hint** for the fast solution: Use two priority queues
