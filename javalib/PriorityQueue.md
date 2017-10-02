@@ -25,6 +25,6 @@ If you need a max-heap, you need to
 | Add *x* | `heap.add(x);` | O(log N) |
 | Get minimum element | `Integer m = heap.peek();` | O(1) |
 | Remove minimum element | `heap.poll();` | O(log N) |
-| Number of elements | `int size = queue.size();` | O(1) |
+| Number of elements | `int size = heap.size();` | O(1) |
 
 The `peek()` method returns `null` if the heap is empty.
