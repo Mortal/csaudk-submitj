@@ -11,6 +11,8 @@ that supports the two operations:
 
 In this exercise, the **median** of a set of *N* numbers is the number in the
 set that comes after the first *N*/2 (rounded down) numbers in the sorted order.
+In Java, this means that the median is the element at index `N / 2` in the sorted order
+(since integer division in Java rounds down, and Java uses 0-based indexing).
 
 **Example 1**: If the set contains the numbers:
 
