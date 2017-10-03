@@ -3,6 +3,8 @@ Median data structure
 
 **Task ID: `"median-2"`**
 
+Last updated: 2017-10-03 15:07.
+
 In this exercise you should implement a data structure named `Median`
 that supports the two operations:
 
@@ -25,18 +27,18 @@ then the sorted order is `[2, 3, 5, 7]`, so the median is 5.
 **Example 2**: If the set contains the numbers:
 
 ```
-  1, 7, 2, 3, 5
-```
-
-then the median is 3.
-
-**Example 3**: If the set contains the numbers:
-
-```
   2, 4, 7, 9, 3
 ```
 
 then the median is 4.
+
+**Example 3**: Note that the median is not necessary close to the average. For instance, if the set contains the numbers:
+
+```
+  32, 59, 32673, 58586, 14162, 288, 411
+```
+
+then the median is 411 (although the average is 15173).
 
 **Concretely,** you should use the skeleton
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/median/Median.java">
