@@ -1,4 +1,4 @@
-// Version: 2017100304
+// Version: 2017100305
 import java.io.*;
 import java.util.*;
 
@@ -113,6 +113,23 @@ public class MedianTest {
                        " but got " + output);
         else
             outputPass("test5");
+    }
+
+    public static void test6() {
+        int[] input = { 3, 2 };
+        int correctAnswer = 3;
+
+        Median m = new Median();
+        for (int i : input) m.add(i);
+
+        int output = m.median();
+
+        if (output != correctAnswer)
+            outputFail("test6",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test6");
     }
 
     private static long timeTest(int n) {
