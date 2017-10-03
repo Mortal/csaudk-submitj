@@ -1,4 +1,4 @@
-// Version: 2017100301
+// Version: 2017100302
 import java.io.*;
 import java.util.*;
 
@@ -63,7 +63,7 @@ public class MedianTest {
     }
 
     public static void test3() {
-        int[] input = { 4, 4, 7, 9, 4 };
+        int[] input = { 2, 4, 7, 9, 3 };
         int correctAnswer = 4;
 
         Median m = new Median();
