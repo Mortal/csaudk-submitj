@@ -1,4 +1,4 @@
-// Version: 2017100201
+// Version: 2017100301
 import java.io.*;
 import java.util.*;
 public class QueueSimulation {
@@ -14,6 +14,7 @@ public class QueueSimulation {
         test3();
         test1024();
         test513();
+        test100();
     }
 
     public static void test1() {
@@ -99,6 +100,23 @@ public class QueueSimulation {
                        " but got " + output);
         else
             outputPass("test513");
+    }
+
+    public static void test100() {
+        int N = 100;
+        int correctAnswer = 72;
+
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i = 1; i <= N; i++) list.add(i);
+
+        int output = new QueueSimulation().simulate(list);
+
+        if (output != correctAnswer)
+            outputFail("test100",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test100");
     }
 
     private static void clearTerminal() {
