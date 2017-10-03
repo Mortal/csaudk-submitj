@@ -8,7 +8,7 @@ public class MedianTest {
         testSingle();
         test1();
         test2();
-	test3();
+        test3();
     }
 
     public static void testSingle() {
