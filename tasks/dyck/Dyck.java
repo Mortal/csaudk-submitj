@@ -1,4 +1,4 @@
-// Version: 2017100303
+// Version: 2017100304
 import java.io.*;
 import java.util.*;
 public class Dyck {
@@ -25,6 +25,7 @@ public class Dyck {
         test14();
         test15();
         test16();
+        test17();
     }
 
     public static void test1() {
@@ -297,6 +298,23 @@ public class Dyck {
                        " but got " + output);
         else
             outputPass("test16");
+    }
+
+    public static void test17() {
+        char[] input = { '(', '[', '(', ')', ')', '[', ']', ']' };
+        boolean correctAnswer = false;
+
+        ArrayList<Character> list = new ArrayList<>();
+        for (char c : input) list.add(c);
+
+        boolean output = new Dyck().checkParentheses(list);
+
+        if (output != correctAnswer)
+            outputFail("test17",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test17");
     }
 
     private static void clearTerminal() {
