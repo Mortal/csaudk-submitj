@@ -6,10 +6,9 @@ public class MedianTest {
     public static void testAll() {
         clearTerminal();
         testSingle();
-        testTwoSorted();
-        testTwoInverted();
         test1();
         test2();
+        test3();
     }
 
     public static void testSingle() {
