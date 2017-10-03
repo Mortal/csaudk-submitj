@@ -311,7 +311,7 @@ public class Submit {
     }
 
     private boolean validateFilenames() throws IOException {
-        List<String> r = new ArrayList<String>();
+        Set<String> r = new HashSet<String>();
         for (String fileName : getFilenames()) {
             try(FileReader file = new FileReader(fileName)) {
                 BufferedReader rd = new BufferedReader(file);
