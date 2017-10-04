@@ -268,7 +268,7 @@ public class Dyck {
                 outputPass("test14");
         } catch (Exception e) {
                 outputFail("test14",
-                           "Runtime execution: " + e);
+                           "Exception: " + e);
         }
     }
 
