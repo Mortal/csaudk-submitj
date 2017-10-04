@@ -56,7 +56,7 @@ public class Maximum {
     }
 
     private static void outputFail(String testName, String message) {
-        System.err.println("[FAIL " + testName + "] " + message);
+        System.out.println("[FAIL " + testName + "] " + message);
     }
 
     public static void main(String[] args) {
