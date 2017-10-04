@@ -257,14 +257,19 @@ public class Dyck {
         ArrayList<Character> list = new ArrayList<>();
         for (char c : input) list.add(c);
 
-        boolean output = new Dyck().checkParentheses(list);
+        try {
+            boolean output = new Dyck().checkParentheses(list);
 
-        if (output != correctAnswer)
-            outputFail("test14",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test14");
+            if (output != correctAnswer)
+                outputFail("test14",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("test14");
+        } catch (Exception e) {
+                outputFail("test14",
+                           "Runtime execution: " + e);
+        }
     }
 
     public static void test15() {
