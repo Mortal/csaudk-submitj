@@ -1,4 +1,4 @@
-// Version: 2017100201
+// Version: 2017100501
 import java.io.*;
 import java.util.*;
 
@@ -6,10 +6,14 @@ public class MedianTest {
     public static void testAll() {
         clearTerminal();
         testSingle();
-        testTwoSorted();
-        testTwoInverted();
         test1();
         test2();
+        test3();
+        test4();
+        test5();
+        test6();
+        test7();
+        test8();
     }
 
     public static void testSingle() {
@@ -64,7 +68,7 @@ public class MedianTest {
     }
 
     public static void test3() {
-        int[] input = { 4, 4, 7, 9, 4 };
+        int[] input = { 2, 4, 7, 9, 3 };
         int correctAnswer = 4;
 
         Median m = new Median();
@@ -78,6 +82,95 @@ public class MedianTest {
                        " but got " + output);
         else
             outputPass("test3");
+    }
+
+    public static void test4() {
+        int[] input = { 32, 59, 32673, 58586, 14162, 288, 411 };
+        int correctAnswer = 411;
+
+        Median m = new Median();
+        for (int i : input) m.add(i);
+
+        int output = m.median();
+
+        if (output != correctAnswer)
+            outputFail("test4",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test4");
+    }
+
+    public static void test5() {
+        int[] input = { 3, 7, 2, 1, 5 };
+        int correctAnswer = 3;
+
+        Median m = new Median();
+        for (int i : input) m.add(i);
+
+        int output = m.median();
+
+        if (output != correctAnswer)
+            outputFail("test5",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test5");
+    }
+
+    public static void test6() {
+        int[] input = { 3, 2 };
+        int correctAnswer = 3;
+
+        Median m = new Median();
+        for (int i : input) m.add(i);
+
+        int output = m.median();
+
+        if (output != correctAnswer)
+            outputFail("test6",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test6");
+    }
+
+    public static void test7() {
+        int correctAnswer = 2;
+        Median m = new Median();
+        m.add(1);
+        m.add(2);
+        m.add(3);
+
+        // Try calling median() many times
+        for (int i = 1; i <= 10; i++) {
+            int output = m.median();
+            if (output != correctAnswer) {
+                outputFail("test7",
+                           "Expected output " + correctAnswer +
+                           " in iteration " + i +
+                           " but got " + output);
+                return;
+            }
+        }
+        outputPass("test7");
+    }
+
+    public static void test8() {
+        int[] input = { 3, 1, 2 };
+        int correctAnswer = 2;
+
+        Median m = new Median();
+        for (int i : input) m.add(i);
+
+        int output = m.median();
+
+        if (output != correctAnswer)
+            outputFail("test8",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test8");
     }
 
     private static long timeTest(int n) {

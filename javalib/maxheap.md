@@ -2,22 +2,13 @@ Max-priority queue
 ==================
 
 To change a [PriorityQueue](PriorityQueue.md) from a min-heap to a max-heap,
-you need to specify your own `Comparator` that reverses the ordering of elements.
+you need to specify the `Comparator` that reverses the ordering of elements.
+This is available as `Collections.reverseOrder()`.
 
-You may add this class to your Java project:
-
-```
-public class GreaterCompare implements Comparator<Integer> {
-    public int compare(Integer a, Integer b) {
-        return b.compareTo(a);
-    }
-}
-```
-
-Then you can construct a max-heap as follows:
+You can construct a max-heap as follows:
 
 ```
-PriorityQueue<Integer> heap = new PriorityQueue<>(11, new GreaterCompare());
+PriorityQueue<Integer> heap = new PriorityQueue<>(11, Collections.reverseOrder());
 ```
 
 The max-heap supports the same [operations as the min-heap](PriorityQueue.md)

@@ -1,4 +1,4 @@
-// Version: 2017092101
+// Version: 2017100302
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
@@ -299,7 +299,7 @@ public class Submit {
         return http;
     }
 
-    private static String join(String delimiter, List<String> items) {
+    private static String join(String delimiter, Iterable<String> items) {
         String s = "";
         StringBuilder b = new StringBuilder();
         for (String x : items) {

@@ -1,4 +1,4 @@
-// Version: 2017100302
+// Version: 2017100401
 import java.io.*;
 import java.util.*;
 public class Dyck {
@@ -24,6 +24,9 @@ public class Dyck {
         test13();
         test14();
         test15();
+        test16();
+        test17();
+        test18();
     }
 
     public static void test1() {
@@ -254,14 +257,19 @@ public class Dyck {
         ArrayList<Character> list = new ArrayList<>();
         for (char c : input) list.add(c);
 
-        boolean output = new Dyck().checkParentheses(list);
+        try {
+            boolean output = new Dyck().checkParentheses(list);
 
-        if (output != correctAnswer)
-            outputFail("test14",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test14");
+            if (output != correctAnswer)
+                outputFail("test14",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("test14");
+        } catch (Exception e) {
+                outputFail("test14",
+                           "Exception: " + e);
+        }
     }
 
     public static void test15() {
@@ -279,6 +287,57 @@ public class Dyck {
                        " but got " + output);
         else
             outputPass("test15");
+    }
+
+    public static void test16() {
+        char[] input = { ']', '[' };
+        boolean correctAnswer = false;
+
+        ArrayList<Character> list = new ArrayList<>();
+        for (char c : input) list.add(c);
+
+        boolean output = new Dyck().checkParentheses(list);
+
+        if (output != correctAnswer)
+            outputFail("test16",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test16");
+    }
+
+    public static void test17() {
+        char[] input = { '(', '[', '(', ')', ')', '[', ']', ']' };
+        boolean correctAnswer = false;
+
+        ArrayList<Character> list = new ArrayList<>();
+        for (char c : input) list.add(c);
+
+        boolean output = new Dyck().checkParentheses(list);
+
+        if (output != correctAnswer)
+            outputFail("test17",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test17");
+    }
+
+    public static void test18() {
+        char[] input = { '[', ')', ')', ']' };
+        boolean correctAnswer = false;
+
+        ArrayList<Character> list = new ArrayList<>();
+        for (char c : input) list.add(c);
+
+        boolean output = new Dyck().checkParentheses(list);
+
+        if (output != correctAnswer)
+            outputFail("test18",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test18");
     }
 
     private static void clearTerminal() {
