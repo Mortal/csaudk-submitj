@@ -1,4 +1,4 @@
-// Version: 2017100501
+// Version: 2017100801
 import java.io.*;
 import java.util.*;
 
@@ -14,6 +14,8 @@ public class MedianTest {
         test6();
         test7();
         test8();
+        test9();
+        test10();
     }
 
     public static void testSingle() {
@@ -136,11 +138,15 @@ public class MedianTest {
     }
 
     public static void test7() {
-        int correctAnswer = 2;
+        int correctAnswer = 4;
         Median m = new Median();
         m.add(1);
         m.add(2);
         m.add(3);
+        m.add(4);
+        m.add(5);
+        m.add(6);
+        m.add(7);
 
         // Try calling median() many times
         for (int i = 1; i <= 10; i++) {
@@ -171,6 +177,50 @@ public class MedianTest {
                        " but got " + output);
         else
             outputPass("test8");
+    }
+
+    public static void test9() {
+        int[] input = { 3, 1, 2 };
+        int[] correctAnswers = { 3, 3, 2 };
+
+        Median m = new Median();
+        for (int i = 0; i < input.length; i++) {
+            m.add(input[i]);
+
+            int output = m.median();
+            int correctAnswer = correctAnswers[i];
+
+            if (output != correctAnswer) {
+                outputFail("test9",
+                           "After inserting " + (i+1) + " element(s): " +
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+                return;
+            }
+        }
+        outputPass("test9");
+    }
+
+    public static void test10() {
+        int[] input = { 1, 3, 2 };
+        int[] correctAnswers = { 1, 3, 2 };
+
+        Median m = new Median();
+        for (int i = 0; i < input.length; i++) {
+            m.add(input[i]);
+
+            int output = m.median();
+            int correctAnswer = correctAnswers[i];
+
+            if (output != correctAnswer) {
+                outputFail("test10",
+                           "After inserting " + (i+1) + " element(s): " +
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+                return;
+            }
+        }
+        outputPass("test10");
     }
 
     private static long timeTest(int n) {
