@@ -3,6 +3,8 @@ Dodgeball
 
 **Task ID: `"dodge-2"`**
 
+Last updated: 2017-10-08 15:35.
+
 Crazy Dodgeball is a game in which two teams play against each other using a ball.
 At any point in time, the players on your team stand on a line,
 and the following two things can happen:
@@ -49,6 +51,12 @@ and the
 inside BlueJ (right click and choose "Save link as").
 You must implement the methods `addPlayer` and `throwBall` in `Dodgeball`,
 and you are allowed to add your own private fields to the class.
+
+**Input constraints:**
+
+  * When `throwBall(x)` is called, there is at least one player on the line
+  * Number of operations ≤ 500 000
+  * 1 ≤ *x* ≤ 5 000 000 (whenever `addPlayer(x)` or `throwBall(x)` is invoked)
 
 **Scoring:**
 
