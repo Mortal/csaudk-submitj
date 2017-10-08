@@ -3,7 +3,7 @@ Median data structure
 
 **Task ID: `"median-2"`**
 
-Last updated: 2017-10-03 15:07.
+Last updated: 2017-10-08 15:35.
 
 In this exercise you should implement a data structure named `Median`
 that supports the two operations:
@@ -58,6 +58,7 @@ and you are allowed to add your own private fields to the class.
   * Number of insertions is at most 500000
   * All numbers added are distinct (that is, the same number is not added multiple times to the data structure)
   * Each number is an integer between 1 and 1000000000
+  * The first operation is `add()`
 
 **Scoring:**
 
