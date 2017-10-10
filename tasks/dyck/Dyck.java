@@ -298,14 +298,19 @@ public class Dyck {
         ArrayList<Character> list = new ArrayList<>();
         for (char c : input) list.add(c);
 
-        boolean output = new Dyck().checkParentheses(list);
+        try {
+            boolean output = new Dyck().checkParentheses(list);
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail("test16",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("test16");
+        } catch (Exception e) {
             outputFail("test16",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test16");
+                       "Exception: " + e);
+        }
     }
 
     public static void test17() {
@@ -332,14 +337,19 @@ public class Dyck {
         ArrayList<Character> list = new ArrayList<>();
         for (char c : input) list.add(c);
 
-        boolean output = new Dyck().checkParentheses(list);
+        try {
+            boolean output = new Dyck().checkParentheses(list);
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail("test18",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("test18");
+        } catch (Exception e) {
             outputFail("test18",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test18");
+                       "Exception: " + e);
+        }
     }
 
     public static void test19() {
@@ -349,14 +359,20 @@ public class Dyck {
         ArrayList<Character> list = new ArrayList<>();
         for (char c : input) list.add(c);
 
-        boolean output = new Dyck().checkParentheses(list);
+        try {
+            boolean output = new Dyck().checkParentheses(list);
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail("test19",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("test19");
+        } catch (Exception e) {
             outputFail("test19",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test19");
+                       "Exception: " + e);
+        }
+                   
     }
 
     public static void test20() {
@@ -366,14 +382,19 @@ public class Dyck {
         ArrayList<Character> list = new ArrayList<>();
         for (char c : input) list.add(c);
 
-        boolean output = new Dyck().checkParentheses(list);
+        try {
+            boolean output = new Dyck().checkParentheses(list);
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail("test20",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("test20");
+        } catch (Exception e) {
             outputFail("test20",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test20");
+                       "Exception: " + e);
+        }
     }
 
     private static void clearTerminal() {
