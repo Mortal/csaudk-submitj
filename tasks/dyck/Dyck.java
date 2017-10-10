@@ -1,4 +1,4 @@
-// Version: 2017100801
+// Version: 2017101001
 import java.io.*;
 import java.util.*;
 public class Dyck {
