@@ -3,7 +3,7 @@ Balanced parenthesis checking
 
 **Task ID: `"dyck"`**
 
-**Last updated: 3 October 2017, 9:40**
+**Last updated: 11 October 2017, 9:00**
 
 In this problem, the input to your program is an array of N characters,
 each of which is either `(`, `)`, `[` or `]`,
@@ -57,8 +57,12 @@ which takes an `ArrayList<Character>` and returns a `boolean`.
 You may assume that the input only contains the characters `'('`, `')'`, `'['`, `']'`,
 so you do not have to check if there are any other kinds of characters in the input.
 
-**Hint:** Use a stack containing the open parentheses.
-
 **Scoring:**
 
-  * 1 point for correct algorithm
+  * 1 point for correct and fast algorithm
+
+**Hint:** Use a stack containing the open parentheses.
+An O(N) time algorithm is fast enough.
+
+If you use the `remove()` method on the input `ArrayList`,
+your program might take O(N²) time and not be fast enough.
