@@ -1,4 +1,4 @@
-// Version: 2017101003
+// Version: 2017101101
 import java.io.*;
 import java.util.*;
 public class Dyck {
@@ -438,7 +438,7 @@ public class Dyck {
             else
                 outputPass("test22");
         } catch (Exception e) {
-            outputFail("test21",
+            outputFail("test22",
                        "Exception: " + e);
         }
     }
