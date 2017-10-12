@@ -1,4 +1,4 @@
-// Version: 2017101201
+// Version: 2017101202
 import java.io.*;
 import java.util.*;
 
@@ -225,8 +225,8 @@ public class MedianTest {
     }
 
     public static void test11() {
-        int[] input = { 2, 3, 4, 5, 7, 6, 8, 1 };
-        int[] correctAnswers = { 2, 3, 3, 4, 4, 5, 5, 5 };
+        int[] input = { 2, 3, 4, 5, 15, 7, 9, 11, 6, 14, 8, 10, 12, 13, 1 };
+        int[] correctAnswers = { 2, 3, 3, 4, 4, 5, 5, 7, 6, 7, 7, 8, 8, 9, 8 };
 
         Median m = new Median();
         for (int i = 0; i < input.length; i++) {
