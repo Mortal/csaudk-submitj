@@ -25,7 +25,7 @@ then your program should perform the above operation four times:
 
 That means your program should return 2.
 
-Concretely, you must implement a public method named
+**Concretely,** you must implement a public method named
 `simulate` that takes an `ArrayList<Integer> input` as argument
 and returns an `int`.
 Use the skeleton

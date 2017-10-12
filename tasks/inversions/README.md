@@ -22,7 +22,7 @@ The list
 ```
 has 10 inversions, namely (1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5).
 
-Concretely, you should use the skeleton
+**Concretely,** you should use the skeleton
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/inversions/Inversions.java">
 `Inversions.java`</a>
 and the

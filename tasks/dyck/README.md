@@ -52,7 +52,7 @@ and the
 `Submit` program</a>
 inside BlueJ (right click and choose "Save link as").
 You must implement the method `checkParentheses` in `Dyck`
-which takes an `ArrayList<Character>` and returns a `boolean`.
+which takes an `ArrayList<Character> input` and returns a `boolean`.
 
 You may assume that the input only contains the characters `'('`, `')'`, `'['`, `']'`,
 so you do not have to check if there are any other kinds of characters in the input.
