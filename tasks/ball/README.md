@@ -27,7 +27,7 @@ and the balls at positions
 ```
 then your program should output `5 = |82 - 77|`.
 
-Concretely, you must implement a public method named
+**Concretely,** you must implement a public method named
 `computeClosest` that takes an `ArrayList<Integer> players`
 and an `ArrayList<Integer> balls` as arguments
 and returns an `int`.

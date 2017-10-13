@@ -32,7 +32,7 @@ then the sorted order is `[2, 3, 5, 7]`, so the median is 5.
 
 then the median is 4.
 
-**Example 3**: Note that the median is not necessary close to the average. For instance, if the set contains the numbers:
+**Example 3**: Note that the median is not necessarily close to the average. For instance, if the set contains the numbers:
 
 ```
   32, 59, 32673, 58586, 14162, 288, 411

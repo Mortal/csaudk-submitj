@@ -14,8 +14,8 @@ For instance, if the input array contains these ten elements
 ```
 then your program should return the sum `187 = 59 + 26 + (-53) + 58 + 97`.
 
-Concretely, you must implement a public method named
-`maxdelsum` that takes an `ArrayList<Integer> list` as argument
+**Concretely,** you must implement a public method named
+`maxdelsum` that takes an `ArrayList<Integer> input` as argument
 and returns an `int`.
 Use the skeleton
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/maxdelsum/Maxdelsum.java">

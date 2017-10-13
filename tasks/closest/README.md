@@ -11,7 +11,7 @@ For instance, if the input array contains these ten elements
 ```
 then your program should return the difference `2 = 59 - 57`.
 
-Concretely, you must implement a public method named
+**Concretely,** you must implement a public method named
 `computeClosest` that takes an `ArrayList<Integer> input` as argument
 and returns an `int`.
 Use the skeleton
