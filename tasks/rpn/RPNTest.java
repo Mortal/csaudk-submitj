@@ -1,4 +1,4 @@
-// Version: 2017100201
+// Version: 2017101901
 import java.io.*;
 import java.util.*;
 public class RPNTest {
@@ -15,6 +15,7 @@ public class RPNTest {
         test1();
         test2();
         test3();
+        test4();
     }
 
     public static void testPushGet1() {
@@ -203,6 +204,26 @@ public class RPNTest {
                        " but got " + output);
         else
             outputPass("test3");
+    }
+
+    public static void test4() {
+        int[] input = { 2, 1, 1, 2, PLUS, PLUS, TIMES };
+        int correctAnswer = 2 * (1 + (1 + 2));
+
+        ReversePolishCalculator rpn = new ReversePolishCalculator();
+        for (int i : input)
+            if (i == PLUS) rpn.plus();
+            else if (i == MINUS) rpn.minus();
+            else if (i == TIMES) rpn.times();
+            else rpn.push(i);
+        int output = rpn.read();
+
+        if (output != correctAnswer)
+            outputFail("test4",
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
+        else
+            outputPass("test4");
     }
 
     private static void clearTerminal() {
