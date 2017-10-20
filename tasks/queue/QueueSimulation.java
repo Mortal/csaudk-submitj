@@ -1,4 +1,4 @@
-// Version: 2017100301
+// Version: 2017102001
 import java.io.*;
 import java.util.*;
 public class QueueSimulation {
@@ -24,7 +24,14 @@ public class QueueSimulation {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i : input) list.add(i);
 
-        int output = new QueueSimulation().simulate(list);
+        int output;
+        try {
+            output = new QueueSimulation().simulate(list);
+        } catch (Exception e) {
+            outputFail("test1",
+                       "Exception: " + e);
+            return;
+        }
 
         if (output != correctAnswer)
             outputFail("test1",
@@ -41,7 +48,14 @@ public class QueueSimulation {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i : input) list.add(i);
 
-        int output = new QueueSimulation().simulate(list);
+        int output;
+        try {
+            output = new QueueSimulation().simulate(list);
+        } catch (Exception e) {
+            outputFail("test2",
+                       "Exception: " + e);
+            return;
+        }
 
         if (output != correctAnswer)
             outputFail("test2",
@@ -58,7 +72,14 @@ public class QueueSimulation {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i : input) list.add(i);
 
-        int output = new QueueSimulation().simulate(list);
+        int output;
+        try {
+            output = new QueueSimulation().simulate(list);
+        } catch (Exception e) {
+            outputFail("test3",
+                       "Exception: " + e);
+            return;
+        }
 
         if (output != correctAnswer)
             outputFail("test3",
@@ -75,7 +96,14 @@ public class QueueSimulation {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i = 1; i <= N; i++) list.add(i);
 
-        int output = new QueueSimulation().simulate(list);
+        int output;
+        try {
+            output = new QueueSimulation().simulate(list);
+        } catch (Exception e) {
+            outputFail("test1024",
+                       "Exception: " + e);
+            return;
+        }
 
         if (output != correctAnswer)
             outputFail("test1024",
@@ -92,7 +120,14 @@ public class QueueSimulation {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i = 1; i <= N; i++) list.add(i);
 
-        int output = new QueueSimulation().simulate(list);
+        int output;
+        try {
+            output = new QueueSimulation().simulate(list);
+        } catch (Exception e) {
+            outputFail("test513",
+                       "Exception: " + e);
+            return;
+        }
 
         if (output != correctAnswer)
             outputFail("test513",
@@ -109,7 +144,14 @@ public class QueueSimulation {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i = 1; i <= N; i++) list.add(i);
 
-        int output = new QueueSimulation().simulate(list);
+        int output;
+        try {
+            output = new QueueSimulation().simulate(list);
+        } catch (Exception e) {
+            outputFail("test100",
+                       "Exception: " + e);
+            return;
+        }
 
         if (output != correctAnswer)
             outputFail("test100",
