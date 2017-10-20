@@ -1,4 +1,4 @@
-// Version: 2017101202
+// Version: 2017102001
 import java.io.*;
 import java.util.*;
 
@@ -17,6 +17,7 @@ public class MedianTest {
         test9();
         test10();
         test11();
+        test12();
     }
 
     public static void testSingle() {
@@ -244,6 +245,28 @@ public class MedianTest {
             }
         }
         outputPass("test11");
+    }
+
+    public static void test12() {
+        int[] input = { 1, 5, 7, 3, 9, 4, 6, 8 };
+        int[] correctAnswers = { 1, 5, 5, 5, 5, 5, 5, 6 };
+
+        Median m = new Median();
+        for (int i = 0; i < input.length; i++) {
+            m.add(input[i]);
+
+            int output = m.median();
+            int correctAnswer = correctAnswers[i];
+
+            if (output != correctAnswer) {
+                outputFail("test12",
+                           "After inserting " + (i+1) + " element(s): " +
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+                return;
+            }
+        }
+        outputPass("test12");
     }
 
     private static long timeTest(int n) {
