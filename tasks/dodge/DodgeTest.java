@@ -1,4 +1,4 @@
-// Version: 2017101701
+// Version: 2017102301
 import java.io.*;
 import java.util.*;
 public class DodgeTest {
@@ -11,6 +11,7 @@ public class DodgeTest {
         test5();
         test6();
         test7();
+        test8();
     }
 
     public static void test1() {
@@ -179,6 +180,30 @@ public class DodgeTest {
             }
         }
         outputPass("test7");
+    }
+
+    public static void test8() {
+        int[] input = { -5, -4, -3, 1, 1, 1, 1, 1, 1 };
+        int[] correctAnswers = { 2, 0, 3, 0, 4, 0 };
+
+        Dodgeball d = new Dodgeball();
+        int j = 0;
+        for (int i : input) {
+            if (i < 0) d.addPlayer(-i);
+            else {
+                int output = d.throwBall(i);
+                int correctAnswer = correctAnswers[j];
+                j++;
+
+                if (output != correctAnswer) {
+                    outputFail("test8",
+                               "Expected output " + correctAnswer +
+                               " but got " + output);
+                    return;
+                }
+            }
+        }
+        outputPass("test8");
     }
 
     private static void clearTerminal() {
