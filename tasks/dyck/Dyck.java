@@ -33,6 +33,7 @@ public class Dyck {
         test22();
         test23();
         test24();
+        test25();
     }
 
     public static void test1() {
@@ -485,6 +486,28 @@ public class Dyck {
                 outputPass("test24");
         } catch (Exception e) {
             outputFail("test24",
+                       "Exception: " + e);
+        }
+    }
+
+    public static void test25() {
+        char[] input = { '(', '[', '[', '[', '[', '(', ')', ']', ']', ')' };
+        boolean correctAnswer = false;
+
+        ArrayList<Character> list = new ArrayList<>();
+        for (char c : input) list.add(c);
+
+        try {
+            boolean output = new Dyck().checkParentheses(list);
+
+            if (output != correctAnswer)
+                outputFail("test25",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("test25");
+        } catch (Exception e) {
+            outputFail("test25",
                        "Exception: " + e);
         }
     }
