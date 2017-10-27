@@ -1,4 +1,4 @@
-// Version: 2017103101
+// Version: 2017103102
 import java.util.NoSuchElementException;
 public class RedBlackTree {
 
@@ -140,7 +140,7 @@ public class RedBlackTree {
         } else {
             x = y.right;
         }
-        // Update parent and child pointers of y's parent and child
+        // Detach y by updating parent and child pointers of y's parent and child
         Node x_parent = y.parent;
         if (x != null) x.parent = y.parent;
         if (y.parent == null) {
@@ -156,6 +156,8 @@ public class RedBlackTree {
         // we were supposed to erase.
         z.key = y.key;
 
+        update_augments_to_root(x == null ? x_parent : x);
+        if (y != z) update_augments_to_root(z);
         if (y.color == Color.RED) return;
         // We deleted a black node, so we need to fixup.
         while (x != root && (x == null || x.color == Color.BLACK)) {
