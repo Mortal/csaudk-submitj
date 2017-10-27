@@ -1,0 +1,31 @@
+// HERE BE DRAGONS! Not yet ready for FADS 2017!
+public class Node {
+    public Node left;
+    public Node right;
+    public Node parent;
+    public Color color;
+    public int key;
+    public Augment augment;
+
+    public boolean isRightChild() {
+        return this.parent != null && this.parent.right == this;
+    }
+
+    public boolean isLeftChild() {
+        return this.parent != null && this.parent.left == this;
+    }
+
+    public Node(int key) { this.key = key; this.color = Color.RED; update_augment(); }
+
+    public void update_augment() {
+        this.augment = Augment.combine(getLeftAugment(), getRightAugment(), key);
+    }
+
+    public Augment getLeftAugment() {
+        return left == null ? Augment.leaf() : left.augment;
+    }
+
+    public Augment getRightAugment() {
+        return right == null ? Augment.leaf() : right.augment;
+    }
+}
