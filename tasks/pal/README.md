@@ -35,7 +35,7 @@ to compute the longest palindrome subsequence in a list of *n* numbers.
 and returns an `ArrayList<Character>`.
 
 Use the skeleton
-<a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/lis/LongestPalindromeSubsequence.java">
+<a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/pal/LongestPalindromeSubsequence.java">
 `LongestPalindromeSubsequence.java`</a>
 and the
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/Submit.java">
