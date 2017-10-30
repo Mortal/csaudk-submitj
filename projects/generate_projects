@@ -2,6 +2,13 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
+if [[ $# != 2 ]]; then
+	echo "Usage: $0 username password"
+	exit 1
+fi
+username="$1"
+password="$2"
+
 cd ../tasks
 for t in *; do
 	d=../projects/"$t"
@@ -9,4 +16,14 @@ for t in *; do
 	cp -v ../Submit.java "$d"
 	cp -vn "$t"/*.java "$d"
 	echo > "$d"/package.bluej
+	id=$(awk -F '"' '/Task ID/ {print $2}' "$t"/README.md)
+cat > "$d"/submit_data.txt <<EOF
+$id
+$username
+$password
+
+This file contains the Task ID, username and password
+last used when submitting a solution.
+This file is used when you call Submit.submit() with no arguments.
+EOF
 done
