@@ -15,7 +15,7 @@ Let L(i, j) denote the length of the longest palindrome subsequence of `T[i..j]`
 **Example:** For the string `T = bcabcaba` of length 8, L(3, 8) = 5
 since the string `T[3..8] = abcaba` contains the palindrome `abcba` as a subsequence.
 
-L(i, j) can be determined from the following recursion, where 1 ≤ i ≤ n and 1 ≤ j ≤ n:
+L(i, j) can be determined from the following recurrence, where 1 ≤ i ≤ n and 1 ≤ j ≤ n:
 
 ```
           ⎧             0              if j < i
