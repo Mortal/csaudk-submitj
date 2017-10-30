@@ -51,6 +51,3 @@ inside BlueJ (right click and choose "Save link as").
   * 1 point for correct and fast algorithm
 
 An O(N²) solution based on the above dynamic programming formula is fast enough to get the point.
-
-If you are looking for a challenge, then you may try to come up with an
-O(N log N) solution for this problem!
