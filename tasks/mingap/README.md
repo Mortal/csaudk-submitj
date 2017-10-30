@@ -49,7 +49,8 @@ so each node additionally has the following fields and methods:
 **Your task** is to implement the following methods in the `Augment` class:
 
 * `Augment.leaf()` - this method should create a new `Augment` object
-  containing augmented data for a leaf in the tree
+  containing augmented data for a leaf in the tree.
+  Remember that a leaf in a red-black tree corresponds to an empty subtree containing no keys.
 * `Augment.combine(Augment left, Augment right, int key)` - this method should
   create a new `Augment` object containing augmented data for an internal node
   in the tree, where `left` and `right` are the `Augment` objects stored with
@@ -58,6 +59,17 @@ so each node additionally has the following fields and methods:
 The `Augment` class must have a public field named `minGap`,
 and you are allowed to add any additional fields in `Augment`
 that you might need to maintain.
+
+The `minGap` field of a node's augment object
+should contain the smallest difference between two numbers
+in the node's subtree.
+
+**Hint:** Add two fields named `min` and `max` to `Augment`,
+and maintain that `min` contains the smallest key in the subtree
+and `max` the largest key in the subtree.
+
+You should think about how to compute `minGap`
+from `left.minGap`, `left.min`, `left.max`, `right.minGap`, `right.min`, `right.max`, and `key`.
 
 **Concretely,** you should use the skeleton files
 
