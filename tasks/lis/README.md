@@ -35,7 +35,7 @@ inside BlueJ (right click and choose "Save link as").
 
 **Input constraints:**
 
-  * 1 ≤ N ≤ 1 000 000
+  * 1 ≤ N ≤ 50 000
   * Each element is between -1 000 000 000 and 1 000 000 000
 
 **Scoring:**
