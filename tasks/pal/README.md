@@ -22,7 +22,7 @@ L(i, j) can be determined from the following recursion, where 1 ≤ i ≤ n and 
           ⎪
           ⎪             1              if i = j
 L(i, j) = ⎨
-          ⎪      1 + L(i+1, j-1)       if i < j and a_i = a_j
+          ⎪      2 + L(i+1, j-1)       if i < j and a_i = a_j
           ⎪
           ⎩ max(L(i+1, j), L(i, j-1))  if i < j and a_i ≠ a_j
 ```
