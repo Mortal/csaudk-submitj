@@ -11,8 +11,8 @@ Further reading: CLRS Section 14.1.
 You are given a class named *RedBlackTree*
 with working implementations of the following fields and methods:
 
-* `tree.insert(int k)` - inserts a node with key *k* into the red/black tree
-* `tree.erase(int k)` - removes a node with key *k* from the red/black tree
+* `tree.insert(int k)` - inserts a node with key *k* into the red-black tree
+* `tree.erase(int k)` - removes a node with key *k* from the red-black tree
 * `tree.find(int k)` - returns a reference to a node with key *k*
 * `tree.root` - a reference to the root node of the tree
 
@@ -30,7 +30,7 @@ and methods:
 * `node.isLeftChild()` - returns true if the node is its parent's left child
 * `node.isRightChild()` - returns true if the node is its parent's right child
 
-We have implemented part of the augmentation of the red/black tree for you,
+We have implemented part of the augmentation of the red-black tree for you,
 so each node additionally has the following fields and methods:
 
 * `node.augment` - an object of type `Augment`
