@@ -3,6 +3,10 @@ Longest palindrome subsequence
 
 **Task ID: `"pal"`**
 
+**Last updated: 31 October 2017, 10:45**
+
+See also: CLRS Problem 15-2.
+
 A string is a palindrome if the string is equal to its reversal.
 
 In this problem you are given a string `T[1..n]` of length *n*,
