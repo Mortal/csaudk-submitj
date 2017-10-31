@@ -1,8 +1,6 @@
 Order-statistic tree
 ====================
 
-**Here be dragons! This exercise description is not yet ready for FADS 2017.**
-
 **Task ID: `"order"`**
 
 In this exercise you should augment a red-black search tree

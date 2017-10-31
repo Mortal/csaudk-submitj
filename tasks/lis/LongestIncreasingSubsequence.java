@@ -1,4 +1,4 @@
-// HERE BE DRAGONS! Not yet ready for FADS 2017!
+// Version: 2017103101
 import java.io.*;
 import java.util.*;
 public class LongestIncreasingSubsequence {

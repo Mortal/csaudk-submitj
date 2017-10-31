@@ -1,8 +1,6 @@
 Longest palindrome subsequence
 ==============================
 
-**Here be dragons! This exercise description is not yet ready for FADS 2017.**
-
 **Task ID: `"pal"`**
 
 A string is a palindrome if the string is equal to its reversal.

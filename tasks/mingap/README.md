@@ -1,8 +1,6 @@
 Dynamic min-gap
 ===============
 
-**Here be dragons! This exercise description is not yet ready for FADS 2017.**
-
 **Task ID: `"mingap"`**
 
 In this exercise you should augment a red-black search tree

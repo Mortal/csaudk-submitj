@@ -1,8 +1,6 @@
 Longest increasing subsequence
 ==============================
 
-**Here be dragons! This exercise description is not yet ready for FADS 2017.**
-
 **Task ID: `"lis"`**
 
 Given a list of *n* numbers `a_1`, ..., `a_n`,

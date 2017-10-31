@@ -1,4 +1,4 @@
-// HERE BE DRAGONS! Not yet ready for FADS 2017!
+// Version: 2017103101
 public class Augment {
     int size;
     // If you need any additional fields, you can add them here
