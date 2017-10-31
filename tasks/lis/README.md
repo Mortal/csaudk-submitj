@@ -3,6 +3,10 @@ Longest increasing subsequence
 
 **Task ID: `"lis"`**
 
+**Last updated: 31 October 2017, 10:45**
+
+See also CLRS exercise 15.4-5.
+
 Given a list of *n* numbers `a_1`, ..., `a_n`,
 we let L(i) denote the longest increasing subsequence of `a_1`, ..., `a_i`
 where `a_i` is the last element in the subsequence.
@@ -44,3 +48,4 @@ An O(N²) solution based on the above dynamic programming formula is fast enough
 
 If you are looking for a challenge, then you may try to come up with an
 O(N log N) solution for this problem!
+See also CLRS exercise 15.4-6.
