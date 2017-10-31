@@ -11,6 +11,8 @@ Given a list of *n* numbers `a_1`, ..., `a_n`,
 we let L(i) denote the longest increasing subsequence of `a_1`, ..., `a_i`
 where `a_i` is the last element in the subsequence.
 
+**Example:** For the list of numbers `2, 5, 3, 4, 1`, we have n = 5 and L(4) = 3 since the list `2, 5, 3, 4` contains the increasing subsequence `2, 3, 4`.
+
 L(i) can be determined from the following recurrence, where 0 ≤ i ≤ n,
 and we set `a_0 = -∞` to make the formula valid when j = 0:
 
