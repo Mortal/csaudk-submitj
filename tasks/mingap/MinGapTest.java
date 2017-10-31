@@ -1,4 +1,4 @@
-// Version: 2017103102
+// Version: 2017103103
 import java.util.*;
 import java.io.*;
 
@@ -9,6 +9,10 @@ public class MinGapTest {
         testAugment2();
         testAugment3();
         testAugment4();
+        testAugment5();
+        testAugment6();
+        testAugment7();
+        testAugment8();
         test1();
     }
 
@@ -133,6 +137,127 @@ public class MinGapTest {
                        "Expected min gap " + minGap + ", got " + a.minGap);
         else
             outputPass("testAugment4");
+    }
+
+    public static void testAugment5() {
+        Augment a;
+        int k1 = 18;
+        int k2 = 26;
+        int k3 = 34;
+        int k4 = 36;
+        int k5 = 65;
+        int minGap = 36 - 34;
+        //          k3
+        //         /  \
+        //       k2    k4
+        //      /        \
+        //    k1          k5
+        try {
+            a = Augment.combine(
+                    Augment.combine(
+                        Augment.combine(Augment.leaf(), Augment.leaf(), k1),
+                        Augment.leaf(),
+                        k2),
+                    Augment.combine(
+                        Augment.leaf(),
+                        Augment.combine(Augment.leaf(), Augment.leaf(), k5),
+                        k4),
+                    k3);
+        } catch (Exception e) {
+            outputFail("testAugment5", "Exception: " + e);
+            e.printStackTrace();
+            return;
+        }
+
+        if (a.minGap != minGap)
+            outputFail("testAugment5",
+                       "Expected min gap " + minGap + ", got " + a.minGap);
+        else
+            outputPass("testAugment5");
+    }
+
+    public static void testAugment6() {
+        Augment a;
+        int k1 = 11;
+        int k2 = 48;
+        int minGap = 48 - 11;
+        //  k1
+        //    \
+        //     k2
+        try {
+            a = Augment.combine(
+                    Augment.leaf(),
+                    Augment.combine(Augment.leaf(), Augment.leaf(), k2),
+                    k1);
+        } catch (Exception e) {
+            outputFail("testAugment6", "Exception: " + e);
+            e.printStackTrace();
+            return;
+        }
+
+        if (a.minGap != minGap)
+            outputFail("testAugment6",
+                       "Expected min gap " + minGap + ", got " + a.minGap);
+        else
+            outputPass("testAugment6");
+    }
+
+    public static void testAugment7() {
+        Augment a;
+        int k1 = 19;
+        int k2 = 36;
+        int k3 = 63;
+        int minGap = 36 - 19;
+        //          k3
+        //         /
+        //       k1
+        //         \
+        //          k2
+        try {
+            a = Augment.combine(
+                    Augment.combine(
+                        Augment.leaf(),
+                        Augment.combine(Augment.leaf(), Augment.leaf(), k2),
+                        k1),
+                    Augment.leaf(),
+                    k3);
+        } catch (Exception e) {
+            outputFail("testAugment7", "Exception: " + e);
+            e.printStackTrace();
+            return;
+        }
+
+        if (a.minGap != minGap)
+            outputFail("testAugment7",
+                       "Expected min gap " + minGap + ", got " + a.minGap);
+        else
+            outputPass("testAugment7");
+    }
+
+    public static void testAugment8() {
+        Augment a;
+        int k1 = 1;
+        int k2 = 1000000000;
+        int minGap = k2 - k1;
+        //       k1
+        //         \
+        //          k2
+        try {
+            a = Augment.combine(
+                    Augment.leaf(),
+                    Augment.combine(Augment.leaf(), Augment.leaf(), k2),
+                    k1);
+        } catch (Exception e) {
+            outputFail("testAugment8", "Exception: " + e);
+            e.printStackTrace();
+            return;
+        }
+
+        if (a.minGap != minGap)
+            outputFail("testAugment8",
+                       "Expected min gap " + minGap + ", got " + a.minGap);
+        else
+            outputPass("testAugment8");
     }
 
     public static void test1() {
