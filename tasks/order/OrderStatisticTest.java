@@ -1,4 +1,4 @@
-// Version: 2017103102
+// Version: 2017103103
 import java.util.*;
 import java.io.*;
 
@@ -21,6 +21,7 @@ public class OrderStatisticTest {
         testRank5();
         testRank6();
         testRank7();
+        testRank8();
     }
 
     public static void testAugment1() {
@@ -377,6 +378,33 @@ public class OrderStatisticTest {
                        "Expected rank " + expectedRank + ", got " + rank);
         else
             outputPass("testRank7");
+    }
+
+    public static void testRank8() {
+        int[] values = {10, 20, 30, 40, 50, 60};
+        int expectedRank = 4;
+        int rank;
+        RedBlackTree tree = new RedBlackTree();
+        try {
+            tree.insert(values[0]);
+            tree.insert(values[1]);
+            tree.insert(values[2]);
+            tree.insert(values[3]);
+            tree.insert(values[4]);
+            tree.insert(values[5]);
+            tree.erase(values[0]);
+            rank = tree.key_rank(values[5]);
+        } catch (Exception e) {
+            outputFail("testRank8", "Exception: " + e);
+            e.printStackTrace();
+            return;
+        }
+
+        if (rank != expectedRank)
+            outputFail("testRank8",
+                       "Expected rank " + expectedRank + ", got " + rank);
+        else
+            outputPass("testRank8");
     }
 
     private static void clearTerminal() {
