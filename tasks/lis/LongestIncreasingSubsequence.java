@@ -1,4 +1,4 @@
-// Version: 2017103101
+// Version: 2017103102
 import java.io.*;
 import java.util.*;
 public class LongestIncreasingSubsequence {
@@ -25,6 +25,7 @@ public class LongestIncreasingSubsequence {
         test3();
         test4();
         test5();
+        test6();
     }
 
     public static void test1() {
@@ -88,6 +89,19 @@ public class LongestIncreasingSubsequence {
         } catch (Exception e) {
             e.printStackTrace();
             outputFail("test5", "Exception: " + e);
+            return;
+        }
+    }
+
+    public static void test6() {
+        int[] input = { 2, 3, 1 };
+        int[] correctAnswer = { 2, 3 };
+
+        try {
+            checkLis("test6", input, correctAnswer);
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail("test6", "Exception: " + e);
             return;
         }
     }
