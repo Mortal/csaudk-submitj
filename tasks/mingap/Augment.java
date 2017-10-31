@@ -1,6 +1,6 @@
 // Version: 2017103101
 public class Augment {
-    int minGap;
+    public int minGap;
     // If you need any additional fields, you can add them here
 
     public static Augment combine(Augment left, Augment right, int key) {
