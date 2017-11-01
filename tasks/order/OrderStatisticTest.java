@@ -1,4 +1,4 @@
-// Version: 2017103103
+// Version: 2017103104
 import java.util.*;
 import java.io.*;
 
@@ -14,6 +14,7 @@ public class OrderStatisticTest {
         testSelect6();
         testSelect7();
         testSelect8();
+        testSelect9();
         testRank1();
         testRank2();
         testRank3();
@@ -223,6 +224,33 @@ public class OrderStatisticTest {
                        "Expected key 2, got " + res.key);
         else
             outputPass("testSelect8");
+    }
+
+    public static void testSelect9() {
+        int[] values = {10, 20, 30, 40, 50, 60, 70};
+        int rank = 0;
+        RedBlackTree tree = new RedBlackTree();
+        Node res;
+        try {
+            tree.insert(values[3]);
+            tree.insert(values[1]);
+            tree.insert(values[5]);
+            tree.insert(values[0]);
+            tree.insert(values[2]);
+            tree.insert(values[4]);
+            tree.insert(values[6]);
+            res = tree.select(rank);
+        } catch (Exception e) {
+            outputFail("testSelect9", "Exception: " + e);
+            e.printStackTrace();
+            return;
+        }
+
+        if (res.key != values[rank])
+            outputFail("testSelect9",
+                       "Expected key " + values[rank] + ", got " + res.key);
+        else
+            outputPass("testSelect9");
     }
 
     public static void testRank1() {
