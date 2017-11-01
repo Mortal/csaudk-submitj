@@ -1,4 +1,4 @@
-// Version: 2017103103
+// Version: 2017110101
 import java.util.*;
 import java.io.*;
 
@@ -98,7 +98,7 @@ public class MinGapTest {
 
     public static void testAugment4() {
         Augment a;
-        int k1 = 0;
+        int k1 = 1;
         int k2 = 10;
         int k3 = 20;
         int k4 = 28;
@@ -261,7 +261,7 @@ public class MinGapTest {
     }
 
     public static void test1() {
-        int[] values = {0, 11, 23, 33, 49};
+        int[] values = {1, 12, 23, 33, 49};
         int expectedResult = 33 - 23;
         RedBlackTree tree = new RedBlackTree();
         int res;
