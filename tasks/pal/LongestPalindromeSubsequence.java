@@ -1,4 +1,4 @@
-// Version: 2017110101
+// Version: 2017110201
 import java.io.*;
 import java.util.*;
 public class LongestPalindromeSubsequence {
@@ -18,6 +18,7 @@ public class LongestPalindromeSubsequence {
         test3();
         test4();
         test5();
+        test6();
     }
 
     public static void test1() {
@@ -81,6 +82,19 @@ public class LongestPalindromeSubsequence {
         } catch (Exception e) {
             e.printStackTrace();
             outputFail("test5", "Exception: " + e);
+            return;
+        }
+    }
+
+    public static void test6() {
+        char[] input = "aebecdceeccbadce".toCharArray();
+        char[] correctAnswer = "abcceeccba".toCharArray();
+
+        try {
+            checkPal("test6", input, correctAnswer);
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail("test6", "Exception: " + e);
             return;
         }
     }
