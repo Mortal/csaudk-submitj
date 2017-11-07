@@ -1,4 +1,4 @@
-// Version: 2017110201
+// Version: 2017110701
 import java.util.*;
 import java.io.*;
 
@@ -14,6 +14,7 @@ public class MinGapTest {
         testAugment7();
         testAugment8();
         testAugment9();
+        testAugment10();
         test1();
     }
 
@@ -302,6 +303,36 @@ public class MinGapTest {
                        "Expected min gap " + minGap + ", got " + a.minGap);
         else
             outputPass("testAugment9");
+    }
+
+    public static void testAugment10() {
+        Augment a;
+        int k1 = 1;
+        int k2 = 3;
+        int k3 = 4;
+        int minGap = 4 - 3;
+        try {
+            a = Augment.combine(
+                    Augment.combine(
+                            Augment.leaf(),
+                            Augment.combine(
+                                    Augment.leaf(),
+                                    Augment.leaf(),
+                                    k2),
+                            k1),
+                    Augment.leaf(),
+                    k3);
+        } catch (Exception e) {
+            outputFail("testAugment10", "Exception: " + e);
+            e.printStackTrace();
+            return;
+        }
+
+        if (a.minGap != minGap)
+            outputFail("testAugment10",
+                       "Expected min gap " + minGap + ", got " + a.minGap);
+        else
+            outputPass("testAugment10");
     }
 
     public static void test1() {
