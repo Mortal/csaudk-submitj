@@ -3,17 +3,17 @@ Longest increasing subsequence
 
 **Task ID: `"lis"`**
 
-**Last updated: 31 October 2017, 10:45**
+**Last updated: 8 November 2017, 21:25**
 
 See also CLRS exercise 15.4-5.
 
-Given a list of *n* numbers `a_1`, ..., `a_n`,
-we let L(i) denote the longest increasing subsequence of `a_1`, ..., `a_i`
+Given a list of *N* numbers `a_1`, ..., `a_n`,
+we let L(i) denote the length of the longest increasing subsequence of `a_1`, ..., `a_i`
 where `a_i` is the last element in the subsequence.
 
-**Example:** For the list of numbers `2, 5, 3, 4, 1`, we have n = 5 and L(4) = 3 since the list `2, 5, 3, 4` contains the increasing subsequence `2, 3, 4`.
+**Example:** For the list of numbers `2, 5, 3, 4, 1`, we have N = 5 and L(4) = 3 since the list `2, 5, 3, 4` contains the increasing subsequence `2, 3, 4`.
 
-L(i) can be determined from the following recurrence, where 0 ≤ i ≤ n,
+L(i) can be determined from the following recurrence, where 0 ≤ i ≤ N,
 and we set `a_0 = -∞` to make the formula valid when j = 0:
 
 ```
@@ -23,7 +23,7 @@ L(i) = ⎨
 ```
 
 In this problem you should implement an algorithm based on dynamic programming
-to compute the longest increasing subsequence in a list of *n* numbers.
+to compute the longest increasing subsequence in a list of *N* numbers.
 
 **Concretely,** you must implement a public method named
 `longestIncreasingSubsequence` that takes an `ArrayList<Integer> input` as argument
@@ -39,7 +39,7 @@ inside BlueJ (right click and choose "Save link as").
 
 **Input constraints:**
 
-  * 1 ≤ N ≤ 50 000
+  * 1 ≤ N ≤ 2000
   * Each element is between -1 000 000 000 and 1 000 000 000
 
 **Scoring:**

@@ -3,13 +3,13 @@ Longest palindrome subsequence
 
 **Task ID: `"pal"`**
 
-**Last updated: 31 October 2017, 10:45**
+**Last updated: 8 November 2017, 21:25**
 
 See also: CLRS Problem 15-2.
 
 A string is a palindrome if the string is equal to its reversal.
 
-In this problem you are given a string `T[1..n]` of length *n*,
+In this problem you are given a string `T[1..N]` of length *N*,
 and your task is to compute the longest subsequence of T which is a palindrome.
 
 Let L(i, j) denote the length of the longest palindrome subsequence of `T[i..j]`.
@@ -17,7 +17,7 @@ Let L(i, j) denote the length of the longest palindrome subsequence of `T[i..j]`
 **Example:** For the string `T = bcabcaba` of length 8, L(3, 8) = 5
 since the string `T[3..8] = abcaba` contains the palindrome `abcba` as a subsequence.
 
-L(i, j) can be determined from the following recurrence, where 1 ≤ i ≤ n and 1 ≤ j ≤ n:
+L(i, j) can be determined from the following recurrence, where 1 ≤ i ≤ N and 1 ≤ j ≤ N:
 
 ```
           ⎧             0              if j < i
@@ -30,7 +30,7 @@ L(i, j) = ⎨
 ```
 
 In this problem you should implement an algorithm based on dynamic programming
-to compute the longest palindrome subsequence in a list of *n* numbers.
+to compute the longest palindrome subsequence in a list of *N* numbers.
 
 **Concretely,** you must implement a public method named
 `longestPalindromeSubsequence` that takes an `ArrayList<Character> input` as argument
@@ -46,7 +46,7 @@ inside BlueJ (right click and choose "Save link as").
 
 **Input constraints:**
 
-  * 1 ≤ N ≤ 50 000
+  * 1 ≤ N ≤ 2000
 
 **Scoring:**
 
