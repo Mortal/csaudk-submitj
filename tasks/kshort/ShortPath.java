@@ -1,4 +1,4 @@
-// Version: 2017112101
+// Version: 2017112102
 
 import java.io.*;
 import java.util.*;
@@ -17,6 +17,7 @@ public class ShortPath {
         test5();
         test6();
         test7();
+        test8();
     }
 
     public static void test1() {
@@ -221,6 +222,37 @@ public class ShortPath {
         } catch (Exception e) {
             e.printStackTrace();
             outputFail("test7", "Exception: " + e);
+        }
+    }
+
+    public static void test8() {
+        // CLRS Fig. 24.4
+        Edge[] edges = {
+            new Edge(2, 0, -3),
+            new Edge(1, 2, 3),
+            new Edge(0, 2, -4),
+            new Edge(1, 0, -2),
+            new Edge(2, 1, 4),
+            new Edge(0, 1, -2),
+        };
+        int nodeCount = 3;
+        int maxEdges = 3;
+        int sourceNode = 0;
+        int targetNode = 2;
+        int correctAnswer = -4-3-4;
+
+        try {
+            int output = new ShortPath().shortestPath(edges, nodeCount, maxEdges, sourceNode, targetNode);
+
+            if (output != correctAnswer)
+                outputFail("test8",
+                    "Expected output " + correctAnswer +
+                    " but got " + output);
+            else
+                outputPass("test8");
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail("test8", "Exception: " + e);
         }
     }
 
