@@ -1,4 +1,4 @@
-// Version: 2017112102
+// Version: 2017112103
 
 import java.io.*;
 import java.util.*;
@@ -18,6 +18,7 @@ public class ShortPath {
         test6();
         test7();
         test8();
+        test9();
     }
 
     public static void test1() {
@@ -252,6 +253,33 @@ public class ShortPath {
         } catch (Exception e) {
             e.printStackTrace();
             outputFail("test8", "Exception: " + e);
+        }
+    }
+
+    public static void test9() {
+        Edge[] edges = {
+            new Edge(0, 1, -1),
+            new Edge(1, 0, -1),
+            new Edge(0, 2, 1),
+        };
+        int nodeCount = 3;
+        int maxEdges = 2;
+        int sourceNode = 0;
+        int targetNode = 2;
+        int correctAnswer = 1;
+
+        try {
+            int output = new ShortPath().shortestPath(edges, nodeCount, maxEdges, sourceNode, targetNode);
+
+            if (output != correctAnswer)
+                outputFail("test9",
+                    "Expected output " + correctAnswer +
+                    " but got " + output);
+            else
+                outputPass("test9");
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail("test9", "Exception: " + e);
         }
     }
 
