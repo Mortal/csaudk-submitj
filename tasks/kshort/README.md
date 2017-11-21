@@ -1,9 +1,6 @@
 Short shortest paths
 ====================
 
-**Here be dragons!
-This exercise description is not yet ready for FADS 2017!**
-
 **Task ID: `"kshort"`**
 
 In the year 2050, all islands in Denmark are connected by toll bridges.

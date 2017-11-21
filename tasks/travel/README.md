@@ -1,9 +1,6 @@
 Eastwards travel
 ================
 
-**Here be dragons!
-This exercise description is not yet ready for FADS 2017!**
-
 **Task ID: `"travel-2"`**
 
 In the year 2051, the Danish government has decided to encourage bicycle tourists

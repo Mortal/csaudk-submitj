@@ -1,9 +1,6 @@
 Maze multirouting
 =================
 
-**Here be dragons!
-This exercise description is not yet ready for FADS 2017!**
-
 **Task ID: `"mazepair-2"`**
 
 In this exercise you must compute the shortest path in a maze
