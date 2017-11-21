@@ -42,7 +42,11 @@ Each edge `e` in `edgeLists[i]` has three attributes:
 **Concretely,** you must implement a method named
 `shortestPath` that accepts the following parameters:
 
-The method should return an `int` indicating
+* `int[] nodeWeights` - an integer for each node indicating its code
+  (a negative integer)
+* `Edge[][] edgeLists` - for each node, an array of `Edge` objects as described above
+
+The method should return an `int` indicating the weight of the shortest path from node 0 to node *n*−1.
 
 Use the skeleton files
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/travel/Travel.java">
