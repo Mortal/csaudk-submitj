@@ -70,6 +70,6 @@ inside BlueJ (right click and choose "Save link as").
   * 1 additional point for fast implementation
 
 For the first point, an O(N·M) algorithm is fast enough.
-For the additional point, an O(N) algorithm is required.
+For the additional point, an O(N + M) algorithm is required.
 
 **Hint for the fast solution:** Modify DAG-Shortest-Paths to include node weights.
