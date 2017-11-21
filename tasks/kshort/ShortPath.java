@@ -226,7 +226,6 @@ public class ShortPath {
     }
 
     public static void test8() {
-        // CLRS Fig. 24.4
         Edge[] edges = {
             new Edge(2, 0, -3),
             new Edge(1, 2, 3),
