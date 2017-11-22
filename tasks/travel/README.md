@@ -44,7 +44,7 @@ Each edge `e` in `edgeLists[i]` has three attributes:
 **Concretely,** you must implement a method named
 `shortestPath` that accepts the following parameters:
 
-* `int[] nodeWeights` - an integer for each node indicating its code
+* `int[] nodeWeights` - an integer for each node indicating its cost
   (a negative integer)
 * `Edge[][] edgeLists` - for each node, an array of `Edge` objects as described above
 
