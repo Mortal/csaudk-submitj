@@ -8,7 +8,7 @@ Each theme is annotated with x/y indicating that x out of the y possible points 
 
 | Theme | Title | Task ID |
 | --- | --- | --- |
-| Demo | [Max delsum](./maxdelsum/README.md) | `maxdelsum` |
+| Demo | [Max delsum](./maxdelsum/README.md) | `maxdelsum-2` |
 | 1. Sorting (5/7) | [Maximum](./max/README.md) | `max` |
 | | [Closest pair](./closest/README.md) | `closest-2` |
 | | [Closest ball](./ball/README.md) | `ball-2` |
