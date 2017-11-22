@@ -8,7 +8,7 @@ The programming tasks should be solved in Java using the [BlueJ](https://www.blu
 
 To solve a programming task, first find the task either in
 [Blackboard](https://blackboard.au.dk/webapps/blackboard/execute/launcher?type=Course&id=_66529_1)
-or in the [tasks/README.md](tasks list) of this repository.
+or in the [tasks list](tasks/README.md) of this repository.
 Read the task description, and start solving the task!
 
 To upload your solution, you need three things:
