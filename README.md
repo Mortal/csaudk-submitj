@@ -1,7 +1,7 @@
 FADS programming exercises
 ==========================
 
-Intended audience: Students of *Grundlæggende Algoritmer og Datastrukturer* (FADS), Aarhus University.
+Intended audience: Students of *Foundations of Algorithms and Data Structures* (FADS), Aarhus University.
 
 In FADS, you have to solve a number of programming tasks along the way.
 The programming tasks should be solved in Java using the [BlueJ](https://www.bluej.org/) programming environment.
