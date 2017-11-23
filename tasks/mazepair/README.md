@@ -3,12 +3,15 @@ Maze multirouting
 
 **Task ID: `"mazepair-2"`**
 
-In this exercise you must compute the shortest path in a maze
-between a runner and a ball.
+**Last updated: 2017-11-23 09:45**
+
+In this exercise you must compute the shortest path
+between a runner and a ball in a maze
+that has many runners and many balls.
 A maze is an H-by-W matrix `A` (H rows, W columns),
 where each cell `A[i][j]` (0 ≤ i < H, 0 ≤ j < W)
 is either a `'.'` (free space), a `'o'` (wall),
-a `'r'` (runner), or a `'b'` (ball):
+a `'r'` (runner), or a `'b'` (ball). Example 1:
 
 ```
 ooooooooooooo
@@ -36,23 +39,58 @@ The number of vertices and edges is O(W·H)
 
 The length of a path is simply the number of edges in the path.
 
-In the example above, the shortest path consists of 9 vertices,
-which means that the shortest path has length 8:
+In Example 1, the shortest path consists of 9 vertices,
+which means that the shortest path has length 8.
+The shortest path is indicated by plus signs for clarity:
 
 ```
 ooooooooooooo
 o.o.o.....obo
-o.o.ooo.oooxo
-o...r...oxxxo
-ooooo.o.oxooo
-o.....o..x..o
-o.oooooooxo.o
+o.o.ooo.ooo+o
+o...r...o+++o
+ooooo.o.o+ooo
+o.....o..+..o
+o.ooooooo+o.o
 o.ooo.oboro.o
 o...o.ooooo.o
 ooo.o.......o
 o.....b.ooo.o
 ooooooooooooo
 ```
+
+Example 2:
+
+```
+ooooooooooooo
+o...o.......o
+oooro.o.ooo.o
+o...o.o....bo
+o.o.o.ooooo.o
+oro.o.....o.o
+o.o.o.ooo.ooo
+o.o...o...o.o
+o.o...obo.o.o
+o...o.o.....o
+ooooooooooooo
+```
+
+In this example, the shortest path from a runner to a ball has length 18:
+
+```
+ooooooooooooo
+o...o.......o
+oooro.o.ooo.o
+o..+o.o....bo
+o.o+o.ooooo.o
+oro+o+++++o.o
+o.o+o+ooo+ooo
+o.o+++o+++o.o
+o.o...obo.o.o
+o...o.o.....o
+ooooooooooooo
+```
+
+Note that we are only interested in finding the closest pair of runner and ball.
 
 **Concretely,** you must implement a method named
 `shortestPath` that accepts a `char[][] maze` as parameter
