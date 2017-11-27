@@ -1,4 +1,4 @@
-// Version: 2017112102
+// Version: 2017112701
 
 import java.io.*;
 import java.util.*;
@@ -18,6 +18,7 @@ public class Travel {
         clearTerminal();
         test1();
         test2();
+        test3();
     }
 
     public static void test1() {
@@ -73,6 +74,33 @@ public class Travel {
         } catch (Exception e) {
             e.printStackTrace();
             outputFail("test2", "Exception: " + e);
+        }
+    }
+
+    public static void test3() {
+        int[] nodeWeights = {
+            -10, -51, -60
+        };
+        Edge[][] edgeLists = {
+            { new Edge(0, 1, 40), new Edge(0, 2, 30) },
+            { new Edge(1, 2, 20) },
+            {},
+        };
+
+        int correctAnswer = -10 + 40 - 51 + 20 - 60;
+
+        try {
+            int output = new Travel().shortestPath(nodeWeights, edgeLists);
+
+            if (output != correctAnswer)
+                outputFail("test3",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("test3");
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail("test3", "Exception: " + e);
         }
     }
 
