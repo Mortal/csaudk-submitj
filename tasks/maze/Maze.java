@@ -1,4 +1,4 @@
-// Version: 2017112101
+// Version: 2017112801
 
 import java.io.*;
 import java.util.*;
@@ -23,6 +23,7 @@ public class Maze {
         test7();
         test8();
         test9();
+        test10();
     }
 
     public static void test1() {
@@ -276,6 +277,33 @@ public class Maze {
         } catch (Exception e) {
             e.printStackTrace();
             outputFail("test9", "Exception: " + e);
+        }
+    }
+
+    public static void test10() {
+        char[][] maze = {
+            "ooooo".toCharArray(),
+            "o...o".toCharArray(),
+            "o.o.o".toCharArray(),
+            "o...o".toCharArray(),
+            "o.ooo".toCharArray(),
+            "o...o".toCharArray(),
+            "ooooo".toCharArray(),
+        };
+        int correctAnswer = 6;
+
+        try {
+            int output = new Maze().shortestPath(maze);
+
+            if (output != correctAnswer)
+                outputFail("test10",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("test10");
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail("test10", "Exception: " + e);
         }
     }
 
