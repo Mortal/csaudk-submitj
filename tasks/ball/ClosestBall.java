@@ -21,39 +21,13 @@ public class ClosestBall {
     public static void testSinglePair() {
         int[][] input = { { 3 }, { 5 } };
         int correctAnswer = 2;
-
-        ArrayList<Integer> players = new ArrayList<Integer>();
-        ArrayList<Integer> balls = new ArrayList<Integer>();
-        for (int i : input[0]) players.add(i);
-        for (int i : input[1]) balls.add(i);
-
-        int output = new ClosestBall().computeClosest(players, balls);
-
-        if (output != correctAnswer)
-            outputFail("testSinglePair",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testSinglePair");
+        runTest("testSinglePair", input, correctAnswer);
     }
 
     public static void testSinglePairInv() {
         int[][] input = { { 7 }, { 4 } };
         int correctAnswer = 3;
-
-        ArrayList<Integer> players = new ArrayList<Integer>();
-        ArrayList<Integer> balls = new ArrayList<Integer>();
-        for (int i : input[0]) players.add(i);
-        for (int i : input[1]) balls.add(i);
-
-        int output = new ClosestBall().computeClosest(players, balls);
-
-        if (output != correctAnswer)
-            outputFail("testSinglePairInv",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testSinglePairInv");
+        runTest("testSinglePairInv", input, correctAnswer);
     }
 
     public static void test1() {
@@ -62,20 +36,7 @@ public class ClosestBall {
             { 275, 938, 8, 77, 649, 803, 500, 823, 519, 711, 422, 227, 235, 655, 373 }
         };
         int correctAnswer = 8 - 7;
-
-        ArrayList<Integer> players = new ArrayList<Integer>();
-        ArrayList<Integer> balls = new ArrayList<Integer>();
-        for (int i : input[0]) players.add(i);
-        for (int i : input[1]) balls.add(i);
-
-        int output = new ClosestBall().computeClosest(players, balls);
-
-        if (output != correctAnswer)
-            outputFail("test1",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test1");
+        runTest("test1", input, correctAnswer);
     }
 
     public static void test2() {
@@ -84,20 +45,7 @@ public class ClosestBall {
             { 30, 27, 2, 96, 82, 41, 24, 55, 19, 33, 52, 61, 58, 23, 27, 34, 76, 39, 28, 96 }
         };
         int correctAnswer = 19 - 16;
-
-        ArrayList<Integer> players = new ArrayList<Integer>();
-        ArrayList<Integer> balls = new ArrayList<Integer>();
-        for (int i : input[0]) players.add(i);
-        for (int i : input[1]) balls.add(i);
-
-        int output = new ClosestBall().computeClosest(players, balls);
-
-        if (output != correctAnswer)
-            outputFail("test2",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test2");
+        runTest("test2", input, correctAnswer);
     }
 
     public static void test3() {
@@ -106,20 +54,7 @@ public class ClosestBall {
             { 75, 38, 25, 77 }
         };
         int correctAnswer = 82 - 77;
-
-        ArrayList<Integer> players = new ArrayList<Integer>();
-        ArrayList<Integer> balls = new ArrayList<Integer>();
-        for (int i : input[0]) players.add(i);
-        for (int i : input[1]) balls.add(i);
-
-        int output = new ClosestBall().computeClosest(players, balls);
-
-        if (output != correctAnswer)
-            outputFail("test3",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test3");
+        runTest("test3", input, correctAnswer);
     }
 
     public static void test4() {
@@ -128,7 +63,10 @@ public class ClosestBall {
                 { 2, 3 }
             };
         int correctAnswer = 0;
+        runTest("test4", input, correctAnswer);
+    }
 
+    public static void runTest(String testName, int[][] input, int correctAnswer) {
         ArrayList<Integer> players = new ArrayList<Integer>();
         ArrayList<Integer> balls = new ArrayList<Integer>();
         for (int i : input[0]) players.add(i);
@@ -137,11 +75,11 @@ public class ClosestBall {
         int output = new ClosestBall().computeClosest(players, balls);
 
         if (output != correctAnswer)
-            outputFail("test4",
-                "Expected output " + correctAnswer +
-                " but got " + output);
+            outputFail(testName,
+                       "Expected output " + correctAnswer +
+                       " but got " + output);
         else
-            outputPass("test4");
+            outputPass(testName);
     }
 
     private static void clearTerminal() {
