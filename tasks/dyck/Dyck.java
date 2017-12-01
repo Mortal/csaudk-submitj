@@ -40,483 +40,160 @@ public class Dyck {
     public static void test1() {
         char[] input = { '(', '(', ')', '(', ')', ')', '[', ']' };
         boolean correctAnswer = true;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test1",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test1");
+        runTest("test1", input, correctAnswer);
     }
 
     public static void test2() {
         char[] input = { '[', '(', '(', '(', ')', ')', '[', ']', ')', ']' };
         boolean correctAnswer = true;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test2",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test2");
+        runTest("test2", input, correctAnswer);
     }
 
     public static void test3() {
         char[] input = { '[', '[', ']', ']', '(', ')' };
         boolean correctAnswer = true;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test3",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test3");
+        runTest("test3", input, correctAnswer);
     }
 
     public static void test4() {
         char[] input = { '[', '[', ']', '[', '[', ']', ']', ']' };
         boolean correctAnswer = true;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test4",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test4");
+        runTest("test4", input, correctAnswer);
     }
 
     public static void test5() {
         char[] input = { '(', ')', '[', '(', '[', ']', ')', ']', '[', ']' };
         boolean correctAnswer = true;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test5",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test5");
+        runTest("test5", input, correctAnswer);
     }
 
     public static void test6() {
         char[] input = { '(', '[', ']', '(' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test6",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test6");
+        runTest("test6", input, correctAnswer);
     }
 
     public static void test7() {
         char[] input = { '(', ']', '[', ')' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test7",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test7");
+        runTest("test7", input, correctAnswer);
     }
 
     public static void test8() {
         char[] input = { '(', '[', ']', ']' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test8",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test8");
+        runTest("test8", input, correctAnswer);
     }
 
     public static void test9() {
         char[] input = { '(', '[', ')', ']' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test9",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test9");
+        runTest("test9", input, correctAnswer);
     }
 
     public static void test10() {
         char[] input = { '[', '(', '[', ']', '(', ']', '[', ']', '[', ']' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test10",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test10");
+        runTest("test10", input, correctAnswer);
     }
 
     public static void test11() {
         char[] input = { '[', '(', '(', '(', ')', ')', '[', ']', ')', ']' };
         boolean correctAnswer = true;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test11",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test11");
+        runTest("test11", input, correctAnswer);
     }
 
     public static void test12() {
         char[] input = { '(', ')', '[', ']', '[', ')', '[', '(', ']', ']' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test12",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test12");
+        runTest("test12", input, correctAnswer);
     }
 
     public static void test13() {
         char[] input = { '(', ')', '[', '[', '[', '(', ')', ']', ']', ')' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test13",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test13");
+        runTest("test13", input, correctAnswer);
     }
 
     public static void test14() {
         char[] input = { ')', '(' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        try {
-            boolean output = new Dyck().checkParentheses(list);
-
-            if (output != correctAnswer)
-                outputFail("test14",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test14");
-        } catch (Exception e) {
-                outputFail("test14",
-                           "Exception: " + e);
-        }
+        runTest("test14", input, correctAnswer);
     }
 
     public static void test15() {
         char[] input = { '(', '[' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test15",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test15");
+        runTest("test15", input, correctAnswer);
     }
 
     public static void test16() {
         char[] input = { ']', '[' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        try {
-            boolean output = new Dyck().checkParentheses(list);
-
-            if (output != correctAnswer)
-                outputFail("test16",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test16");
-        } catch (Exception e) {
-            outputFail("test16",
-                       "Exception: " + e);
-        }
+        runTest("test16", input, correctAnswer);
     }
 
     public static void test17() {
         char[] input = { '(', '[', '(', ')', ')', '[', ']', ']' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
-
-        if (output != correctAnswer)
-            outputFail("test17",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test17");
+        runTest("test17", input, correctAnswer);
     }
 
     public static void test18() {
         char[] input = { '[', ')', ')', ']' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        try {
-            boolean output = new Dyck().checkParentheses(list);
-
-            if (output != correctAnswer)
-                outputFail("test18",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test18");
-        } catch (Exception e) {
-            outputFail("test18",
-                       "Exception: " + e);
-        }
+        runTest("test18", input, correctAnswer);
     }
 
     public static void test19() {
         char[] input = { ')', ')' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        try {
-            boolean output = new Dyck().checkParentheses(list);
-
-            if (output != correctAnswer)
-                outputFail("test19",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test19");
-        } catch (Exception e) {
-            outputFail("test19",
-                       "Exception: " + e);
-        }
-                   
+        runTest("test19", input, correctAnswer);
     }
 
     public static void test20() {
         char[] input = { ']', ']' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        try {
-            boolean output = new Dyck().checkParentheses(list);
-
-            if (output != correctAnswer)
-                outputFail("test20",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test20");
-        } catch (Exception e) {
-            outputFail("test20",
-                       "Exception: " + e);
-        }
+        runTest("test20", input, correctAnswer);
     }
 
     public static void test21() {
         char[] input = { '(', ')', ']', '[', '(', ')' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        try {
-            boolean output = new Dyck().checkParentheses(list);
-
-            if (output != correctAnswer)
-                outputFail("test21",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test21");
-        } catch (Exception e) {
-            outputFail("test21",
-                       "Exception: " + e);
-        }
+        runTest("test21", input, correctAnswer);
     }
 
     public static void test22() {
         char[] input = { '(', ')', ')', ')' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        try {
-            boolean output = new Dyck().checkParentheses(list);
-
-            if (output != correctAnswer)
-                outputFail("test22",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test22");
-        } catch (Exception e) {
-            outputFail("test22",
-                       "Exception: " + e);
-        }
+        runTest("test22", input, correctAnswer);
     }
 
     public static void test23() {
         char[] input = { '[', '(', ')', ']', '(', ')' };
         boolean correctAnswer = true;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        try {
-            boolean output = new Dyck().checkParentheses(list);
-
-            if (output != correctAnswer)
-                outputFail("test23",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test23");
-        } catch (Exception e) {
-            outputFail("test23",
-                       "Exception: " + e);
-        }
+        runTest("test23", input, correctAnswer);
     }
 
     public static void test24() {
         char[] input = { '(', '(', '(', ')' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        try {
-            boolean output = new Dyck().checkParentheses(list);
-
-            if (output != correctAnswer)
-                outputFail("test24",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test24");
-        } catch (Exception e) {
-            outputFail("test24",
-                       "Exception: " + e);
-        }
+        runTest("test24", input, correctAnswer);
     }
 
     public static void test25() {
         char[] input = { '(', '[', '[', '[', '[', '(', ')', ']', ']', ')' };
         boolean correctAnswer = false;
-
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        try {
-            boolean output = new Dyck().checkParentheses(list);
-
-            if (output != correctAnswer)
-                outputFail("test25",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test25");
-        } catch (Exception e) {
-            outputFail("test25",
-                       "Exception: " + e);
-        }
+        runTest("test25", input, correctAnswer);
     }
 
     public static void test26() {
         char[] input = { '(', '(', '[', '(', '[', ']', ')', ')', ']', ')' };
         boolean correctAnswer = false;
+        runTest("test26", input, correctAnswer);
+    }
 
+    public static void runTest(String testName, char[] input, boolean correctAnswer) {
         ArrayList<Character> list = new ArrayList<>();
         for (char c : input) list.add(c);
 
@@ -524,13 +201,14 @@ public class Dyck {
             boolean output = new Dyck().checkParentheses(list);
 
             if (output != correctAnswer)
-                outputFail("test26",
+                outputFail(testName,
                            "Expected output " + correctAnswer +
                            " but got " + output);
             else
-                outputPass("test26");
+                outputPass(testName);
         } catch (Exception e) {
-            outputFail("test26",
+            e.printStackTrace();
+            outputFail(testName,
                        "Exception: " + e);
         }
     }
