@@ -77,7 +77,7 @@ public class QueueSimulation {
     private static void runTestMany(String testName, int N, int correctAnswer) {
         // Run test on input = { 1, 2, 3, ..., N }
         int[] input = new int[N];
-        for (int i = 0; i < n; i++) input[i] = i + 1;
+        for (int i = 0; i < N; i++) input[i] = i + 1;
         runTest(testName, input, correctAnswer);
     }
 
