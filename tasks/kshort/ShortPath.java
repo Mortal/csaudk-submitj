@@ -37,20 +37,7 @@ public class ShortPath {
         int sourceNode = 0;
         int targetNode = 4;
         int correctAnswer = 12;
-
-        try {
-            int output = new ShortPath().shortestPath(edges, nodeCount, maxEdges, sourceNode, targetNode);
-
-            if (output != correctAnswer)
-                outputFail("test1",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test1");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test1", "Exception: " + e);
-        }
+        runTest("test1", edges, nodeCount, maxEdges, sourceNode, targetNode, correctAnswer);
     }
 
     public static void test2() {
@@ -66,20 +53,7 @@ public class ShortPath {
         int sourceNode = 0;
         int targetNode = 4;
         int correctAnswer = 4;
-
-        try {
-            int output = new ShortPath().shortestPath(edges, nodeCount, maxEdges, sourceNode, targetNode);
-
-            if (output != correctAnswer)
-                outputFail("test2",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test2");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test2", "Exception: " + e);
-        }
+        runTest("test2", edges, nodeCount, maxEdges, sourceNode, targetNode, correctAnswer);
     }
 
     public static void test3() {
@@ -95,20 +69,7 @@ public class ShortPath {
         int sourceNode = 0;
         int targetNode = 4;
         int correctAnswer = 1;
-
-        try {
-            int output = new ShortPath().shortestPath(edges, nodeCount, maxEdges, sourceNode, targetNode);
-
-            if (output != correctAnswer)
-                outputFail("test3",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test3");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test3", "Exception: " + e);
-        }
+        runTest("test3", edges, nodeCount, maxEdges, sourceNode, targetNode, correctAnswer);
     }
 
     public static void test4() {
@@ -124,20 +85,7 @@ public class ShortPath {
         int sourceNode = 0;
         int targetNode = 4;
         int correctAnswer = -11;
-
-        try {
-            int output = new ShortPath().shortestPath(edges, nodeCount, maxEdges, sourceNode, targetNode);
-
-            if (output != correctAnswer)
-                outputFail("test4",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test4");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test4", "Exception: " + e);
-        }
+        runTest("test4", edges, nodeCount, maxEdges, sourceNode, targetNode, correctAnswer);
     }
 
     public static void test5() {
@@ -150,20 +98,7 @@ public class ShortPath {
         int sourceNode = 0;
         int targetNode = 1;
         int correctAnswer = -2;
-
-        try {
-            int output = new ShortPath().shortestPath(edges, nodeCount, maxEdges, sourceNode, targetNode);
-
-            if (output != correctAnswer)
-                outputFail("test5",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test5");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test5", "Exception: " + e);
-        }
+        runTest("test5", edges, nodeCount, maxEdges, sourceNode, targetNode, correctAnswer);
     }
 
     public static void test6() {
@@ -176,20 +111,7 @@ public class ShortPath {
         int sourceNode = 0;
         int targetNode = 1;
         int correctAnswer = -3;
-
-        try {
-            int output = new ShortPath().shortestPath(edges, nodeCount, maxEdges, sourceNode, targetNode);
-
-            if (output != correctAnswer)
-                outputFail("test6",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test6");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test6", "Exception: " + e);
-        }
+        runTest("test6", edges, nodeCount, maxEdges, sourceNode, targetNode, correctAnswer);
     }
 
     public static void test7() {
@@ -211,20 +133,7 @@ public class ShortPath {
         int sourceNode = 0;
         int targetNode = 4;
         int correctAnswer = 2;
-
-        try {
-            int output = new ShortPath().shortestPath(edges, nodeCount, maxEdges, sourceNode, targetNode);
-
-            if (output != correctAnswer)
-                outputFail("test7",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test7");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test7", "Exception: " + e);
-        }
+        runTest("test7", edges, nodeCount, maxEdges, sourceNode, targetNode, correctAnswer);
     }
 
     public static void test8() {
@@ -241,20 +150,7 @@ public class ShortPath {
         int sourceNode = 0;
         int targetNode = 2;
         int correctAnswer = -4-3-4;
-
-        try {
-            int output = new ShortPath().shortestPath(edges, nodeCount, maxEdges, sourceNode, targetNode);
-
-            if (output != correctAnswer)
-                outputFail("test8",
-                    "Expected output " + correctAnswer +
-                    " but got " + output);
-            else
-                outputPass("test8");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test8", "Exception: " + e);
-        }
+        runTest("test8", edges, nodeCount, maxEdges, sourceNode, targetNode, correctAnswer);
     }
 
     public static void test9() {
@@ -268,20 +164,7 @@ public class ShortPath {
         int sourceNode = 0;
         int targetNode = 2;
         int correctAnswer = 1;
-
-        try {
-            int output = new ShortPath().shortestPath(edges, nodeCount, maxEdges, sourceNode, targetNode);
-
-            if (output != correctAnswer)
-                outputFail("test9",
-                    "Expected output " + correctAnswer +
-                    " but got " + output);
-            else
-                outputPass("test9");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test9", "Exception: " + e);
-        }
+        runTest("test9", edges, nodeCount, maxEdges, sourceNode, targetNode, correctAnswer);
     }
 
     public static void test10() {
@@ -296,19 +179,22 @@ public class ShortPath {
         int sourceNode = 0;
         int targetNode = 3;
         int correctAnswer = 3+1;
+        runTest("test10", edges, nodeCount, maxEdges, sourceNode, targetNode, correctAnswer);
+    }
 
+    private static void runTest(String testName, Edge[] edges, int nodeCount, int maxEdges, int sourceNode, int targetNode, int correctAnswer) {
         try {
             int output = new ShortPath().shortestPath(edges, nodeCount, maxEdges, sourceNode, targetNode);
 
             if (output != correctAnswer)
-                outputFail("test10",
-                    "Expected output " + correctAnswer +
-                    " but got " + output);
+                outputFail(testName,
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
             else
-                outputPass("test10");
+                outputPass(testName);
         } catch (Exception e) {
             e.printStackTrace();
-            outputFail("test10", "Exception: " + e);
+            outputFail(testName, "Exception: " + e);
         }
     }
 
