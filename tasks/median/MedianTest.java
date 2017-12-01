@@ -25,120 +25,43 @@ public class MedianTest {
     public static void testSingle() {
         int[] input = { 1 };
         int correctAnswer = 1;
-
-        Median m = new Median();
-        for (int i : input) m.add(i);
-
-        int output = m.median();
-
-        if (output != correctAnswer)
-            outputFail("testSingle",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testSingle");
+        runTest("testSingle", input, correctAnswer);
     }
 
     public static void test1() {
         int[] input = { 2, 5, 3, 7 };
         int correctAnswer = 5;
-
-        Median m = new Median();
-        for (int i : input) m.add(i);
-
-        int output = m.median();
-
-        if (output != correctAnswer)
-            outputFail("test1",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test1");
+        runTest("test1", input, correctAnswer);
     }
 
     public static void test2() {
         int[] input = { 1, 7, 2, 3, 5 };
         int correctAnswer = 3;
-
-        Median m = new Median();
-        for (int i : input) m.add(i);
-
-        int output = m.median();
-
-        if (output != correctAnswer)
-            outputFail("test2",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test2");
+        runTest("test2", input, correctAnswer);
     }
 
     public static void test3() {
         int[] input = { 2, 4, 7, 9, 3 };
         int correctAnswer = 4;
-
-        Median m = new Median();
-        for (int i : input) m.add(i);
-
-        int output = m.median();
-
-        if (output != correctAnswer)
-            outputFail("test3",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test3");
+        runTest("test3", input, correctAnswer);
     }
 
     public static void test4() {
         int[] input = { 32, 59, 32673, 58586, 14162, 288, 411 };
         int correctAnswer = 411;
-
-        Median m = new Median();
-        for (int i : input) m.add(i);
-
-        int output = m.median();
-
-        if (output != correctAnswer)
-            outputFail("test4",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test4");
+        runTest("test4", input, correctAnswer);
     }
 
     public static void test5() {
         int[] input = { 3, 7, 2, 1, 5 };
         int correctAnswer = 3;
-
-        Median m = new Median();
-        for (int i : input) m.add(i);
-
-        int output = m.median();
-
-        if (output != correctAnswer)
-            outputFail("test5",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test5");
+        runTest("test5", input, correctAnswer);
     }
 
     public static void test6() {
         int[] input = { 3, 2 };
         int correctAnswer = 3;
-
-        Median m = new Median();
-        for (int i : input) m.add(i);
-
-        int output = m.median();
-
-        if (output != correctAnswer)
-            outputFail("test6",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test6");
+        runTest("test6", input, correctAnswer);
     }
 
     public static void test7() {
@@ -169,150 +92,43 @@ public class MedianTest {
     public static void test8() {
         int[] input = { 3, 1, 2 };
         int correctAnswer = 2;
-
-        Median m = new Median();
-        for (int i : input) m.add(i);
-
-        int output = m.median();
-
-        if (output != correctAnswer)
-            outputFail("test8",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test8");
+        runTest("test8", input, correctAnswer);
     }
 
     public static void test9() {
         int[] input = { 3, 1, 2 };
         int[] correctAnswers = { 3, 3, 2 };
-
-        Median m = new Median();
-        for (int i = 0; i < input.length; i++) {
-            m.add(input[i]);
-
-            int output = m.median();
-            int correctAnswer = correctAnswers[i];
-
-            if (output != correctAnswer) {
-                outputFail("test9",
-                           "After inserting " + (i+1) + " element(s): " +
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-                return;
-            }
-        }
-        outputPass("test9");
+        runTestMulti("test9", input, correctAnswers);
     }
 
     public static void test10() {
         int[] input = { 1, 3, 2 };
         int[] correctAnswers = { 1, 3, 2 };
-
-        Median m = new Median();
-        for (int i = 0; i < input.length; i++) {
-            m.add(input[i]);
-
-            int output = m.median();
-            int correctAnswer = correctAnswers[i];
-
-            if (output != correctAnswer) {
-                outputFail("test10",
-                           "After inserting " + (i+1) + " element(s): " +
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-                return;
-            }
-        }
-        outputPass("test10");
+        runTestMulti("test10", input, correctAnswers);
     }
 
     public static void test11() {
         int[] input = { 2, 3, 4, 5, 15, 7, 9, 11, 6, 14, 8, 10, 12, 13, 1 };
         int[] correctAnswers = { 2, 3, 3, 4, 4, 5, 5, 7, 6, 7, 7, 8, 8, 9, 8 };
-
-        Median m = new Median();
-        for (int i = 0; i < input.length; i++) {
-            m.add(input[i]);
-
-            int output = m.median();
-            int correctAnswer = correctAnswers[i];
-
-            if (output != correctAnswer) {
-                outputFail("test11",
-                           "After inserting " + (i+1) + " element(s): " +
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-                return;
-            }
-        }
-        outputPass("test11");
+        runTestMulti("test11", input, correctAnswers);
     }
 
     public static void test12() {
         int[] input = { 1, 5, 7, 3, 9, 4, 6, 8 };
         int[] correctAnswers = { 1, 5, 5, 5, 5, 5, 5, 6 };
-
-        Median m = new Median();
-        for (int i = 0; i < input.length; i++) {
-            m.add(input[i]);
-
-            int output = m.median();
-            int correctAnswer = correctAnswers[i];
-
-            if (output != correctAnswer) {
-                outputFail("test12",
-                           "After inserting " + (i+1) + " element(s): " +
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-                return;
-            }
-        }
-        outputPass("test12");
+        runTestMulti("test12", input, correctAnswers);
     }
 
     public static void test13() {
         int[] input = { 10, 1, 2, 3, 4 };
         int[] correctAnswers = { 10, 10, 2, 3, 3 };
-
-        Median m = new Median();
-        for (int i = 0; i < input.length; i++) {
-            m.add(input[i]);
-
-            int output = m.median();
-            int correctAnswer = correctAnswers[i];
-
-            if (output != correctAnswer) {
-                outputFail("test13",
-                           "After inserting " + (i+1) + " element(s): " +
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-                return;
-            }
-        }
-        outputPass("test13");
+        runTestMulti("test13", input, correctAnswers);
     }
 
     public static void test14() {
         int[] input = { 98, 5, 9, 10, 20, 39, 29 };
         int[] correctAnswers = { 98, 98, 9, 10, 10, 20, 20 };
-
-        Median m = new Median();
-        for (int i = 0; i < input.length; i++) {
-            m.add(input[i]);
-
-            int output = m.median();
-            int correctAnswer = correctAnswers[i];
-
-            if (output != correctAnswer) {
-                outputFail("test14",
-                           "After inserting " + (i+1) + " element(s): " +
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-                return;
-            }
-        }
-        outputPass("test14");
+        runTestMulti("test14", input, correctAnswers);
     }
 
     private static long timeTest(int n) {
@@ -325,6 +141,51 @@ public class MedianTest {
         // For debugging, output the individual times:
         // System.out.println(n + " " + (t2 - t1));
         return t2 - t1;
+    }
+
+    private static void runTest(String testName, int[] input, int correctAnswer) {
+        try {
+            Median m = new Median();
+            for (int i : input) m.add(i);
+
+            int output = m.median();
+
+            if (output != correctAnswer)
+                outputFail(testName,
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass(testName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail(testName,
+                       "Exception: " + e);
+        }
+    }
+
+    private static void runTestMulti(String testName, int[] input, int[] correctAnswers) {
+        try {
+            Median m = new Median();
+            for (int i = 0; i < input.length; i++) {
+                m.add(input[i]);
+
+                int output = m.median();
+                int correctAnswer = correctAnswers[i];
+
+                if (output != correctAnswer) {
+                    outputFail(testName,
+                               "After inserting " + (i+1) + " element(s): " +
+                               "Expected output " + correctAnswer +
+                               " but got " + output);
+                    return;
+                }
+            }
+            outputPass(testName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail(testName,
+                       "Exception: " + e);
+        }
     }
 
     private static void clearTerminal() {
