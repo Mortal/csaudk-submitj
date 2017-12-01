@@ -43,14 +43,20 @@ public class Closest {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i : input) list.add(i);
 
-        int output = new Closest().computeClosest(list);
+        try {
+            int output = new Closest().computeClosest(list);
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail(testName,
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass(testName);
+        } catch (Exception e) {
+            e.printStackTrace();
             outputFail(testName,
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass(testName);
+                       "Exception: " + e);
+        }
     }
 
     private static void clearTerminal() {
