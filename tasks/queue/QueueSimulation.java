@@ -1,4 +1,4 @@
-// Version: 2017102001
+// Version: 2018010101
 import java.io.*;
 import java.util.*;
 public class QueueSimulation {
