@@ -19,127 +19,167 @@ public class RPNTest {
     }
 
     public static void testPushGet1() {
-        ReversePolishCalculator rpn = new ReversePolishCalculator();
-        int correctAnswer = 123;
-        rpn.push(123);
-        int output = rpn.read();
+        try {
+            ReversePolishCalculator rpn = new ReversePolishCalculator();
+            int correctAnswer = 123;
+            rpn.push(123);
+            int output = rpn.read();
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail("testPushGet1",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("testPushGet1");
+        } catch (Exception e) {
             outputFail("testPushGet1",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testPushGet1");
+                       "Exception: " + e);
+        }
     }
 
     public static void testPushGet2() {
-        ReversePolishCalculator rpn = new ReversePolishCalculator();
-        int correctAnswer = 256;
-        rpn.push(123);
-        rpn.push(256);
-        int output = rpn.read();
+        try {
+            ReversePolishCalculator rpn = new ReversePolishCalculator();
+            int correctAnswer = 256;
+            rpn.push(123);
+            rpn.push(256);
+            int output = rpn.read();
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail("testPushGet2",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("testPushGet2");
+        } catch (Exception e) {
             outputFail("testPushGet2",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testPushGet2");
+                       "Exception: " + e);
+        }
     }
 
     public static void testPushGet3() {
-        ReversePolishCalculator rpn = new ReversePolishCalculator();
-        int correctAnswer = 256 + 256;
-        rpn.push(123);
-        rpn.push(256);
-        int output = rpn.read() + rpn.read();
+        try {
+            ReversePolishCalculator rpn = new ReversePolishCalculator();
+            int correctAnswer = 256 + 256;
+            rpn.push(123);
+            rpn.push(256);
+            int output = rpn.read() + rpn.read();
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail("testPushGet3",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("testPushGet3");
+        } catch (Exception e) {
             outputFail("testPushGet3",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testPushGet3");
+                       "Exception: " + e);
+        }
     }
 
     public static void testPushGet4() {
-        ReversePolishCalculator rpn = new ReversePolishCalculator();
-        int correctAnswer = 256 + 123;
-        rpn.push(123);
-        int output = rpn.read();
-        rpn.push(256);
-        output += rpn.read();
+        try {
+            ReversePolishCalculator rpn = new ReversePolishCalculator();
+            int correctAnswer = 256 + 123;
+            rpn.push(123);
+            int output = rpn.read();
+            rpn.push(256);
+            output += rpn.read();
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail("testPushGet4",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("testPushGet4");
+        } catch (Exception e) {
             outputFail("testPushGet4",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testPushGet4");
+                       "Exception: " + e);
+        }
     }
 
     public static void testPlus1() {
-        ReversePolishCalculator rpn = new ReversePolishCalculator();
-        int correctAnswer = 123 + 256;
-        rpn.push(123);
-        rpn.push(256);
-        rpn.plus();
-        int output = rpn.read();
+        try {
+            ReversePolishCalculator rpn = new ReversePolishCalculator();
+            int correctAnswer = 123 + 256;
+            rpn.push(123);
+            rpn.push(256);
+            rpn.plus();
+            int output = rpn.read();
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail("testPlus1",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("testPlus1");
+        } catch (Exception e) {
             outputFail("testPlus1",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testPlus1");
+                       "Exception: " + e);
+        }
     }
 
     public static void testTimes1() {
-        ReversePolishCalculator rpn = new ReversePolishCalculator();
-        int correctAnswer = 123 * 256;
-        rpn.push(123);
-        rpn.push(256);
-        rpn.times();
-        int output = rpn.read();
+        try {
+            ReversePolishCalculator rpn = new ReversePolishCalculator();
+            int correctAnswer = 123 * 256;
+            rpn.push(123);
+            rpn.push(256);
+            rpn.times();
+            int output = rpn.read();
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail("testTimes1",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("testTimes1");
+        } catch (Exception e) {
             outputFail("testTimes1",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testTimes1");
+                       "Exception: " + e);
+        }
     }
 
     public static void testMinus1() {
-        ReversePolishCalculator rpn = new ReversePolishCalculator();
-        int correctAnswer = 123 - 256;
-        rpn.push(123);
-        rpn.push(256);
-        rpn.minus();
-        int output = rpn.read();
+        try {
+            ReversePolishCalculator rpn = new ReversePolishCalculator();
+            int correctAnswer = 123 - 256;
+            rpn.push(123);
+            rpn.push(256);
+            rpn.minus();
+            int output = rpn.read();
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail("testMinus1",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("testMinus1");
+        } catch (Exception e) {
             outputFail("testMinus1",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testMinus1");
+                       "Exception: " + e);
+        }
     }
 
     public static void testMinus2() {
-        ReversePolishCalculator rpn = new ReversePolishCalculator();
-        int correctAnswer = 256 - 123;
-        rpn.push(256);
-        rpn.push(123);
-        rpn.minus();
-        int output = rpn.read();
+        try {
+            ReversePolishCalculator rpn = new ReversePolishCalculator();
+            int correctAnswer = 256 - 123;
+            rpn.push(256);
+            rpn.push(123);
+            rpn.minus();
+            int output = rpn.read();
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail("testMinus2",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("testMinus2");
+        } catch (Exception e) {
             outputFail("testMinus2",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testMinus2");
+                       "Exception: " + e);
+        }
     }
 
     private static final int PLUS = -1;
@@ -149,81 +189,48 @@ public class RPNTest {
     public static void test1() {
         int[] input = { 20, 2, 3, 5, PLUS, TIMES, MINUS, 2, 4, MINUS, TIMES };
         int correctAnswer = (20 - (2 * (3 + 5))) * (2 - 4);
-
-        ReversePolishCalculator rpn = new ReversePolishCalculator();
-        for (int i : input)
-            if (i == PLUS) rpn.plus();
-            else if (i == MINUS) rpn.minus();
-            else if (i == TIMES) rpn.times();
-            else rpn.push(i);
-        int output = rpn.read();
-
-        if (output != correctAnswer)
-            outputFail("test1",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test1");
+        runTest("test1", input, correctAnswer);
     }
 
     public static void test2() {
         int[] input = { 1, 2, MINUS, 3, TIMES };
         int correctAnswer = (1 - 2) * 3;
-
-        ReversePolishCalculator rpn = new ReversePolishCalculator();
-        for (int i : input)
-            if (i == PLUS) rpn.plus();
-            else if (i == MINUS) rpn.minus();
-            else if (i == TIMES) rpn.times();
-            else rpn.push(i);
-        int output = rpn.read();
-
-        if (output != correctAnswer)
-            outputFail("test2",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test2");
+        runTest("test2", input, correctAnswer);
     }
 
     public static void test3() {
         int[] input = { 1, 2, 3, MINUS, TIMES };
         int correctAnswer = 1 * (2 - 3);
-
-        ReversePolishCalculator rpn = new ReversePolishCalculator();
-        for (int i : input)
-            if (i == PLUS) rpn.plus();
-            else if (i == MINUS) rpn.minus();
-            else if (i == TIMES) rpn.times();
-            else rpn.push(i);
-        int output = rpn.read();
-
-        if (output != correctAnswer)
-            outputFail("test3",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test3");
+        runTest("test3", input, correctAnswer);
     }
 
     public static void test4() {
         int[] input = { 2, 1, 1, 2, PLUS, PLUS, TIMES };
         int correctAnswer = 2 * (1 + (1 + 2));
+        runTest("test4", input, correctAnswer);
+    }
 
-        ReversePolishCalculator rpn = new ReversePolishCalculator();
-        for (int i : input)
-            if (i == PLUS) rpn.plus();
-            else if (i == MINUS) rpn.minus();
-            else if (i == TIMES) rpn.times();
-            else rpn.push(i);
-        int output = rpn.read();
+    private static void runTest(String testName, int[] input, int correctAnswer) {
+        try {
+            ReversePolishCalculator rpn = new ReversePolishCalculator();
+            for (int i : input)
+                if (i == PLUS) rpn.plus();
+                else if (i == MINUS) rpn.minus();
+                else if (i == TIMES) rpn.times();
+                else rpn.push(i);
+            int output = rpn.read();
 
-        if (output != correctAnswer)
-            outputFail("test4",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test4");
+            if (output != correctAnswer)
+                outputFail(testName,
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass(testName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail(testName,
+                       "Exception: " + e);
+        }
     }
 
     private static void clearTerminal() {
