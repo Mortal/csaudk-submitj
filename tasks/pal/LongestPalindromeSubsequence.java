@@ -25,100 +25,57 @@ public class LongestPalindromeSubsequence {
     public static void test1() {
         char[] input = { 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'a' };
         char[] correctAnswer = { 'b', 'a', 'b', 'a', 'b' };
-
-        try {
-            checkPal("test1", input, correctAnswer);
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test1", "Exception: " + e);
-            return;
-        }
+        runTest("test1", input, correctAnswer);
     }
 
     public static void test2() {
         char[] input = { 'a', 'i', 'b', 'o', 'h', 'p', 'h', 'o', 'b', 'i', 'a' };
         char[] correctAnswer = { 'a', 'i', 'b', 'o', 'h', 'p', 'h', 'o', 'b', 'i', 'a' };
-
-        try {
-            checkPal("test2", input, correctAnswer);
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test2", "Exception: " + e);
-            return;
-        }
+        runTest("test2", input, correctAnswer);
     }
 
     public static void test3() {
         char[] input = { 'r', 'h', 'o', 't', 'a', 't', 'h', 'o', 'r', 'y' };
         char[] correctAnswer = { 'r', 'o', 't', 'a', 't', 'o', 'r' };
-
-        try {
-            checkPal("test3", input, correctAnswer);
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test3", "Exception: " + e);
-            return;
-        }
+        runTest("test3", input, correctAnswer);
     }
 
     public static void test4() {
         char[] input = { 'r', 'a', 'h', 'a', 'n', 'n', 'a', 'h' };
         char[] correctAnswer = { 'h', 'a', 'n', 'n', 'a', 'h' };
-
-        try {
-            checkPal("test4", input, correctAnswer);
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test4", "Exception: " + e);
-            return;
-        }
+        runTest("test4", input, correctAnswer);
     }
 
     public static void test5() {
         char[] input = { 'a', 'c', 'b', 'a', 'c' };
         char[] correctAnswer = { 'a', 'b', 'a' };
-
-        try {
-            checkPal("test5", input, correctAnswer);
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test5", "Exception: " + e);
-            return;
-        }
+        runTest("test5", input, correctAnswer);
     }
 
     public static void test6() {
         char[] input = "aebecdceeccbadce".toCharArray();
         char[] correctAnswer = "abcceeccba".toCharArray();
-
-        try {
-            checkPal("test6", input, correctAnswer);
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test6", "Exception: " + e);
-            return;
-        }
+        runTest("test6", input, correctAnswer);
     }
 
     public static void test7() {
         char[] input = "abcbda".toCharArray();
         char[] correctAnswer = "abcba".toCharArray();
-
-        try {
-            checkPal("test7", input, correctAnswer);
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test7", "Exception: " + e);
-            return;
-        }
+        runTest("test7", input, correctAnswer);
     }
 
-    private static void checkPal(String testName, char[] input, char[] correctAnswer) {
+    private static void runTest(String testName, char[] input, char[] correctAnswer) {
         ArrayList<Character> list = new ArrayList<>();
         for (char c : input) list.add(c);
 
-        ArrayList<Character> answer = (
-            new LongestPalindromeSubsequence().longestPalindromeSubsequence(list));
+        ArrayList<Character> answer;
+        try {
+            answer = new LongestPalindromeSubsequence().longestPalindromeSubsequence(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail(testName, "Exception: " + e);
+            return;
+        }
 
         if (answer.size() != correctAnswer.length) {
             outputFail(testName,
