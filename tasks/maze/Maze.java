@@ -35,20 +35,7 @@ public class Maze {
             "oooooo".toCharArray()
         };
         int correctAnswer = 5;
-
-        try {
-            int output = new Maze().shortestPath(maze);
-
-            if (output != correctAnswer)
-                outputFail("test1",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test1");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test1", "Exception: " + e);
-        }
+        runTest("test1", maze, correctAnswer);
     }
 
     public static void test2() {
@@ -60,20 +47,7 @@ public class Maze {
             "ooooo".toCharArray()
         };
         int correctAnswer = Integer.MAX_VALUE;
-
-        try {
-            int output = new Maze().shortestPath(maze);
-
-            if (output != correctAnswer)
-                outputFail("test2",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test2");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test2", "Exception: " + e);
-        }
+        runTest("test2", maze, correctAnswer);
     }
 
     public static void test3() {
@@ -87,20 +61,7 @@ public class Maze {
             "oooooooo".toCharArray()
         };
         int correctAnswer = 19;
-
-        try {
-            int output = new Maze().shortestPath(maze);
-
-            if (output != correctAnswer)
-                outputFail("test3",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test3");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test3", "Exception: " + e);
-        }
+        runTest("test3", maze, correctAnswer);
     }
 
     public static void test4() {
@@ -114,20 +75,7 @@ public class Maze {
             "ooooooooo".toCharArray()
         };
         int correctAnswer = 18;
-
-        try {
-            int output = new Maze().shortestPath(maze);
-
-            if (output != correctAnswer)
-                outputFail("test4",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test4");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test4", "Exception: " + e);
-        }
+        runTest("test4", maze, correctAnswer);
     }
 
     public static void test5() {
@@ -145,20 +93,7 @@ public class Maze {
             "ooooooooooooo".toCharArray()
         };
         int correctAnswer = 28;
-
-        try {
-            int output = new Maze().shortestPath(maze);
-
-            if (output != correctAnswer)
-                outputFail("test5",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test5");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test5", "Exception: " + e);
-        }
+        runTest("test5", maze, correctAnswer);
     }
 
     public static void test6() {
@@ -177,20 +112,7 @@ public class Maze {
             "ooooooooooo".toCharArray()
         };
         int correctAnswer = 17;
-
-        try {
-            int output = new Maze().shortestPath(maze);
-
-            if (output != correctAnswer)
-                outputFail("test6",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test6");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test6", "Exception: " + e);
-        }
+        runTest("test6", maze, correctAnswer);
     }
 
     public static void test7() {
@@ -206,20 +128,7 @@ public class Maze {
             "ooooooooooooo".toCharArray()
         };
         int correctAnswer = Integer.MAX_VALUE;
-
-        try {
-            int output = new Maze().shortestPath(maze);
-
-            if (output != correctAnswer)
-                outputFail("test7",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test7");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test7", "Exception: " + e);
-        }
+        runTest("test7", maze, correctAnswer);
     }
 
     public static void test8() {
@@ -235,20 +144,7 @@ public class Maze {
             "ooooooooooooo".toCharArray()
         };
         int correctAnswer = 16;
-
-        try {
-            int output = new Maze().shortestPath(maze);
-
-            if (output != correctAnswer)
-                outputFail("test8",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test8");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test8", "Exception: " + e);
-        }
+        runTest("test8", maze, correctAnswer);
     }
 
     public static void test9() {
@@ -264,20 +160,7 @@ public class Maze {
             "oooooooooooooo".toCharArray(),
         };
         int correctAnswer = 31;
-
-        try {
-            int output = new Maze().shortestPath(maze);
-
-            if (output != correctAnswer)
-                outputFail("test9",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test9");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test9", "Exception: " + e);
-        }
+        runTest("test9", maze, correctAnswer);
     }
 
     public static void test10() {
@@ -291,19 +174,22 @@ public class Maze {
             "ooooo".toCharArray(),
         };
         int correctAnswer = 6;
+        runTest("test10", maze, correctAnswer);
+    }
 
+    private static void runTest(String testName, char[][] maze, int correctAnswer) {
         try {
             int output = new Maze().shortestPath(maze);
 
             if (output != correctAnswer)
-                outputFail("test10",
+                outputFail(testName,
                            "Expected output " + correctAnswer +
                            " but got " + output);
             else
-                outputPass("test10");
+                outputPass(testName);
         } catch (Exception e) {
             e.printStackTrace();
-            outputFail("test10", "Exception: " + e);
+            outputFail(testName, "Exception: " + e);
         }
     }
 
