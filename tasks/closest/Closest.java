@@ -18,69 +18,39 @@ public class Closest {
     public static void testSinglePair() {
         int[] input = { 3, 5 };
         int correctAnswer = 2;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Closest().computeClosest(list);
-
-        if (output != correctAnswer)
-            outputFail("testSinglePair",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testSinglePair");
+        runTest("testSinglePair", input, correctAnswer);
     }
 
     public static void testSinglePairInv() {
         int[] input = { 7, 4 };
         int correctAnswer = 3;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Closest().computeClosest(list);
-
-        if (output != correctAnswer)
-            outputFail("testSinglePairInv",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testSinglePairInv");
+        runTest("testSinglePairInv", input, correctAnswer);
     }
 
     public static void test1() {
         int[] input = { 95, 66, 82, 63, 78, 37, 100, 96, 98, 17, 13, 7, 28, 74, 73, 77, 41, 25, 53, 93 };
         int correctAnswer = 96 - 95;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Closest().computeClosest(list);
-
-        if (output != correctAnswer)
-            outputFail("test1",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test1");
+        runTest("test1", input, correctAnswer);
     }
 
     public static void test2() {
         int[] input = { 275, 938, 8, 77, 649, 803, 500, 823, 519, 711, 422, 227, 235, 655, 373 };
         int correctAnswer = 655 - 649;
+        runTest("test2", input, correctAnswer);
+    }
 
+    public static void runTest(String testName, int[] input, int correctAnswer) {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i : input) list.add(i);
 
         int output = new Closest().computeClosest(list);
 
         if (output != correctAnswer)
-            outputFail("test2",
+            outputFail(testName,
                        "Expected output " + correctAnswer +
                        " but got " + output);
         else
-            outputPass("test2");
+            outputPass(testName);
     }
 
     private static void clearTerminal() {
