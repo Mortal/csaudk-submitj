@@ -16,7 +16,6 @@ public class ClosestBall {
         test2();
         test3();
         test4();
-        // testQuadraticTime();  // This is confusing, so don't run it by default
     }
 
     public static void testSinglePair() {
@@ -143,48 +142,6 @@ public class ClosestBall {
                 " but got " + output);
         else
             outputPass("test4");
-    }
-
-    public static void testQuadraticTime() {
-        int n1 = 1000;
-        int n2 = 10000;
-        long t11 = timeTest(n1);
-        long t12 = timeTest(n1);
-        long t13 = timeTest(n1);
-        long t14 = timeTest(n1);
-        long t15 = timeTest(n1);
-        long t1 = Math.min(Math.min(Math.min(Math.min(t11, t12), t13), t14), t15);
-        System.out.println("");
-        System.out.println("Testing time complexity.");
-        System.out.println("Elapsed time on input size n1 = " + n1 + ": t1 = " + t1);
-        long t21 = timeTest(n2);
-        long t22 = timeTest(n2);
-        long t23 = timeTest(n2);
-        long t2 = Math.min(Math.min(t21, t22), t23);
-        System.out.println("Elapsed time on input size n2 = " + n2 + ": t2 = " + t2);
-        double slowdown = ((double) t2) / t1;
-        double linearSlowdown = ((double) n2) / n1;
-        System.out.println("Expected slowdown (for linear time): n2 / n1 = " + linearSlowdown);
-        System.out.println("Measured slowdown: t2 / t1 = " + slowdown);
-        if (slowdown > Math.pow(linearSlowdown, 1.2))
-            System.out.println("That's not linear time!");
-        else
-            System.out.println("OK.");
-    }
-
-    private static long timeTest(int n) {
-        long t1 = System.nanoTime();
-        ArrayList<Integer> players = new ArrayList<Integer>(n);
-        ArrayList<Integer> balls = new ArrayList<Integer>(n);
-        for (int i = 0; i < n; ++i) {
-            players.add((int) (i * 982451653L % 413158511L));
-            balls.add((int) (i * 413158511L % 982451653L));
-        }
-        new ClosestBall().computeClosest(players, balls);
-        long t2 = System.nanoTime();
-        // For debugging, output the individual times:
-        // System.out.println(n + " " + (t2 - t1));
-        return t2 - t1;
     }
 
     private static void clearTerminal() {
