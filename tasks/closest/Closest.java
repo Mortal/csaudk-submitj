@@ -39,7 +39,7 @@ public class Closest {
         runTest("test2", input, correctAnswer);
     }
 
-    public static void runTest(String testName, int[] input, int correctAnswer) {
+    private static void runTest(String testName, int[] input, int correctAnswer) {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i : input) list.add(i);
 

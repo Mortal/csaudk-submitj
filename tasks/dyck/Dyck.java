@@ -193,7 +193,7 @@ public class Dyck {
         runTest("test26", input, correctAnswer);
     }
 
-    public static void runTest(String testName, char[] input, boolean correctAnswer) {
+    private static void runTest(String testName, char[] input, boolean correctAnswer) {
         ArrayList<Character> list = new ArrayList<>();
         for (char c : input) list.add(c);
 

@@ -62,7 +62,7 @@ public class DodgeTest {
         runTest("test8", input, correctAnswers);
     }
 
-    public static void runTest(String testName, int[] input, int[] correctAnswers) {
+    private static void runTest(String testName, int[] input, int[] correctAnswers) {
         try {
             Dodgeball d = new Dodgeball();
             int j = 0;

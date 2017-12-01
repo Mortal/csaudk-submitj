@@ -66,7 +66,7 @@ public class ClosestBall {
         runTest("test4", input, correctAnswer);
     }
 
-    public static void runTest(String testName, int[][] input, int correctAnswer) {
+    private static void runTest(String testName, int[][] input, int correctAnswer) {
         ArrayList<Integer> players = new ArrayList<Integer>();
         ArrayList<Integer> balls = new ArrayList<Integer>();
         for (int i : input[0]) players.add(i);
