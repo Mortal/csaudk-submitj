@@ -22,137 +22,69 @@ public class Maxdelsum {
     public static void testSinglePositive() {
         int[] input = { 42 };
         int correctAnswer = 42;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
-
-        if (output != correctAnswer)
-            outputFail("testSinglePositive",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testSinglePositive");
+        runTest("testSinglePositive", input, correctAnswer);
     }
 
     public static void testSingleNegative() {
         int[] input = { -123 };
         int correctAnswer = 0;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
-
-        if (output != correctAnswer)
-            outputFail("testSingleNegative",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testSingleNegative");
+        runTest("testSingleNegative", input, correctAnswer);
     }
 
     public static void testAllPositive() {
         int[] input = { 1, 2, 3, 4, 5, 6 };
         int correctAnswer = 21;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
-
-        if (output != correctAnswer)
-            outputFail("testAllPositive",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testAllPositive");
+        runTest("testAllPositive", input, correctAnswer);
     }
 
     public static void testAllNegative() {
         int[] input = { -10, -5, -2, -1 };
         int correctAnswer = 0;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
-
-        if (output != correctAnswer)
-            outputFail("testAllNegative",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testAllNegative");
+        runTest("testAllNegative", input, correctAnswer);
     }
 
     public static void test1() {
         int[] input = { 31, -41, 59, 26, -53, 58, 97, -93, -23, 84 };
         int correctAnswer = 59 + 26 + -53 + 58 + 97;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
-
-        if (output != correctAnswer)
-            outputFail("test1",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test1");
+        runTest("test1", input, correctAnswer);
     }
 
     public static void test2() {
         int[] input = { 59, 26, -53, 58, 97, -93, -23, 84 };
         int correctAnswer = 59 + 26 + -53 + 58 + 97;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
-
-        if (output != correctAnswer)
-            outputFail("test2",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test2");
+        runTest("test2", input, correctAnswer);
     }
 
     public static void test3() {
         int[] input = { 31, -41, 59, 26, -53, 58, 97 };
         int correctAnswer = 59 + 26 + -53 + 58 + 97;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
-
-        if (output != correctAnswer)
-            outputFail("test3",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test3");
+        runTest("test3", input, correctAnswer);
     }
 
     public static void test4() {
         int[] input = { -1, -2, -1, 10, -1, -2 };
         int correctAnswer = 10;
+        runTest("test4", input, correctAnswer);
+    }
 
+    private static void runTest(String testName, int[] input, int correctAnswer) {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i : input) list.add(i);
 
-        int output = new Maxdelsum().maxdelsum(list);
+        try {
+            int output = new Maxdelsum().maxdelsum(list);
 
-        if (output != correctAnswer)
-            outputFail("test4",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test4");
+            if (output != correctAnswer)
+                outputFail(testName,
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass(testName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail(testName,
+                       "Exception: " + e);
+        }
     }
 
     private static void clearTerminal() {
