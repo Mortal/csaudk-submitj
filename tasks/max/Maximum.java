@@ -16,35 +16,33 @@ public class Maximum {
     public static void test1() {
         int[] input = { 96, 66, 82, 63, 78, 37, 100, 96, 98, 17, 13, 7, 28, 74, 73, 77, 41, 25, 53, 93 };
         int correctAnswer = 100;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maximum().computeMaximum(list);
-
-        if (output != correctAnswer)
-            outputFail("test1",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test1");
+        runTest("test1", input, correctAnswer);
     }
 
     public static void test2() {
         int[] input = { 90, 8, 38, 69, 82, 79, 67, 27, 17, 46, 78, 14, 47, 18, 36, 55, 55, 74, 12, 95 };
         int correctAnswer = 95;
+        runTest("test2", input, correctAnswer);
+    }
 
+    private static void runTest(String testName, int[] input, int correctAnswer) {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i : input) list.add(i);
 
-        int output = new Maximum().computeMaximum(list);
+        try {
+            int output = new Maximum().computeMaximum(list);
 
-        if (output != correctAnswer)
-            outputFail("test2",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test2");
+            if (output != correctAnswer)
+                outputFail(testName,
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass(testName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail(testName,
+                       "Exception: " + e);
+        }
     }
 
     private static void clearTerminal() {
