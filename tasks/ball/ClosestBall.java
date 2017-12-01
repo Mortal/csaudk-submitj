@@ -72,14 +72,20 @@ public class ClosestBall {
         for (int i : input[0]) players.add(i);
         for (int i : input[1]) balls.add(i);
 
-        int output = new ClosestBall().computeClosest(players, balls);
+        try {
+            int output = new ClosestBall().computeClosest(players, balls);
 
-        if (output != correctAnswer)
+            if (output != correctAnswer)
+                outputFail(testName,
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass(testName);
+        } catch (Exception e) {
+            e.printStackTrace();
             outputFail(testName,
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass(testName);
+                       "Exception: " + e);
+        }
     }
 
     private static void clearTerminal() {
