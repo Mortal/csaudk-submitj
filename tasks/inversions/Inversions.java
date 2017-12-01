@@ -20,86 +20,51 @@ public class Inversions {
     public static void testSingle() {
         int[] input = { 1 };
         int correctAnswer = 0;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Inversions().countInversions(list);
-
-        if (output != correctAnswer)
-            outputFail("testSingle",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testSingle");
+        runTest("testSingle", input, correctAnswer);
     }
 
     public static void testTwoSorted() {
         int[] input = { 1, 2 };
         int correctAnswer = 0;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Inversions().countInversions(list);
-
-        if (output != correctAnswer)
-            outputFail("testTwoSorted",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testTwoSorted");
+        runTest("testTwoSorted", input, correctAnswer);
     }
 
     public static void testTwoInverted() {
         int[] input = { 2, 1 };
         int correctAnswer = 1;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Inversions().countInversions(list);
-
-        if (output != correctAnswer)
-            outputFail("testTwoInverted",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("testTwoInverted");
+        runTest("testTwoInverted", input, correctAnswer);
     }
 
     public static void test1() {
         int[] input = { 2, 14, 6, 4, 15, 3, 7, 9, 11, 1, 10, 5, 8, 13, 12 };
         int correctAnswer = 42;
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Inversions().countInversions(list);
-
-        if (output != correctAnswer)
-            outputFail("test1",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test1");
+        runTest("test1", input, correctAnswer);
     }
 
     public static void test2() {
         int[] input = { 2, 11, 5, 9, 13, 4, 3, 15, 6, 8, 12, 10, 7, 1, 14 };
         int correctAnswer = 46;
+        runTest("test2", input, correctAnswer);
+    }
 
+    private static void runTest(String testName, int[] input, int correctAnswer) {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i : input) list.add(i);
 
-        int output = new Inversions().countInversions(list);
+        try {
+            int output = new Inversions().countInversions(list);
 
-        if (output != correctAnswer)
-            outputFail("test2",
-                       "Expected output " + correctAnswer +
-                       " but got " + output);
-        else
-            outputPass("test2");
+            if (output != correctAnswer)
+                outputFail(testName,
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass(testName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail(testName,
+                       "Exception: " + e);
+        }
     }
 
     private static void clearTerminal() {
