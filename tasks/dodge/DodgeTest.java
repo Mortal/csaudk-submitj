@@ -104,6 +104,7 @@ public class DodgeTest {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int testcases = sc.nextInt();
+        if (testcases == 0) testAll();
         for (int t = 0; t < testcases; t++) {
             int n = sc.nextInt();
             Dodgeball d = new Dodgeball();
