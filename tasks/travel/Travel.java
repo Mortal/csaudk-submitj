@@ -33,22 +33,8 @@ public class Travel {
             { new Edge(4, 5, 2) },
             {},
         };
-
         int correctAnswer = -2;
-
-        try {
-            int output = new Travel().shortestPath(nodeWeights, edgeLists);
-
-            if (output != correctAnswer)
-                outputFail("test1",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test1");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test1", "Exception: " + e);
-        }
+        runTest("test1", nodeWeights, edgeLists, correctAnswer);
     }
 
     public static void test2() {
@@ -59,22 +45,8 @@ public class Travel {
             { new Edge(0, 1, 100) },
             {},
         };
-
         int correctAnswer = -1 + 100 - 10;
-
-        try {
-            int output = new Travel().shortestPath(nodeWeights, edgeLists);
-
-            if (output != correctAnswer)
-                outputFail("test2",
-                           "Expected output " + correctAnswer +
-                           " but got " + output);
-            else
-                outputPass("test2");
-        } catch (Exception e) {
-            e.printStackTrace();
-            outputFail("test2", "Exception: " + e);
-        }
+        runTest("test2", nodeWeights, edgeLists, correctAnswer);
     }
 
     public static void test3() {
@@ -86,21 +58,23 @@ public class Travel {
             { new Edge(1, 2, 20) },
             {},
         };
-
         int correctAnswer = -10 + 40 - 51 + 20 - 60;
+        runTest("test3", nodeWeights, edgeLists, correctAnswer);
+    }
 
+    private static void runTest(String testName, int[] nodeWeights, Edge[][] edgeLists, int correctAnswer) {
         try {
             int output = new Travel().shortestPath(nodeWeights, edgeLists);
 
             if (output != correctAnswer)
-                outputFail("test3",
+                outputFail(testName,
                            "Expected output " + correctAnswer +
                            " but got " + output);
             else
-                outputPass("test3");
+                outputPass(testName);
         } catch (Exception e) {
             e.printStackTrace();
-            outputFail("test3", "Exception: " + e);
+            outputFail(testName, "Exception: " + e);
         }
     }
 
