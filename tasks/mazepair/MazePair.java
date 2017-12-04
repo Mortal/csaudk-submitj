@@ -1,4 +1,4 @@
-// Version: 2017112701
+// Version: 2017120401
 
 import java.io.*;
 import java.util.*;
@@ -26,6 +26,7 @@ public class MazePair {
         test10();
         test11();
         test12();
+        test13();
     }
 
     public static void test1() {
@@ -366,6 +367,39 @@ public class MazePair {
         } catch (Exception e) {
             e.printStackTrace();
             outputFail("test12", "Exception: " + e);
+        }
+    }
+
+    public static void test13() {
+        char[][] maze = {
+            "ooooooooooooooo".toCharArray(),
+            "o.......or..o.o".toCharArray(),
+            "o.ooo.o.oro.o.o".toCharArray(),
+            "o...o.o...o...o".toCharArray(),
+            "o.o.ooooooooo.o".toCharArray(),
+            "o.ob.....bo...o".toCharArray(),
+            "o.ooooooo.o.o.o".toCharArray(),
+            "o.......o...o.o".toCharArray(),
+            "o.o.o.o.ooo.o.o".toCharArray(),
+            "o.o.o.....o...o".toCharArray(),
+            "o.o.o.ooo.o.ooo".toCharArray(),
+            "o.o.o.o.......o".toCharArray(),
+            "ooooooooooooooo".toCharArray(),
+        };
+        int correctAnswer = 16;
+
+        try {
+            int output = new MazePair().shortestPath(maze);
+
+            if (output != correctAnswer)
+                outputFail("test13",
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+            else
+                outputPass("test13");
+        } catch (Exception e) {
+            e.printStackTrace();
+            outputFail("test13", "Exception: " + e);
         }
     }
 
