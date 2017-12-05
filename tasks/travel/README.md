@@ -3,7 +3,7 @@ Eastwards travel
 
 **Task ID: `"travel-2"`**
 
-**Last updated: 2017-11-22 08:25.**
+**Last updated: 2017-12-05 09:50.**
 
 In the year 2051, the Danish government has decided to encourage bicycle tourists
 to visit its many islands by bicycle by giving cash rewards to island visitors.
@@ -65,6 +65,7 @@ inside BlueJ (right click and choose "Save link as").
 
   * Number of nodes: 1 ≤ N ≤ 200000
   * Number of edges: 1 ≤ M ≤ 200000
+  * Each edge weight is between −1000 and 1000
 
 **Scoring:**
 
