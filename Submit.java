@@ -1,4 +1,4 @@
-// Version: 2017100302
+// Version: 2018091901
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
@@ -256,7 +256,7 @@ public class Submit {
     }
 
     private HttpURLConnection makePostLoginRequest() throws IOException {
-        URL url = new URL(host + "/public/login.php");
+        URL url = new URL(host + "/login");
         URLConnection conn = url.openConnection();
         HttpURLConnection http = (HttpURLConnection) conn;
         http.setRequestMethod("POST"); // PUT is another valid option
