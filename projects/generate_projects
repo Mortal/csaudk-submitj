@@ -12,6 +12,9 @@ password="$2"
 cd ../tasks
 for t in *; do
 	d=../projects/"$t"
+	if ! [ -d "$t" ]; then
+		continue
+	fi
 	mkdir -p "$d"
 	cp -v ../Submit.java "$d"
 	cp -vn "$t"/*.java "$d"
