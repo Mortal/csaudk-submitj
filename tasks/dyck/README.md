@@ -3,8 +3,6 @@ Balanced parenthesis checking
 
 **Task ID: `"dyck"`**
 
-**Last updated: 11 October 2017, 9:00**
-
 In this problem, the input to your program is an array of N characters,
 each of which is either `(`, `)`, `[` or `]`,
 and your program must return `true` if the parentheses are properly matched,

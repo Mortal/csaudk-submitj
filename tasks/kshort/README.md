@@ -3,8 +3,6 @@ Short shortest paths
 
 **Task ID: `"kshort"`**
 
-**Last updated: 2017-12-05 09:50.**
-
 In the year 2050, all islands in Denmark are connected by toll bridges.
 When crossing a bridge, the driver must pay a fee to a toll booth.
 The price to cross a bridge is not necessarily the same in both directions.

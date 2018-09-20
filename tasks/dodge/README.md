@@ -3,8 +3,6 @@ Dodgeball
 
 **Task ID: `"dodge-2"`**
 
-Last updated: 2017-10-08 15:35.
-
 Crazy Dodgeball is a game in which two teams play against each other using a ball.
 At any point in time, the players on your team stand on a line,
 and the following two things can happen:

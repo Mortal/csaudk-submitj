@@ -3,8 +3,6 @@ Longest increasing subsequence
 
 **Task ID: `"lis"`**
 
-**Last updated: 8 November 2017, 21:25**
-
 See also CLRS exercise 15.4-5.
 
 Given a list of *N* numbers `a_1`, ..., `a_n`,

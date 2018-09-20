@@ -3,8 +3,6 @@ Dynamic min-gap
 
 **Task ID: `"mingap"`**
 
-**Last updated: 31 Oct 2017 21:30.**
-
 In this exercise you should augment a red-black search tree
 so that it can report the *minimum gap*,
 which is the smallest difference between two numbers in the tree.

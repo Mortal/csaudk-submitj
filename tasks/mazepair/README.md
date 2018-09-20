@@ -3,8 +3,6 @@ Maze multirouting
 
 **Task ID: `"mazepair-2"`**
 
-**Last updated: 2017-11-23 09:45**
-
 In this exercise you must compute the shortest path
 between a runner and a ball in a maze
 that has many runners and many balls.

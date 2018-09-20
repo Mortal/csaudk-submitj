@@ -3,8 +3,6 @@ Median data structure
 
 **Task ID: `"median-2"`**
 
-Last updated: 2017-10-08 15:35.
-
 In this exercise you should implement a data structure named `Median`
 that supports the two operations:
 

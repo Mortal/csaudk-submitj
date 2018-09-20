@@ -3,8 +3,6 @@ Inversions
 
 **Task ID: `"inversions-2"`**
 
-Last updated: 2017-09-20 10:07.
-
 Let A[1..N] be an array of N integers.
 If i < j and A[i] > A[j], then the pair (i, j) is called an **inversion** of A.
 In this task you must implement an algorithm to count the inversions in an array of N integers from 1 to N.

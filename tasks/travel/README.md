@@ -3,8 +3,6 @@ Eastwards travel
 
 **Task ID: `"travel-2"`**
 
-**Last updated: 2017-12-05 09:50.**
-
 In the year 2051, the Danish government has decided to encourage bicycle tourists
 to visit its many islands by bicycle by giving cash rewards to island visitors.
 Luckily, all islands are quite well-connected via bridges.
