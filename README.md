@@ -14,7 +14,7 @@ Read the task description, and start solving the task!
 To upload your solution, you need three things:
 
   * Task ID (from the task description)
-  * Username (`fads17-daN-MM`, where `N` is your class and `MM` is your Blackboard group number)
+  * Username (`fadsYY-daN-MM`, where `YY` is the current year, `N` is your class, and `MM` is your Blackboard group number)
   * Password (from your TA)
 
 If you have technical problems, contact Mathias Rav on the Blackboard discussion board.
