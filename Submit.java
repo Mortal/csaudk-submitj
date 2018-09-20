@@ -1,10 +1,11 @@
-// Version: 2018091901
+// Version: 2018092001
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
 import java.util.*;
 
 public class Submit {
+    private static void debug(String m) { /*System.out.println(m);*/ }
     private static final String host = "https://domjudge.cs.au.dk";
     private static final String data_filename = "submit_data.txt";
     private static final String extension = "java";
@@ -13,6 +14,7 @@ public class Submit {
     private String task;
     private String username;
     private String password;
+    private String mainClass;
 
     // 0: not a multi task; i >= 1: part i (out of "variants") of a multi task.
     private int multiTask;
@@ -174,13 +176,50 @@ public class Submit {
         return false;
     }
 
+    private String getLoginCsrfToken(String contents) throws IOException {
+        String needle = "<input type=\"hidden\" name=\"_csrf_token\" value=\"";
+        int pos = contents.indexOf(needle);
+        if (pos == -1)
+            throw new RuntimeException("Could not get CSRF token from login page");
+        int quotepos = contents.indexOf('"', pos + needle.length());
+        return contents.substring(pos + needle.length(), quotepos);
+    }
+
+    private String prepareLoginPostData(String username, String password) throws IOException {
+        HttpURLConnection http = makeGetLoginRequest();
+        String response = readResponse(http);
+        ensureCookie(http);
+        debug("Cookie: " + cookie);
+        String csrfToken = getLoginCsrfToken(response);
+        debug("CSRF: " + csrfToken);
+        return "_csrf_token=" + csrfToken +
+            "&_username=" + username +
+            "&_password=" + password;
+    }
+
+    private void ensureCookie(HttpURLConnection http) throws IOException {
+        String setCookie = http.getHeaderField("Set-Cookie");
+        if (setCookie == null) {
+            if (cookie == null) {
+                throw new RuntimeException("Did not get Set-Cookie header");
+            }
+            return;
+        }
+        int semi = setCookie.indexOf(';');
+        if (semi != -1)
+            setCookie = setCookie.substring(0, semi);
+        debug("Set cookie to " + setCookie);
+        cookie = setCookie;
+    }
+
     private boolean getLoginCookie() throws IOException {
+        String postData = prepareLoginPostData(username, password);
         HttpURLConnection http = makePostLoginRequest();
         InputStream inputStream;
         try {
             try(OutputStream out = http.getOutputStream()) {
                 try(PrintWriter print = new PrintWriter(out)) {
-                    print.print("cmd=login&login=" + username + "&passwd=" + password);
+                    print.print(postData);
                 }
             }
             if (http.getResponseCode() == 403)
@@ -195,11 +234,8 @@ public class Submit {
         } catch (IOException e) {
             throw new RuntimeException("Failed to login", e);
         }
-        cookie = http.getHeaderField("Set-Cookie");
-        if (cookie == null) {
-            throw new RuntimeException("Got success response from login.php " +
-                                       "but no Set-Cookie header");
-        }
+        ensureCookie(http);
+        debug("Login successful");
         return true;
     }
 
@@ -231,14 +267,14 @@ public class Submit {
     private String getSubmissionJudging(String submissionId) throws IOException {
         HttpURLConnection http = makeGetSubmissionRequest(submissionId);
         String contents = readResponse(http);
-        final String notFound = "<p>Submission not found for this team or not judged yet.</p>";
+        final String notFound = "Submission not found for this team or not judged yet.";
         if (contents.indexOf(notFound) != -1)
             return null;  // Try again
-        final String pending = "<p>Result: <span class=\"sol sol_queued\">";
+        final String pending = "<span class=\"sol sol_queued\">";
         if (contents.indexOf(pending) != -1)
             return null;  // Try again
         // <p>Result: <span class="sol sol_incorrect">wrong-answer</span></p>
-        final String incorrect = "<p>Result: <span class=\"sol sol_incorrect\">";
+        final String incorrect = "<span class=\"sol sol_incorrect\">";
         int pos = contents.indexOf(incorrect);
         if (pos != -1) {
             pos += incorrect.length();
@@ -248,26 +284,38 @@ public class Submit {
             if (code.equals("correct")) throw new RuntimeException("Incorrect and correct");
             return code;
         }
-        final String correct = "<p>Result: <span class=\"sol sol_correct\">";
+        final String correct = "<span class=\"sol sol_correct\">";
         if (contents.indexOf(correct) != -1)
             return "correct";
         System.out.println(contents);
         throw new RuntimeException("Failed to parse submission_details.php output");
     }
 
-    private HttpURLConnection makePostLoginRequest() throws IOException {
+    private HttpURLConnection makeLoginRequest(boolean isPost) throws IOException {
         URL url = new URL(host + "/login");
         URLConnection conn = url.openConnection();
         HttpURLConnection http = (HttpURLConnection) conn;
-        http.setRequestMethod("POST"); // PUT is another valid option
+        http.setRequestMethod(isPost ? "POST" : "GET");
         http.setDoOutput(true);
+        if (cookie != null)
+            http.setRequestProperty("Cookie", cookie);
         http.setInstanceFollowRedirects(false);
-        http.setRequestProperty(
-                "Content-Type",
-                "application/x-www-form-urlencoded");
-        // Enable streaming mode with default settings
-        http.setChunkedStreamingMode(0);
+        if (isPost) {
+            http.setRequestProperty(
+                    "Content-Type",
+                    "application/x-www-form-urlencoded");
+            // Enable streaming mode with default settings
+            http.setChunkedStreamingMode(0);
+        }
         return http;
+    }
+
+    private HttpURLConnection makeGetLoginRequest() throws IOException {
+        return makeLoginRequest(false);
+    }
+
+    private HttpURLConnection makePostLoginRequest() throws IOException {
+        return makeLoginRequest(true);
     }
 
     private HttpURLConnection makePostSubmissionRequest() throws IOException {
@@ -289,9 +337,11 @@ public class Submit {
 
     private HttpURLConnection makeGetSubmissionRequest(String submissionId) throws IOException {
         URL url = new URL(host + "/team/submission_details.php?id=" + submissionId);
+        debug("Connect to " + url);
         URLConnection conn = url.openConnection();
         HttpURLConnection http = (HttpURLConnection) conn;
         http.setDoOutput(true);
+        debug("Set cookie " + cookie);
         if (cookie != null)
             http.setRequestProperty("Cookie", cookie);
         // Enable streaming mode with default settings
@@ -333,6 +383,12 @@ public class Submit {
                                "BlueJ project for each task.");
             return false;
         }
+        if (r.size() == 0) {
+            System.out.println("Error: No task file found.");
+            return false;
+        }
+        String fileName = r.iterator().next();
+        mainClass = fileName.replace(".java", "");
         return true;
     }
 
@@ -350,6 +406,9 @@ public class Submit {
 
             out.write(boundaryBytes);
             sendField(out, "langid", extension);
+
+            out.write(boundaryBytes);
+            sendField(out, "entry_point", mainClass);
 
             if (contest != null) {
                 out.write(boundaryBytes);
@@ -379,6 +438,10 @@ public class Submit {
             inputStream = http.getInputStream();
             if (http.getResponseCode() >= 300)
                 throw new RuntimeException("Unexpected failure response code");
+        } catch (ConnectException e) {
+            String msg = "Could not connect. Is your internet connection working?";
+            System.out.println(msg);
+            throw new RuntimeException(msg, e);
         } catch (IOException e) {
             inputStream = http.getErrorStream();
             if (inputStream == null)
@@ -404,6 +467,7 @@ public class Submit {
 
     private void sendFile(OutputStream out, String name, InputStream in, String filename) throws IOException {
         // XXX: This doesn't strip whitespace characters such as CR and LF.
+        debug("Submitting " + filename);
         String o = "Content-Disposition: form-data; name=\"" +
             name.replace("\\", "\\\\").replace("\"", "\\\"") +
             "\"; filename=\"" +
@@ -418,6 +482,7 @@ public class Submit {
 
     private void sendField(OutputStream out, String name, String field) throws IOException {
         // XXX: This doesn't strip whitespace characters such as CR and LF.
+        debug(name + "=" + field);
         String o = "Content-Disposition: form-data; name=\"" +
             name.replace("\\", "\\\\").replace("\"", "\\\"") +
             "\"\r\n\r\n";
