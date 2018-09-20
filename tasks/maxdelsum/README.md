@@ -32,7 +32,7 @@ inside BlueJ (right click and choose "Save link as").
   * Every subarray sum fits in a Java `int` without overflowing
 
 **Scoring:**
-This demo exercise **does not** count towards your grade in FADS 2017.
+This demo exercise **does not** count towards your grade in FADS.
 
   * 1 point for correct algorithm
   * 1 extra point for correct and fast algorithm

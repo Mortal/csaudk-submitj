@@ -1,5 +1,5 @@
-FADS 2017 tasks
-===============
+FADS tasks
+==========
 
 Tasks with IDs ending in `-2` give 1 point for correctness and 1 additional point for speed.
 Other tasks only give a point for correctness (but still with some modest speed requirement).
