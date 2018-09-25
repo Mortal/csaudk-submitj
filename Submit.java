@@ -1,4 +1,4 @@
-// Version: 2018092001
+// Version: 2018092501
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
@@ -61,11 +61,7 @@ public class Submit {
                                    "Run submit(taskID, username, password) instead.");
                 return;
             }
-            if (!s.getLoginCookie()) {
-                System.out.println("Wrong username or password. " +
-                                   "Please run submit(taskID, username, password) again.");
-                return;
-            }
+            s.ensureLoginCookie();
             int delimiter = task.indexOf(DELIMITER);
             if (delimiter == -1) {
                 s.task = task;
@@ -107,6 +103,11 @@ public class Submit {
         String submissionId;
         HttpURLConnection http = makePostSubmissionRequest();
         sendSubmissionForm(http);
+        if (getResponseCode(http) == 401) {
+            System.out.println("Wrong username or password. " +
+                               "Please run submit(taskID, username, password) again.");
+            return null;
+        }
         submissionId = readResponse(http);
         if (submissionId.startsWith("error: ")) {
             System.out.println(submissionId);
@@ -212,21 +213,23 @@ public class Submit {
         cookie = setCookie;
     }
 
-    private boolean getLoginCookie() throws IOException {
+    private void ensureLoginCookie() throws IOException {
         String postData = prepareLoginPostData(username, password);
         HttpURLConnection http = makePostLoginRequest();
-        InputStream inputStream;
         try {
             try(OutputStream out = http.getOutputStream()) {
                 try(PrintWriter print = new PrintWriter(out)) {
                     print.print(postData);
                 }
             }
-            if (http.getResponseCode() == 403)
-                return false;
-            inputStream = http.getInputStream();
+            // Force the HttpURLConnection to send the request:
+            http.getInputStream();
             if (http.getResponseCode() >= 400)
                 throw new RuntimeException("Unexpected failure response code");
+            // TODO: At this point the response code should be 302 (redirect).
+            // We could check whether we are redirected to /login (wrong password)
+            // or / (correct password) and report an error here,
+            // instead of waiting until doSubmit() with reporting the error.
         } catch (ConnectException e) {
             String msg = "Could not connect. Is your internet connection working?";
             System.out.println(msg);
@@ -235,8 +238,7 @@ public class Submit {
             throw new RuntimeException("Failed to login", e);
         }
         ensureCookie(http);
-        debug("Login successful");
-        return true;
+        debug("Obtained login cookie");
     }
 
     private String pollJudging(String submissionId, int timeout) throws IOException {
@@ -430,6 +432,22 @@ public class Submit {
             }
         }
         return r;
+    }
+
+    private int getResponseCode(HttpURLConnection http) throws IOException {
+        int responseCode;
+        try {
+            http.getInputStream();
+            responseCode = http.getResponseCode();
+            if (responseCode >= 300)
+                throw new RuntimeException("Unexpected failure response code");
+        } catch (IOException e) {
+            http.getErrorStream();
+            responseCode = http.getResponseCode();
+            if (http.getResponseCode() < 300)
+                throw new RuntimeException("Unexpected success response code");
+        }
+        return responseCode;
     }
 
     private String readResponse(HttpURLConnection http) throws IOException {
