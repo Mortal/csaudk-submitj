@@ -1,9 +1,9 @@
-FADS programming exercises
+ADS programming exercises
 ==========================
 
-Intended audience: Students of *Foundations of Algorithms and Data Structures* (FADS), Aarhus University.
+Intended audience: Students of *Algorithms and Data Structures* (ADS), Aarhus University.
 
-In FADS, you have to solve a number of programming tasks along the way.
+In ADS, you have to solve a number of programming tasks along the way.
 The programming tasks should be solved in Java using the [BlueJ](https://www.bluej.org/) programming environment.
 
 To solve a programming task, first find the task either in
@@ -14,10 +14,10 @@ Read the task description, and start solving the task!
 To upload your solution, you need three things:
 
   * Task ID (from the task description)
-  * Username (`fadsYY-daN-MM`, where `YY` is the current year, `N` is your class, and `MM` is your Blackboard group number)
+  * Username (`adsYY-daN-MM`, where `YY` is the current year, `N` is your class, and `MM` is your Blackboard group number)
   * Password (from your TA)
 
-If you have technical problems, contact Mathias Rav on the Blackboard discussion board.
+If you have technical problems, contact Casper Rysgaard on the Blackboard discussion board.
 See also the list of [common mistakes](#common-mistakes).
 
 Step-by-step guide
