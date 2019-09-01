@@ -334,7 +334,7 @@ public class Submit {
         final String compileError = "<span class=\"badge badge-danger\">";
         if (contents.indexOf(compileError) != -1)
             return "compiler-error";
-        //System.out.println(contents);
+        System.out.println(contents);
         throw new RuntimeException("Failed to parse submission_details.php output");
     }
 
