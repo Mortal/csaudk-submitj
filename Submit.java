@@ -1,4 +1,4 @@
-// Version: 2019090101
+// Version: 2019090102
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
@@ -102,6 +102,13 @@ public class Submit {
     public String doSubmit() throws IOException {
         int contestId = getContestId();
         int problemId = getProblemId(contestId);
+        if (problemId == -1) {
+            System.out.println("Could not find any task of name " + task + ".");
+            if (multiTask > 1) {
+                System.out.println("Maybe this problem only has " + (multiTask-1) + " parts.");
+            }
+            return null;
+        }
         String submissionId;
         HttpURLConnection http = makePostSubmissionRequest(contestId);
         sendSubmissionForm(http, problemId);
@@ -324,7 +331,10 @@ public class Submit {
         final String correct = "<span class=\"sol sol_correct\">";
         if (contents.indexOf(correct) != -1)
             return "correct";
-        System.out.println(contents);
+        final String compileError = "<span class=\"badge badge-danger\">";
+        if (contents.indexOf(compileError) != -1)
+            return "compiler-error";
+        //System.out.println(contents);
         throw new RuntimeException("Failed to parse submission_details.php output");
     }
 
