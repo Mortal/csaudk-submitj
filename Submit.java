@@ -1,4 +1,4 @@
-// Version: 2018092501
+// Version: 2019090101
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
@@ -100,9 +100,11 @@ public class Submit {
     }
 
     public String doSubmit() throws IOException {
+        int contestId = getContestId();
+        int problemId = getProblemId(contestId);
         String submissionId;
-        HttpURLConnection http = makePostSubmissionRequest();
-        sendSubmissionForm(http);
+        HttpURLConnection http = makePostSubmissionRequest(contestId);
+        sendSubmissionForm(http, problemId);
         if (getResponseCode(http) == 401) {
             System.out.println("Wrong username or password. " +
                                "Please run submit(taskID, username, password) again.");
@@ -120,10 +122,43 @@ public class Submit {
             return null;
         }
         System.out.println("Submitted to " +
-                           host + "/team/submission_details.php?id=" +
+                           host + "/team/submission/" +
                            submissionId);
         int timeout = 60;
         return pollJudging(submissionId, timeout);
+    }
+
+    private String getJsonNaive(String contents, String key, int startIndex) {
+        String needle = "\"" + key + "\": \"";
+        int i = contents.indexOf(needle, startIndex);
+        if (i == -1) return null;
+        int j = contents.indexOf("\"", i + needle.length());
+        return contents.substring(i + needle.length(), j);
+    }
+
+    private int getContestId() throws IOException {
+        URL url = new URL(host + "/api/v4/contests");
+        URLConnection conn = url.openConnection();
+        HttpURLConnection http = (HttpURLConnection) conn;
+        http.setDoOutput(true);
+        String contents = readResponse(http);
+        return Integer.parseInt(getJsonNaive(contents, "id", 0));
+    }
+
+    private int getProblemId(int contestId) throws IOException {
+        URL url = new URL(host + "/api/v4/contests/" + contestId + "/problems");
+        URLConnection conn = url.openConnection();
+        HttpURLConnection http = (HttpURLConnection) conn;
+        http.setDoOutput(true);
+        String contents = readResponse(http);
+        int i = contents.indexOf("{");
+        while (i != -1) {
+            String shortName = getJsonNaive(contents, "short_name", i);
+            if (task.equals(shortName))
+                return Integer.parseInt(getJsonNaive(contents, "id", i));
+            i = contents.indexOf("{", i+1);
+        }
+        return -1;
     }
 
     public boolean outputFeedback(String judging) {
@@ -320,11 +355,11 @@ public class Submit {
         return makeLoginRequest(true);
     }
 
-    private HttpURLConnection makePostSubmissionRequest() throws IOException {
-        URL url = new URL(host + "/api/submissions");
+    private HttpURLConnection makePostSubmissionRequest(int contestId) throws IOException {
+        URL url = new URL(host + "/api/v4/contests/" + contestId + "/submissions");
         URLConnection conn = url.openConnection();
         HttpURLConnection http = (HttpURLConnection) conn;
-        http.setRequestMethod("POST"); // PUT is another valid option
+        http.setRequestMethod("POST");
         http.setDoOutput(true);
         String authorization = username + ":" + password;
         String authEncoded = Base64.getEncoder().encodeToString(authorization.getBytes("UTF-8"));
@@ -338,7 +373,7 @@ public class Submit {
     }
 
     private HttpURLConnection makeGetSubmissionRequest(String submissionId) throws IOException {
-        URL url = new URL(host + "/team/submission_details.php?id=" + submissionId);
+        URL url = new URL(host + "/team/submission/" + submissionId);
         debug("Connect to " + url);
         URLConnection conn = url.openConnection();
         HttpURLConnection http = (HttpURLConnection) conn;
@@ -394,7 +429,7 @@ public class Submit {
         return true;
     }
 
-    private void sendSubmissionForm(HttpURLConnection http) throws IOException {
+    private void sendSubmissionForm(HttpURLConnection http, int problemId) throws IOException {
         try(OutputStream out = http.getOutputStream()) {
             for (String filename : getFilenames()) {
                 try(InputStream file = new FileInputStream(filename)) {
@@ -404,18 +439,13 @@ public class Submit {
             }
 
             out.write(boundaryBytes);
-            sendField(out, "shortname", task);
+            sendField(out, "problem", problemId + "");
 
             out.write(boundaryBytes);
-            sendField(out, "langid", extension);
+            sendField(out, "language", extension);
 
             out.write(boundaryBytes);
             sendField(out, "entry_point", mainClass);
-
-            if (contest != null) {
-                out.write(boundaryBytes);
-                sendField(out, "contest", contest);
-            }
 
             out.write(finishBoundaryBytes);
         }
