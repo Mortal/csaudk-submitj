@@ -1,4 +1,4 @@
-FADS tasks
+ADS tasks
 ==========
 
 Tasks with IDs ending in `-2` give 1 point for correctness and 1 additional point for speed.
