@@ -131,13 +131,14 @@ public class Inversions {
     }
 
     private static long timeTest(int n) {
-        long t1 = System.nanoTime();
         ArrayList<Integer> list = new ArrayList<Integer>(n);
         for (int i = 1; i <= n; i++) {
             list.add(i);
         }
         Random rnd = new Random(42);
         Collections.shuffle(list, rnd);
+        
+        long t1 = System.nanoTime();
         new Inversions().countInversions(list);
         long t2 = System.nanoTime();
         // For debugging, output the individual times:
