@@ -67,4 +67,4 @@ An algorithm that spends O(log N) time per operation
 is fast enough for the extra point.
 
 **Hint** for the fast solution: Use two priority queues
-OR use a balanced binary search tree.
+OR use a balanced binary search tree, which can be found <a href="https://github.com/Mortal/csaudk-submitj/tree/master/javalib">here</a>.
