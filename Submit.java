@@ -1,4 +1,4 @@
-// Version: 2019090102
+// Version: 2019102501
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
@@ -136,7 +136,7 @@ public class Submit {
     }
 
     private String getJsonNaive(String contents, String key, int startIndex) {
-        String needle = "\"" + key + "\": \"";
+        String needle = "\"" + key + "\":\"";
         int i = contents.indexOf(needle, startIndex);
         if (i == -1) return null;
         int j = contents.indexOf("\"", i + needle.length());
