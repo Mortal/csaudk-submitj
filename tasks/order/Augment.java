@@ -1,4 +1,13 @@
-// Version: 2017103101
+// Version: 20200917
+// Handin done by:
+//   <id 1> <name 1>
+//   <id 2> <name 2>
+//   <id 3> <name 3>
+// Contributions:
+//   <name 1> <contribution>
+//   <name 2> <contribution>
+//   <name 3> <contribution>
+
 public class Augment {
     int size;
     // If you need any additional fields, you can add them here
