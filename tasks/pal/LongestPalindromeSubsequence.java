@@ -1,4 +1,13 @@
-// Version: 2017113001
+// Version: 20200917
+// Handin done by:
+//   <id 1> <name 1>
+//   <id 2> <name 2>
+//   <id 3> <name 3>
+// Contributions:
+//   <name 1> <contribution>
+//   <name 2> <contribution>
+//   <name 3> <contribution>
+
 import java.io.*;
 import java.util.*;
 public class LongestPalindromeSubsequence {
