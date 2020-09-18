@@ -1,10 +1,15 @@
-// Version: 2019102501
+// Version: 20200918
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
 import java.util.*;
 
 public class Submit {
+    private static final boolean intellij = true;
+    public static void main(String[] args) {
+        submit("<id>", "<username>", "<password>");
+    }
+
     private static void debug(String m) { /*System.out.println(m);*/ }
     private static final String host = "https://domjudge.cs.au.dk";
     private static final String data_filename = "submit_data.txt";
@@ -47,7 +52,7 @@ public class Submit {
             Submit s = new Submit();
             String task;
             System.out.println(
-                "============================================================");
+                    "============================================================");
             if (!s.validateFilenames()) return;
             try {
                 try(Reader file = new FileReader(data_filename)) {
@@ -58,7 +63,7 @@ public class Submit {
                 }
             } catch (FileNotFoundException e) {
                 System.out.println("No password saved. " +
-                                   "Run submit(taskID, username, password) instead.");
+                        "Run submit(taskID, username, password) instead.");
                 return;
             }
             s.ensureLoginCookie();
@@ -94,9 +99,9 @@ public class Submit {
     public Submit() throws IOException {
         boundary = UUID.randomUUID().toString();
         boundaryBytes =
-            ("--" + boundary + "\r\n").getBytes("UTF-8");
+                ("--" + boundary + "\r\n").getBytes("UTF-8");
         finishBoundaryBytes =
-            ("--" + boundary + "--").getBytes("UTF-8");
+                ("--" + boundary + "--").getBytes("UTF-8");
     }
 
     public String doSubmit() throws IOException {
@@ -114,23 +119,23 @@ public class Submit {
         sendSubmissionForm(http, problemId);
         if (getResponseCode(http) == 401) {
             System.out.println("Wrong username or password. " +
-                               "Please run submit(taskID, username, password) again.");
+                    "Please run submit(taskID, username, password) again.");
             return null;
         }
         submissionId = readResponse(http);
         if (submissionId.startsWith("error: ")) {
             System.out.println(submissionId);
             System.out.println(
-                "Check your Task ID and call " +
-                "submit(taskID, username, password) again.");
+                    "Check your Task ID and call " +
+                            "submit(taskID, username, password) again.");
             if (multiTask > 1) {
                 System.out.println("Maybe this problem only has " + (multiTask-1) + " parts.");
             }
             return null;
         }
         System.out.println("Submitted to " +
-                           host + "/team/submission/" +
-                           submissionId);
+                host + "/team/submission/" +
+                submissionId);
         int timeout = 60;
         return pollJudging(submissionId, timeout);
     }
@@ -191,30 +196,30 @@ public class Submit {
         if (judging.equals("timelimit")) {
             if (multiTask > 1) {
                 System.out.println("Your solution is correct, " +
-                                   "but you do not get extra points for speed.");
+                        "but you do not get extra points for speed.");
             } else {
                 System.out.println("Sorry, but your solution is not efficient enough " +
-                                   "(time limit exceeded).");
+                        "(time limit exceeded).");
             }
         } else if (judging.equals("timeout")) {
             System.out.println(
-                "Judging is taking too long. What's going on?");
+                    "Judging is taking too long. What's going on?");
         } else if (judging.equals("compiler-error")) {
             System.out.println(
-                "Sorry, but the judge could not compile your solution!");
+                    "Sorry, but the judge could not compile your solution!");
         } else if (judging.equals("wrong-answer")) {
             System.out.println(
-                "Sorry, but your solution gives the wrong answer on one or more of the " +
-                "hidden test cases.");
+                    "Sorry, but your solution gives the wrong answer on one or more of the " +
+                            "hidden test cases.");
             System.out.println(
-                "If you have used System.out.println() in your solution, then you must " +
-                "remove these lines before submitting to the judge!");
+                    "If you have used System.out.println() in your solution, then you must " +
+                            "remove these lines before submitting to the judge!");
             System.out.println(
-                "If not, you need to find and fix the errors in your solution, " +
-                "and try submitting again.");
+                    "If not, you need to find and fix the errors in your solution, " +
+                            "and try submitting again.");
         } else {
             System.out.println(
-                "Sorry, but something is wrong with your solution (" + judging + ")");
+                    "Sorry, but something is wrong with your solution (" + judging + ")");
         }
         return false;
     }
@@ -236,8 +241,8 @@ public class Submit {
         String csrfToken = getLoginCsrfToken(response);
         debug("CSRF: " + csrfToken);
         return "_csrf_token=" + csrfToken +
-            "&_username=" + username +
-            "&_password=" + password;
+                "&_username=" + username +
+                "&_password=" + password;
     }
 
     private void ensureCookie(HttpURLConnection http) throws IOException {
@@ -425,9 +430,9 @@ public class Submit {
         }
         if (r.size() > 1) {
             System.out.println("Error: Multiple task files found (" +
-                               join(", ", r) + ").");
+                    join(", ", r) + ").");
             System.out.println("       You need to make a new " +
-                               "BlueJ project for each task.");
+                    "BlueJ project for each task.");
             return false;
         }
         if (r.size() == 0) {
@@ -435,7 +440,7 @@ public class Submit {
             return false;
         }
         String fileName = r.iterator().next();
-        mainClass = fileName.replace(".java", "");
+        mainClass = fileName.replace(".java", "").replace("src/", "");
         return true;
     }
 
@@ -463,12 +468,14 @@ public class Submit {
 
     private List<String> getFilenames() {
         List<String> r = new ArrayList<String>();
-        for (final File fileEntry : new File(".").listFiles()) {
+        String dir = intellij ? "./src/" : ".";
+        String end = intellij ? "src/" : "";
+        for (final File fileEntry : new File(dir).listFiles()) {
             String n = fileEntry.getName();
-            if (n.startsWith("_") || n.startsWith(".")) {
+            if (n.startsWith("_") || n.startsWith(".") || n.equals("Submit.java")) {
                 continue;
             } else if (n.endsWith(".java")) {
-                r.add(n);
+                r.add(end + n);
             }
         }
         return r;
@@ -519,18 +526,20 @@ public class Submit {
             return result;
         if (http.getResponseCode() >= 300)
             throw new RuntimeException(
-                "HTTP " + http.getResponseCode() + ": " + result);
+                    "HTTP " + http.getResponseCode() + ": " + result);
         return result;
     }
 
     private void sendFile(OutputStream out, String name, InputStream in, String filename) throws IOException {
         // XXX: This doesn't strip whitespace characters such as CR and LF.
         debug("Submitting " + filename);
+        String[] split = filename.split("/");
+        filename = split[split.length - 1];
         String o = "Content-Disposition: form-data; name=\"" +
-            name.replace("\\", "\\\\").replace("\"", "\\\"") +
-            "\"; filename=\"" +
-            filename.replace("\\", "\\\\").replace("\"", "\\\"") +
-            "\"\r\n\r\n";
+                name.replace("\\", "\\\\").replace("\"", "\\\"") +
+                "\"; filename=\"" +
+                filename.replace("\\", "\\\\").replace("\"", "\\\"") +
+                "\"\r\n\r\n";
         out.write(o.getBytes("UTF-8"));
         byte[] buffer = new byte[2048];
         for (int n = 0; n >= 0; n = in.read(buffer))
@@ -542,8 +551,8 @@ public class Submit {
         // XXX: This doesn't strip whitespace characters such as CR and LF.
         debug(name + "=" + field);
         String o = "Content-Disposition: form-data; name=\"" +
-            name.replace("\\", "\\\\").replace("\"", "\\\"") +
-            "\"\r\n\r\n";
+                name.replace("\\", "\\\\").replace("\"", "\\\"") +
+                "\"\r\n\r\n";
         out.write(o.getBytes("UTF-8"));
         out.write(URLEncoder.encode(field, "UTF-8").getBytes("UTF-8"));
         out.write("\r\n".getBytes("UTF-8"));
