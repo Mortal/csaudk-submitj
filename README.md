@@ -4,7 +4,7 @@ ADS programming exercises
 Intended audience: Students of *Algorithms and Data Structures* (ADS), Aarhus University.
 
 In ADS, you have to solve a number of programming tasks along the way.
-The programming tasks should be solved in Java using the [BlueJ](https://www.bluej.org/) programming environment.
+The programming tasks should be solved in Java using the [BlueJ](https://www.bluej.org/) or [IntelliJ](https://www.jetbrains.com/idea/) programming environment.
 
 To solve a programming task, first find the task either in
 [Blackboard](https://blackboard.au.dk/webapps/blackboard/execute/launcher?type=Course&id=_66529_1)
@@ -20,7 +20,7 @@ To upload your solution, you need three things:
 If you have technical problems, contact Casper Rysgaard on the Blackboard discussion board.
 See also the list of [common mistakes](#common-mistakes).
 
-Step-by-step guide
+Step-by-step guide for BlueJ
 ------------------
 
 1. Open BlueJ
@@ -97,6 +97,16 @@ Step-by-step guide
    Remember to switch to the console window of BlueJ if it doesn't appear automatically.
 
    ![Submit success](screenshots/018-submit-success.png)
+
+Step-by-step guide for IntellJ
+------------------
+1. Create a new java project normally.
+1. Add the needed files from the specific task to the src folder, along with the Submit.java file.
+1. Open the Submit.java file, and chance the boolean flag 'intellij' at the top to 'true'.
+1. To test the implementation, open the Submit.java file. In the main mathod at the top, add calls
+   to the static test methods in the provided files for the task, and run the code.
+1. To submit the code, uncomment the line with the submit call in the main method, add the needed credentials, and run the code.
+
 
 Common mistakes
 ---------------
