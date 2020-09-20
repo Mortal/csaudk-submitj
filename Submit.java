@@ -5,9 +5,16 @@ import java.nio.charset.*;
 import java.util.*;
 
 public class Submit {
-    private static final boolean intellij = true;
+    private static final boolean intellij = false;
     public static void main(String[] args) {
-        submit("<id>", "<username>", "<password>");
+        // ONLY USED FOR THE INTELLIJ ENVIROMENT
+        // For BlueJ, ignore these comments
+        
+        // Add call to the test method here, to test the implementation
+        
+        // Uncomment the following line, and add the needed task id, username and password
+        // to submit the code to the server
+        // submit("<id>", "<username>", "<password>");
     }
 
     private static void debug(String m) { /*System.out.println(m);*/ }
