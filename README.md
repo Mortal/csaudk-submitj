@@ -98,12 +98,12 @@ Step-by-step guide for BlueJ
 
    ![Submit success](screenshots/018-submit-success.png)
 
-Step-by-step guide for IntellJ
+Step-by-step guide for IntelliJ
 ------------------
 1. Create a new java project normally.
 1. Add the needed files from the specific task to the src folder, along with the Submit.java file.
 1. Open the Submit.java file, and chance the boolean flag 'intellij' at the top to 'true'.
-1. To test the implementation, open the Submit.java file. In the main mathod at the top, add calls
+1. To test the implementation, open the Submit.java file. In the main method at the top, add calls
    to the static test methods in the provided files for the task, and run the code.
 1. To submit the code, uncomment the line with the submit call in the main method, add the needed credentials, and run the code.
 
