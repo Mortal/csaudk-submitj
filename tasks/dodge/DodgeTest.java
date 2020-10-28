@@ -111,8 +111,8 @@ public class DodgeTest {
     }
 
     public static void test5() {
-        int[] input = { -50000000, 1};
-        int[] correctAnswers = { 49999999 };
+        int[] input = { -5000000, 1};
+        int[] correctAnswers = { 4999999 };
 
         Dodgeball d = new Dodgeball();
         int j = 0;
