@@ -20,6 +20,7 @@ public class MedianTest {
         test12();
         test13();
         test14();
+        test15();
     }
 
     public static void testSingle() {
@@ -313,6 +314,28 @@ public class MedianTest {
             }
         }
         outputPass("test14");
+    }
+    
+    public static void test15() {
+        int[] input = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+        int[] correctAnswers = { 10, 10, 9, 9, 8, 8, 7, 7, 6, 6 };
+
+        Median m = new Median();
+        for (int i = 0; i < input.length; i++) {
+            m.add(input[i]);
+
+            int output = m.median();
+            int correctAnswer = correctAnswers[i];
+
+            if (output != correctAnswer) {
+                outputFail("test15",
+                           "After inserting " + (i+1) + " element(s): " +
+                           "Expected output " + correctAnswer +
+                           " but got " + output);
+                return;
+            }
+        }
+        outputPass("test15");
     }
 
     private static long timeTest(int n) {
