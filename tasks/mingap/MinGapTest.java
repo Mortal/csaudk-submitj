@@ -374,13 +374,13 @@ public class MinGapTest {
     
     public static void testAugment12() {
         Augment a;
-        int k0 = 0;
-        int k1 = 1;
+        int k0 = 1;
+        int k1 = 2;
         int k2 = 10;
         int k3 = 15;
         int k4 = 17;
 
-        int minGap = 1 - 0;
+        int minGap = 2 - 1;
         try {
             a = Augment.combine(
                     Augment.leaf(),
