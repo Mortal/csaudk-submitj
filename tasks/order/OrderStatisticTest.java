@@ -221,7 +221,7 @@ public class OrderStatisticTest {
 
         if (res.key != 3)
             outputFail("testSelect8",
-                       "Expected key 2, got " + res.key);
+                       "Expected key 3, got " + res.key);
         else
             outputPass("testSelect8");
     }
