@@ -17,6 +17,7 @@ public class MinGapTest {
         testAugment10();
         testAugment11();
         testAugment12();
+        testAugment13();
         test1();
     }
 
@@ -413,6 +414,37 @@ public class MinGapTest {
                        "Expected min gap " + minGap + ", got " + a.minGap);
         else
             outputPass("testAugment12");
+    }
+    
+    public static void testAugment13() {
+        Augment a;
+        int k0 = 1;
+        int k1 = 2;
+        int k2 = 10;
+        int k3 = 12;
+        int k4 = 15;
+        int k5 = 17;
+
+        int minGap = 2 - 1;
+        try {
+            Augment a2 = Augment.combine(Augment.leaf(), Augment.leaf(), k2);
+            Augment a12 = Augment.combine(Augment.leaf(), Augment.leaf(), k3);
+            Augment a10 = Augment.combine(a2, a12, k2);
+            Augment a17 = Augment.combine(Augment.leaf(), Augment.leaf(), k5);
+            Augment a15 = Augment.combine(a10, a17, k4);
+            Augment a1 = Augment.combine(Augment.leaf(), a15, k0);
+            a = a1;
+        } catch (Exception e) {
+            outputFail("testAugment13", "Exception: " + e);
+            e.printStackTrace();
+            return;
+        }
+
+        if (a.minGap != minGap)
+            outputFail("testAugment13",
+                       "Expected min gap " + minGap + ", got " + a.minGap);
+        else
+            outputPass("testAugment13");
     }
 
     public static void test1() {
