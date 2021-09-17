@@ -7,17 +7,17 @@ In ADS, you have to solve a number of programming tasks along the way.
 The programming tasks should be solved in Java using the [BlueJ](https://www.bluej.org/) or [IntelliJ](https://www.jetbrains.com/idea/) programming environment.
 
 To solve a programming task, first find the task either in
-[Blackboard](https://blackboard.au.dk/webapps/blackboard/execute/launcher?type=Course&id=_66529_1)
+[Brightspace](https://brightspace.au.dk/d2l/le/lessons/27874/topics/322069)
 or in the [tasks list](tasks/README.md) of this repository.
 Read the task description, and start solving the task!
 
 To upload your solution, you need three things:
 
   * Task ID (from the task description)
-  * Username (`adsYY-daN-MM`, where `YY` is the current year, `N` is your class, and `MM` is your Blackboard group number)
-  * Password (from your TA)
+  * Username (`adsYY-djXXXX`, where `YY` is the current year and `XXXX` is your programming group number, found on Brightspace grade)
+  * Password (from Brightspace grade)
 
-If you have technical problems, contact Casper Rysgaard on the Blackboard discussion board.
+If you have technical problems, contact Casper Rysgaard on the Brightspace discussion board.
 See also the list of [common mistakes](#common-mistakes).
 
 Step-by-step guide for BlueJ
@@ -43,7 +43,7 @@ Step-by-step guide for BlueJ
 
    ![Select Java files](screenshots/005-select-java-files.png)
 
-1. Click "Compile" to ensure that the code you're given can compile. If it doesn't compile, write to Mathias Rav on the Blackboard discussion board.
+1. Click "Compile" to ensure that the code you're given can compile. If it doesn't compile, write to Casper Rysgaard on the Brightspace discussion board.
 
    ![Click compile](screenshots/006-click-compile.png)
 
@@ -119,4 +119,4 @@ Common mistakes
   Remember to comment out any System.out-lines in your own code before calling submit()!
 
 If you believe there are other common mistakes that should be mentioned in this list,
-let us know on the Blackboard discussion board.
+let us know on the Brightpsace discussion board.
