@@ -427,7 +427,7 @@ public class MinGapTest {
 
         int minGap = 2 - 1;
         try {
-            Augment a2 = Augment.combine(Augment.leaf(), Augment.leaf(), k2);
+            Augment a2 = Augment.combine(Augment.leaf(), Augment.leaf(), k1);
             Augment a12 = Augment.combine(Augment.leaf(), Augment.leaf(), k3);
             Augment a10 = Augment.combine(a2, a12, k2);
             Augment a17 = Augment.combine(Augment.leaf(), Augment.leaf(), k5);
