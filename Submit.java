@@ -1,7 +1,6 @@
-// Version: 20200918
+// Version: 20220920
 import java.io.*;
 import java.net.*;
-import java.nio.charset.*;
 import java.util.*;
 
 public class Submit {
@@ -14,7 +13,7 @@ public class Submit {
         
         // Uncomment the following line, and add the needed task id, username and password
         // to submit the code to the server
-        // submit("<id>", "<username>", "<password>");
+		// submit("<id>", "<username>", "<password>");
     }
 
     private static void debug(String m) { /*System.out.println(m);*/ }
@@ -121,7 +120,7 @@ public class Submit {
             }
             return null;
         }
-        String submissionId;
+        String submissionResult;
         HttpURLConnection http = makePostSubmissionRequest(contestId);
         sendSubmissionForm(http, problemId);
         if (getResponseCode(http) == 401) {
@@ -129,9 +128,9 @@ public class Submit {
                     "Please run submit(taskID, username, password) again.");
             return null;
         }
-        submissionId = readResponse(http);
-        if (submissionId.startsWith("error: ")) {
-            System.out.println(submissionId);
+        submissionResult = readResponse(http);
+        if (submissionResult.startsWith("error: ")) {
+            System.out.println(submissionResult);
             System.out.println(
                     "Check your Task ID and call " +
                             "submit(taskID, username, password) again.");
@@ -140,6 +139,7 @@ public class Submit {
             }
             return null;
         }
+        String submissionId = getJsonNaive(submissionResult, "id", 0);
         System.out.println("Submitted to " +
                 host + "/team/submission/" +
                 submissionId);
@@ -324,10 +324,10 @@ public class Submit {
         HttpURLConnection http = makeGetSubmissionRequest(submissionId);
         String contents = readResponse(http);
         final String notFound = "Submission not found for this team or not judged yet.";
-        if (contents.indexOf(notFound) != -1)
+        if (contents.contains(notFound))
             return null;  // Try again
         final String pending = "<span class=\"sol sol_queued\">";
-        if (contents.indexOf(pending) != -1)
+        if (contents.contains(pending))
             return null;  // Try again
         // <p>Result: <span class="sol sol_incorrect">wrong-answer</span></p>
         final String incorrect = "<span class=\"sol sol_incorrect\">";
@@ -341,10 +341,10 @@ public class Submit {
             return code;
         }
         final String correct = "<span class=\"sol sol_correct\">";
-        if (contents.indexOf(correct) != -1)
+        if (contents.contains(correct))
             return "correct";
         final String compileError = "<span class=\"badge badge-danger\">";
-        if (contents.indexOf(compileError) != -1)
+        if (contents.contains(compileError))
             return "compiler-error";
         System.out.println(contents);
         throw new RuntimeException("Failed to parse submission_details.php output");
@@ -430,7 +430,7 @@ public class Submit {
                     // Note, we must break the following string into two pieces
                     // to avoid Submit.java detecting itself as a task file.
                     String needle = "public static void " + "main(String[]";
-                    if (line.indexOf(needle) != -1)
+                    if (line.contains(needle))
                         r.add(fileName);
                 }
             }
@@ -481,7 +481,8 @@ public class Submit {
             String n = fileEntry.getName();
             if (n.startsWith("_") || n.startsWith(".") || n.equals("Submit.java")) {
                 continue;
-            } else if (n.endsWith(".java")) {
+            }
+            if (n.endsWith(".java")) {
                 r.add(end + n);
             }
         }
