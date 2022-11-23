@@ -33,7 +33,7 @@ When *k* = 19 the shortest path sABCABCABCABCABCABCt has weight −11.
 
 ![Example graph](ex2.png)
 
-**Example 3:** (CLRS Fig. 24.4)
+**Example 3:** (CLRS4 Fig. 22.4)
 In the following example, when *k* = 1 or 2, the shortest path st has weight 6;
 when *k* ≥ 3 the shortest path sBAt has weight 2.
 

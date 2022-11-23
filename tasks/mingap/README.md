@@ -7,7 +7,7 @@ In this exercise you should augment a red-black search tree
 so that it can report the *minimum gap*,
 which is the smallest difference between two numbers in the tree.
 
-Further reading: CLRS Exercise 14.3-6.
+Further reading: CLRS4 Exercise 17.3-5.
 
 For instance, if the red-black search tree contains these ten elements
 ```

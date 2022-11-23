@@ -3,7 +3,7 @@ Longest palindrome subsequence
 
 **Task ID: `"pal"`**
 
-See also: CLRS Problem 15-2.
+See also: CLRS4 Problem 14-2.
 
 A string is a palindrome if the string is equal to its reversal.
 

@@ -6,7 +6,7 @@ Order-statistic tree
 In this exercise you should augment a red-black search tree
 to become an order-statistic tree.
 
-Further reading: CLRS Section 14.1.
+Further reading: CLRS4 Section 17.1.
 
 You are given a class named *RedBlackTree*
 with working implementations of the following fields and methods:
@@ -51,7 +51,7 @@ so each node additionally has the following fields and methods:
 * `RedBlackTree.rank(Node x)` - this method should return the rank of `x`,
   that is, the position of `x` in an in-order traversal of the tree.
 
-If you are unsure of how to solve the exercise, then you should read CLRS Section 14.1.
+If you are unsure of how to solve the exercise, then you should read CLRS4 Section 17.1.
 
 **Concretely,** you should use the skeleton files
 

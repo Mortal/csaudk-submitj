@@ -11,7 +11,7 @@ Here is a list of some data structures that might be useful to you
 when solving the ADS coding exercises. Click on the individual class
 to see how to use it.
 
-| Name in CLRS | Corresponding Java class |
+| Name in CLRS4 | Corresponding Java class |
 | --- | --- |
 | Balanced binary search tree | [TreeSet](TreeSet.md) |
 | Max-heap | [PriorityQueue](PriorityQueue.md) with custom [comparator](maxheap.md) |

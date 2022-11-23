@@ -49,5 +49,5 @@ Hint for the fast solution
 --------------------------
 
 Consider how merge sort works.
-You can start by solving Problem 2-4 "Inversions" in [CLRS].
+You can start by solving Problem 2-4 "Inversions" in [CLRS4].
 That should help you write the pseudocode of a fast algorithm for counting inversions.

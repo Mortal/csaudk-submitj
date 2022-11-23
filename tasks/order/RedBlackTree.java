@@ -11,7 +11,7 @@ public class RedBlackTree {
      * The node with smallest key has rank 0, and the node with largest key
      * has rank N-1, where N is the number of nodes in x's subtree.
      *
-     * Note that we use a different convention than the CLRS book,
+     * Note that we use a different convention than the CLRS4 book,
      * in which 1 is the smallest rank and N is the largest rank.
      */
     private Node select(Node x, int rank) {
@@ -29,7 +29,7 @@ public class RedBlackTree {
      * The node with smallest key has rank 0, and the node with largest key
      * has rank N-1, where N is the number of nodes in the tree.
      *
-     * Note that we use a different convention than the CLRS book,
+     * Note that we use a different convention than the CLRS4 book,
      * in which 1 is the smallest rank and N is the largest rank.
      */
     public int rank(Node x) {
