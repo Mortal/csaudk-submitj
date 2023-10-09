@@ -64,4 +64,5 @@ and you are allowed to add your own private fields to the class.
 An algorithm that spends O(log N) time on `addPlayer()` and `throwBall()`
 is fast enough for the extra point.
 
-**Hint** for the fast solution: Use a balanced binary search tree.
+**Hint** for the fast solution: Use a balanced binary search tree. See <a href="https://github.com/Mortal/csaudk-submitj/blob/master/javalib/TreeSet.md">
+`TreeSet`</a> for how to use a balanced binary search tree in java.
