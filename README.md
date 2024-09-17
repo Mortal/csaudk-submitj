@@ -7,8 +7,7 @@ In ADS, you have to solve a number of programming tasks along the way.
 The programming tasks should be solved in Java using the [BlueJ](https://www.bluej.org/) or [IntelliJ](https://www.jetbrains.com/idea/) programming environment.
 
 To solve a programming task, first find the task either in
-[Brightspace](https://brightspace.au.dk/d2l/le/lessons/70167/topics/981148)
-or in the [tasks list](tasks/README.md) of this repository.
+Brightspace or in the [tasks list](tasks/README.md) of this repository.
 Read the task description, and start solving the task!
 
 To upload your solution, you need three things:
