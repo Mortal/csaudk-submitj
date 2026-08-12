@@ -1,7 +1,7 @@
 Submit client written in Java
 =============================
 
-This Java class enables students working in [BlueJ](https://www.bluej.org)
+This Java class enables students working in [IntelliJ](https://www.jetbrains.com/idea/)
 to submit solutions to [DOMjudge](https://www.domjudge.org).
 
 See also the [Dockerized DOMjudge setup](https://github.com/Mortal/csaudk-domserver).

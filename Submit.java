@@ -4,16 +4,12 @@ import java.net.*;
 import java.util.*;
 
 public class Submit {
-    private static final boolean intellij = false;
     public static void main(String[] args) {
-        // ONLY USED FOR THE INTELLIJ ENVIROMENT
-        // For BlueJ, ignore these comments
-        
         // Add call to the test method here, to test the implementation
         
         // Uncomment the following line, and add the needed task id, username and password
         // to submit the code to the server
-		// submit("<id>", "<username>", "<password>");
+        // submit("<id>", "<username>", "<password>");
     }
 
     private static void debug(String m) { /*System.out.println(m);*/ }
@@ -439,7 +435,7 @@ public class Submit {
             System.out.println("Error: Multiple task files found (" +
                     join(", ", r) + ").");
             System.out.println("       You need to make a new " +
-                    "BlueJ project for each task.");
+                    "IntelliJ project for each task.");
             return false;
         }
         if (r.size() == 0) {
@@ -475,8 +471,8 @@ public class Submit {
 
     private List<String> getFilenames() {
         List<String> r = new ArrayList<String>();
-        String dir = intellij ? "./src/" : ".";
-        String end = intellij ? "src/" : "";
+        String dir = "./src/";
+        String end = "src/";
         for (final File fileEntry : new File(dir).listFiles()) {
             String n = fileEntry.getName();
             if (n.startsWith("_") || n.startsWith(".") || n.equals("Submit.java")) {
