@@ -46,7 +46,7 @@ the test file
 and the
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/Submit.java">
 `Submit` program</a>
-inside BlueJ (right click and choose "Save link as").
+inside IntelliJ (right click and choose "Save link as").
 You must implement the methods `addPlayer` and `throwBall` in `Dodgeball`,
 and you are allowed to add your own private fields to the class.
 

@@ -57,7 +57,7 @@ and
 and the
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/Submit.java">
 `Submit` program</a>
-inside BlueJ (right click and choose "Save link as").
+inside IntelliJ (right click and choose "Save link as").
 
 **Input constraints:**
 

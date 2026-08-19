@@ -48,7 +48,7 @@ The following array is NOT properly matched since the round parenthesis intersec
 and the
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/Submit.java">
 `Submit` program</a>
-inside BlueJ (right click and choose "Save link as").
+inside IntelliJ (right click and choose "Save link as").
 You must implement the method `checkParentheses` in `Dyck`
 which takes an `ArrayList<Character> input` and returns a `boolean`.
 
