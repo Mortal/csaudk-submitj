@@ -11,9 +11,9 @@
 import java.io.*;
 import java.util.*;
 public class Closest {
-    public int computeClosest(ArrayList<Integer> input) {
+    public int computeClosest(int[] input) {
         // Implement your code here to return the shortest distance between two numbers!
-        return Math.abs(input.get(1) - input.get(0));
+        return Math.abs(input[0] - input[1]);
     }
 
     public static void testAll() {
@@ -29,10 +29,7 @@ public class Closest {
         int[] input = { 3, 5 };
         int correctAnswer = 2;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Closest().computeClosest(list);
+        int output = new Closest().computeClosest(input);
 
         if (output != correctAnswer)
             outputFail("testSinglePair",
@@ -46,10 +43,7 @@ public class Closest {
         int[] input = { 7, 4 };
         int correctAnswer = 3;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Closest().computeClosest(list);
+        int output = new Closest().computeClosest(input);
 
         if (output != correctAnswer)
             outputFail("testSinglePairInv",
@@ -63,10 +57,7 @@ public class Closest {
         int[] input = { 95, 66, 82, 63, 78, 37, 100, 96, 98, 17, 13, 7, 28, 74, 73, 77, 41, 25, 53, 93 };
         int correctAnswer = 96 - 95;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Closest().computeClosest(list);
+        int output = new Closest().computeClosest(input);
 
         if (output != correctAnswer)
             outputFail("test1",
@@ -80,10 +71,7 @@ public class Closest {
         int[] input = { 275, 938, 8, 77, 649, 803, 500, 823, 519, 711, 422, 227, 235, 655, 373 };
         int correctAnswer = 655 - 649;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Closest().computeClosest(list);
+        int output = new Closest().computeClosest(input);
 
         if (output != correctAnswer)
             outputFail("test2",
@@ -122,10 +110,10 @@ public class Closest {
 
     private static long timeTest(int n) {
         long t1 = System.nanoTime();
-        ArrayList<Integer> list = new ArrayList<Integer>(n);
+	int[] input = new int[n];
         for (int i = 0; i < n; ++i)
-            list.add((int) (i * 982451653L % 413158511L));
-        new Closest().computeClosest(list);
+            input[i] = (int) (i * 982451653L % 413158511L);
+        new Closest().computeClosest(input);
         long t2 = System.nanoTime();
         // For debugging, output the individual times:
         // System.out.println(n + " " + (t2 - t1));
@@ -149,9 +137,9 @@ public class Closest {
         int testcases = sc.nextInt();
         for (int t = 0; t < testcases; ++t) {
             int n = sc.nextInt();
-            ArrayList<Integer> list = new ArrayList<Integer>();
-            for (int i = 0; i < n; ++i) list.add(sc.nextInt());
-            System.out.println(new Closest().computeClosest(list));
+	    int[] input = new int[n];
+            for (int i = 0; i < n; ++i) input[i] = sc.nextInt();
+            System.out.println(new Closest().computeClosest(input));
         }
     }
 }

@@ -11,7 +11,7 @@
 import java.io.*;
 import java.util.*;
 public class Dyck {
-    public boolean checkParentheses(ArrayList<Character> input) {
+    public boolean checkParentheses(char[] input) {
         // Implement your code here to check if the parentheses are properly matched!
         return true;
     }
@@ -50,10 +50,7 @@ public class Dyck {
         char[] input = { '(', '(', ')', '(', ')', ')', '[', ']' };
         boolean correctAnswer = true;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test1",
@@ -67,10 +64,7 @@ public class Dyck {
         char[] input = { '[', '(', '(', '(', ')', ')', '[', ']', ')', ']' };
         boolean correctAnswer = true;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test2",
@@ -84,10 +78,7 @@ public class Dyck {
         char[] input = { '[', '[', ']', ']', '(', ')' };
         boolean correctAnswer = true;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test3",
@@ -101,10 +92,7 @@ public class Dyck {
         char[] input = { '[', '[', ']', '[', '[', ']', ']', ']' };
         boolean correctAnswer = true;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test4",
@@ -118,10 +106,7 @@ public class Dyck {
         char[] input = { '(', ')', '[', '(', '[', ']', ')', ']', '[', ']' };
         boolean correctAnswer = true;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test5",
@@ -135,10 +120,7 @@ public class Dyck {
         char[] input = { '(', '[', ']', '(' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test6",
@@ -152,10 +134,7 @@ public class Dyck {
         char[] input = { '(', ']', '[', ')' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test7",
@@ -169,10 +148,7 @@ public class Dyck {
         char[] input = { '(', '[', ']', ']' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test8",
@@ -186,10 +162,7 @@ public class Dyck {
         char[] input = { '(', '[', ')', ']' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test9",
@@ -203,10 +176,7 @@ public class Dyck {
         char[] input = { '[', '(', '[', ']', '(', ']', '[', ']', '[', ']' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test10",
@@ -220,10 +190,7 @@ public class Dyck {
         char[] input = { '[', '(', '(', '(', ')', ')', '[', ']', ')', ']' };
         boolean correctAnswer = true;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test11",
@@ -237,10 +204,7 @@ public class Dyck {
         char[] input = { '(', ')', '[', ']', '[', ')', '[', '(', ']', ']' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test12",
@@ -254,10 +218,7 @@ public class Dyck {
         char[] input = { '(', ')', '[', '[', '[', '(', ')', ']', ']', ')' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test13",
@@ -271,11 +232,8 @@ public class Dyck {
         char[] input = { ')', '(' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
         try {
-            boolean output = new Dyck().checkParentheses(list);
+            boolean output = new Dyck().checkParentheses(input);
 
             if (output != correctAnswer)
                 outputFail("test14",
@@ -293,10 +251,7 @@ public class Dyck {
         char[] input = { '(', '[' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test15",
@@ -310,11 +265,8 @@ public class Dyck {
         char[] input = { ']', '[' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
         try {
-            boolean output = new Dyck().checkParentheses(list);
+            boolean output = new Dyck().checkParentheses(input);
 
             if (output != correctAnswer)
                 outputFail("test16",
@@ -332,10 +284,7 @@ public class Dyck {
         char[] input = { '(', '[', '(', ')', ')', '[', ']', ']' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
-        boolean output = new Dyck().checkParentheses(list);
+        boolean output = new Dyck().checkParentheses(input);
 
         if (output != correctAnswer)
             outputFail("test17",
@@ -349,11 +298,8 @@ public class Dyck {
         char[] input = { '[', ')', ')', ']' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
         try {
-            boolean output = new Dyck().checkParentheses(list);
+            boolean output = new Dyck().checkParentheses(input);
 
             if (output != correctAnswer)
                 outputFail("test18",
@@ -371,11 +317,8 @@ public class Dyck {
         char[] input = { ')', ')' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
         try {
-            boolean output = new Dyck().checkParentheses(list);
+            boolean output = new Dyck().checkParentheses(input);
 
             if (output != correctAnswer)
                 outputFail("test19",
@@ -394,11 +337,8 @@ public class Dyck {
         char[] input = { ']', ']' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
         try {
-            boolean output = new Dyck().checkParentheses(list);
+            boolean output = new Dyck().checkParentheses(input);
 
             if (output != correctAnswer)
                 outputFail("test20",
@@ -416,11 +356,8 @@ public class Dyck {
         char[] input = { '(', ')', ']', '[', '(', ')' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
         try {
-            boolean output = new Dyck().checkParentheses(list);
+            boolean output = new Dyck().checkParentheses(input);
 
             if (output != correctAnswer)
                 outputFail("test21",
@@ -438,11 +375,8 @@ public class Dyck {
         char[] input = { '(', ')', ')', ')' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
         try {
-            boolean output = new Dyck().checkParentheses(list);
+            boolean output = new Dyck().checkParentheses(input);
 
             if (output != correctAnswer)
                 outputFail("test22",
@@ -460,11 +394,8 @@ public class Dyck {
         char[] input = { '[', '(', ')', ']', '(', ')' };
         boolean correctAnswer = true;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
         try {
-            boolean output = new Dyck().checkParentheses(list);
+            boolean output = new Dyck().checkParentheses(input);
 
             if (output != correctAnswer)
                 outputFail("test23",
@@ -482,11 +413,8 @@ public class Dyck {
         char[] input = { '(', '(', '(', ')' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
         try {
-            boolean output = new Dyck().checkParentheses(list);
+            boolean output = new Dyck().checkParentheses(input);
 
             if (output != correctAnswer)
                 outputFail("test24",
@@ -504,11 +432,8 @@ public class Dyck {
         char[] input = { '(', '[', '[', '[', '[', '(', ')', ']', ']', ')' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
         try {
-            boolean output = new Dyck().checkParentheses(list);
+            boolean output = new Dyck().checkParentheses(input);
 
             if (output != correctAnswer)
                 outputFail("test25",
@@ -526,11 +451,8 @@ public class Dyck {
         char[] input = { '(', '(', '[', '(', '[', ']', ')', ')', ']', ')' };
         boolean correctAnswer = false;
 
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
-
         try {
-            boolean output = new Dyck().checkParentheses(list);
+            boolean output = new Dyck().checkParentheses(input);
 
             if (output != correctAnswer)
                 outputFail("test26",
@@ -561,9 +483,9 @@ public class Dyck {
         int testcases = sc.nextInt();
         for (int t = 0; t < testcases; ++t) {
             int n = sc.nextInt();
-            ArrayList<Character> list = new ArrayList<>();
-            for (int i = 0; i < n; ++i) list.add(sc.next().charAt(0));
-            System.out.println(new Dyck().checkParentheses(list));
+	    char[] input = new char[n];
+            for (int i = 0; i < n; ++i) input[i] = sc.next().charAt(0);
+            System.out.println(new Dyck().checkParentheses(input));
         }
     }
 }

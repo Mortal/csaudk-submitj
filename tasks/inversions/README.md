@@ -28,7 +28,7 @@ and the
 `Submit` program</a>
 inside IntelliJ (right click and choose "Save link as").
 You must implement a public method named
-`countInversions` that takes an `ArrayList<Integer> input` as argument
+`countInversions` that takes an `int[] input` as argument
 and returns an `int`.
 
 **Input constraints:**

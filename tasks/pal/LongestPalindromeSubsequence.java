@@ -11,8 +11,8 @@
 import java.io.*;
 import java.util.*;
 public class LongestPalindromeSubsequence {
-    public ArrayList<Character> longestPalindromeSubsequence(ArrayList<Character> input) {
-        ArrayList<Character> result = new ArrayList<>();
+    public char[] longestPalindromeSubsequence(char[] input) {
+        char[] result = { 'a', 'b', 'c' };
 
         // Implement your code here to compute
         // the longest palindrome subsequence of the input!
@@ -123,13 +123,10 @@ public class LongestPalindromeSubsequence {
     }
 
     private static void checkPal(String testName, char[] input, char[] correctAnswer) {
-        ArrayList<Character> list = new ArrayList<>();
-        for (char c : input) list.add(c);
 
-        ArrayList<Character> answer = (
-            new LongestPalindromeSubsequence().longestPalindromeSubsequence(list));
+        char[] answer = (new LongestPalindromeSubsequence().longestPalindromeSubsequence(input));
 
-        if (answer.size() != correctAnswer.length) {
+        if (answer.length != correctAnswer.length) {
             outputFail(testName,
                        "Expected palindrome of length " + correctAnswer.length + ", got " + answer);
             return;
@@ -137,15 +134,15 @@ public class LongestPalindromeSubsequence {
 
         int j = 0;
         for (int i : input) {
-            if (j < answer.size() && answer.get(j) == i) j++;
+            if (j < answer.length && answer[j] == i) j++;
         }
-        if (j < answer.size()) {
+        if (j < answer.length) {
             outputFail(testName, "Not a subsequence of the input: " + answer);
             return;
         }
 
-        for (int i = 0; i < answer.size()-1-i; i++)
-            if (answer.get(i) != answer.get(answer.size()-1-i)) {
+        for (int i = 0; i < answer.length-1-i; i++)
+            if (answer[i] != answer[answer.length-1-i]) {
                 outputFail(testName, "Not a palindrome: " + answer);
                 return;
             }
@@ -171,13 +168,12 @@ public class LongestPalindromeSubsequence {
         if (testcases == 0) testAll();
         for (int t = 0; t < testcases; ++t) {
             int n = sc.nextInt();
-            ArrayList<Character> list = new ArrayList<>();
-            for (int i = 0; i < n; ++i) list.add(sc.next().charAt(0));
+	    char[] input = new char[n];
+            for (int i = 0; i < n; ++i) input[i] = sc.next().charAt(0);
             LongestPalindromeSubsequence lis = new LongestPalindromeSubsequence();
-            ArrayList<Character> pal = lis.longestPalindromeSubsequence(list);
-            System.out.println(pal.size());
-            for (int i = 0; i < pal.size(); i++)
-                System.out.println(pal.get(i));
+            char[] pal = lis.longestPalindromeSubsequence(input);
+            System.out.println(pal.length);
+	    for (char c : pal) System.out.println(c);
         }
     }
 }

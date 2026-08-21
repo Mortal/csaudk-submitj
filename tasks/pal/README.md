@@ -31,8 +31,8 @@ In this problem you should implement an algorithm based on dynamic programming
 to compute the longest palindrome subsequence in a list of *N* numbers.
 
 **Concretely,** you must implement a public method named
-`longestPalindromeSubsequence` that takes an `ArrayList<Character> input` as argument
-and returns an `ArrayList<Character>`.
+`longestPalindromeSubsequence` that takes an `char[] input` as argument
+and returns an `char[]`.
 
 Use the skeleton
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/pal/LongestPalindromeSubsequence.java">

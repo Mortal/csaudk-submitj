@@ -2,7 +2,7 @@
 import java.io.*;
 import java.util.*;
 public class Maxdelsum {
-    public int maxdelsum(ArrayList<Integer> input) {
+    public int maxdelsum(int[] input) {
         // Implement your code here to return the maximal subarray sum!
         return 0;
     }
@@ -24,10 +24,7 @@ public class Maxdelsum {
         int[] input = { 42 };
         int correctAnswer = 42;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
+        int output = new Maxdelsum().maxdelsum(input);
 
         if (output != correctAnswer)
             outputFail("testSinglePositive",
@@ -41,10 +38,7 @@ public class Maxdelsum {
         int[] input = { -123 };
         int correctAnswer = 0;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
+        int output = new Maxdelsum().maxdelsum(input);
 
         if (output != correctAnswer)
             outputFail("testSingleNegative",
@@ -58,10 +52,7 @@ public class Maxdelsum {
         int[] input = { 1, 2, 3, 4, 5, 6 };
         int correctAnswer = 21;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
+        int output = new Maxdelsum().maxdelsum(input);
 
         if (output != correctAnswer)
             outputFail("testAllPositive",
@@ -75,10 +66,7 @@ public class Maxdelsum {
         int[] input = { -10, -5, -2, -1 };
         int correctAnswer = 0;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
+        int output = new Maxdelsum().maxdelsum(input);
 
         if (output != correctAnswer)
             outputFail("testAllNegative",
@@ -92,10 +80,7 @@ public class Maxdelsum {
         int[] input = { 31, -41, 59, 26, -53, 58, 97, -93, -23, 84 };
         int correctAnswer = 59 + 26 + -53 + 58 + 97;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
+        int output = new Maxdelsum().maxdelsum(input);
 
         if (output != correctAnswer)
             outputFail("test1",
@@ -109,10 +94,7 @@ public class Maxdelsum {
         int[] input = { 59, 26, -53, 58, 97, -93, -23, 84 };
         int correctAnswer = 59 + 26 + -53 + 58 + 97;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
+        int output = new Maxdelsum().maxdelsum(input);
 
         if (output != correctAnswer)
             outputFail("test2",
@@ -126,10 +108,7 @@ public class Maxdelsum {
         int[] input = { 31, -41, 59, 26, -53, 58, 97 };
         int correctAnswer = 59 + 26 + -53 + 58 + 97;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
+        int output = new Maxdelsum().maxdelsum(input);
 
         if (output != correctAnswer)
             outputFail("test3",
@@ -143,10 +122,7 @@ public class Maxdelsum {
         int[] input = { -1, -2, -1, 10, -1, -2 };
         int correctAnswer = 10;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Maxdelsum().maxdelsum(list);
+        int output = new Maxdelsum().maxdelsum(input);
 
         if (output != correctAnswer)
             outputFail("test4",
@@ -185,10 +161,10 @@ public class Maxdelsum {
 
     private static long timeTest(int n) {
         long t1 = System.nanoTime();
-        ArrayList<Integer> list = new ArrayList<Integer>(n);
+	int[] input = new int[n];
         for (int i = 0; i < n; ++i)
-            list.add((int) (i * 982451653L % 413158511L));
-        new Maxdelsum().maxdelsum(list);
+            input[i] = (int) (i * 982451653L % 413158511L);
+        new Maxdelsum().maxdelsum(input);
         long t2 = System.nanoTime();
         // For debugging, output the individual times:
         // System.out.println(n + " " + (t2 - t1));
@@ -212,9 +188,9 @@ public class Maxdelsum {
         int testcases = sc.nextInt();
         for (int t = 0; t < testcases; ++t) {
             int n = sc.nextInt();
-            ArrayList<Integer> list = new ArrayList<Integer>();
-            for (int i = 0; i < n; ++i) list.add(sc.nextInt());
-            System.out.println(new Maxdelsum().maxdelsum(list));
+	    int[] input = new int[n];
+            for (int i = 0; i < n; ++i) input[i] = sc.nextInt();
+            System.out.println(new Maxdelsum().maxdelsum(input));
         }
     }
 }

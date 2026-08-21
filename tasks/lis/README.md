@@ -24,8 +24,8 @@ In this problem you should implement an algorithm based on dynamic programming
 to compute the longest increasing subsequence in a list of *N* numbers.
 
 **Concretely,** you must implement a public method named
-`longestIncreasingSubsequence` that takes an `ArrayList<Integer> input` as argument
-and returns an `ArrayList<Integer>`.
+`longestIncreasingSubsequence` that takes an `int[] input` as argument
+and returns an `int[]`.
 
 Use the skeleton
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/lis/LongestIncreasingSubsequence.java">

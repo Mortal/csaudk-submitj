@@ -12,7 +12,7 @@ For instance, if the input array contains these ten elements
 then your program should return the difference `2 = 59 - 57`.
 
 **Concretely,** you must implement a public method named
-`computeClosest` that takes an `ArrayList<Integer> input` as argument
+`computeClosest` that takes an `int[] input` as argument
 and returns an `int`.
 Use the skeleton
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/closest/Closest.java">
@@ -38,13 +38,13 @@ An O(N log N) solution is fast enough to get the extra point.
 Hint for the fast solution
 --------------------------
 
-You are allowed to use `Collections.sort()`
+You are allowed to use `Arrays.sort()`
 to sort the input list (or any list you may create as part of your solution).
 
-That is, after running `Collections.sort(input);` in `computeClosest()`,
+That is, after running `Arrays.sort(input);` in `computeClosest()`,
 the `input` list is sorted into ascending order.
 This might be useful to you when solving the exercise.
 
 Remember to have `import java.util.*;` in the beginning of your solution
-in order to be able to use `Collections.sort()`
+in order to be able to use `Arrays.sort()`
 (which is defined in `java.util`).

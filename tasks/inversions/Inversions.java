@@ -12,7 +12,7 @@ import java.io.*;
 import java.util.*;
 
 public class Inversions {
-    public int countInversions(ArrayList<Integer> input) {
+    public int countInversions(int[] input) {
         // Implement your code here to return the number of inversions in input!
         return 42;
     }
@@ -31,10 +31,7 @@ public class Inversions {
         int[] input = { 1 };
         int correctAnswer = 0;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Inversions().countInversions(list);
+        int output = new Inversions().countInversions(input);
 
         if (output != correctAnswer)
             outputFail("testSingle",
@@ -48,10 +45,7 @@ public class Inversions {
         int[] input = { 1, 2 };
         int correctAnswer = 0;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Inversions().countInversions(list);
+        int output = new Inversions().countInversions(input);
 
         if (output != correctAnswer)
             outputFail("testTwoSorted",
@@ -65,10 +59,7 @@ public class Inversions {
         int[] input = { 2, 1 };
         int correctAnswer = 1;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Inversions().countInversions(list);
+        int output = new Inversions().countInversions(input);
 
         if (output != correctAnswer)
             outputFail("testTwoInverted",
@@ -82,10 +73,7 @@ public class Inversions {
         int[] input = { 2, 14, 6, 4, 15, 3, 7, 9, 11, 1, 10, 5, 8, 13, 12 };
         int correctAnswer = 42;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Inversions().countInversions(list);
+        int output = new Inversions().countInversions(input);
 
         if (output != correctAnswer)
             outputFail("test1",
@@ -99,10 +87,7 @@ public class Inversions {
         int[] input = { 2, 11, 5, 9, 13, 4, 3, 15, 6, 8, 12, 10, 7, 1, 14 };
         int correctAnswer = 46;
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
-
-        int output = new Inversions().countInversions(list);
+        int output = new Inversions().countInversions(input);
 
         if (output != correctAnswer)
             outputFail("test2",
@@ -140,15 +125,18 @@ public class Inversions {
     }
 
     private static long timeTest(int n) {
-        ArrayList<Integer> list = new ArrayList<Integer>(n);
-        for (int i = 1; i <= n; i++) {
-            list.add(i);
-        }
+        int[] input = new int[n];
+        for (int i = 0; i < n; i++) input[i] = i + 1;
         Random rnd = new Random(42);
-        Collections.shuffle(list, rnd);
+	for (int i = 0; i < n; i++) {
+		int j = rnd.nextInt(0, i + 1);
+		int tmp = input[j];
+		input[j] = input[i];
+		input[i] = tmp;
+	}
         
         long t1 = System.nanoTime();
-        new Inversions().countInversions(list);
+        new Inversions().countInversions(input);
         long t2 = System.nanoTime();
         // For debugging, output the individual times:
         // System.out.println(n + " " + (t2 - t1));
@@ -172,9 +160,9 @@ public class Inversions {
         int testcases = sc.nextInt();
         for (int t = 0; t < testcases; ++t) {
             int n = sc.nextInt();
-            ArrayList<Integer> list = new ArrayList<Integer>();
-            for (int i = 0; i < n; ++i) list.add(sc.nextInt());
-            System.out.println(new Inversions().countInversions(list));
+	    int[] input = new int[n];
+            for (int i = 0; i < n; ++i) input[i] = sc.nextInt();
+            System.out.println(new Inversions().countInversions(input));
         }
     }
 }

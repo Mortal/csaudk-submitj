@@ -11,18 +11,14 @@
 import java.io.*;
 import java.util.*;
 public class LongestIncreasingSubsequence {
-    public ArrayList<Integer> longestIncreasingSubsequence(ArrayList<Integer> input) {
-        ArrayList<Integer> result = new ArrayList<>();
+    public int[] longestIncreasingSubsequence(int[] input) {
+        int[] result = {1, 2, 3};
 
         // Implement your code here to compute
         // the longest increasing subsequence of the input!
         // You can use the following code to insert a dummy "-infinity" element:
         //input.add(0, Integer.MIN_VALUE);
         // Remember to not include -infinity in the result list!
-
-        // After backtracking, you can use Collections.reverse()
-        // to reverse the result in O(n) time:
-        //Collections.reverse(result);
 
         return result;
     }
@@ -144,13 +140,10 @@ public class LongestIncreasingSubsequence {
     }
 
     private static void checkLis(String testName, int[] input, int[] correctAnswer) {
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : input) list.add(i);
+        int[] answer = (
+            new LongestIncreasingSubsequence().longestIncreasingSubsequence(input));
 
-        ArrayList<Integer> answer = (
-            new LongestIncreasingSubsequence().longestIncreasingSubsequence(list));
-
-        if (answer.size() != correctAnswer.length) {
+        if (answer.length != correctAnswer.length) {
             outputFail(testName,
                        "Expected list of length " + correctAnswer.length + ", got " + answer);
             return;
@@ -158,17 +151,17 @@ public class LongestIncreasingSubsequence {
 
         int j = 0;
         for (int i : input) {
-            if (j < answer.size() && answer.get(j) == i) j++;
+            if (j < answer.length && answer[j] == i) j++;
         }
-        if (j < answer.size()) {
+        if (j < answer.length) {
             outputFail(testName, "Not a subsequence of the input: " + answer);
             return;
         }
 
-        for (int i = 1; i < answer.size(); i++)
-            if (answer.get(i-1) >= answer.get(i)) {
+        for (int i = 1; i < answer.length; i++)
+            if (answer[i - 1] >= answer[i]) {
                 outputFail(testName, "Not increasing: " +
-                           answer.get(i-1) + " >= " + answer.get(i) + " in " + answer);
+                           answer[i - 1] + " >= " + answer[i] + " in " + answer);
                 return;
             }
 
@@ -193,13 +186,12 @@ public class LongestIncreasingSubsequence {
         if (testcases == 0) testAll();
         for (int t = 0; t < testcases; ++t) {
             int n = sc.nextInt();
-            ArrayList<Integer> list = new ArrayList<Integer>();
-            for (int i = 0; i < n; ++i) list.add(sc.nextInt());
+	    int[] input = new int[n];
+            for (int i = 0; i < n; ++i) input[i] = sc.nextInt();
             LongestIncreasingSubsequence lis = new LongestIncreasingSubsequence();
-            ArrayList<Integer> backtrack = lis.longestIncreasingSubsequence(list);
-            System.out.println(backtrack.size());
-            for (int i = 0; i < backtrack.size(); i++)
-                System.out.println(backtrack.get(i));
+            int[] backtrack = lis.longestIncreasingSubsequence(input);
+            System.out.println(backtrack.length);
+	    for (int x : backtrack) System.out.println(x);
         }
     }
 }

@@ -12,9 +12,9 @@ import java.io.*;
 import java.util.*;
 
 public class ClosestBall {
-    public int computeClosest(ArrayList<Integer> players, ArrayList<Integer> balls) {
+    public int computeClosest(int[] players, int[] balls) {
         // Implement your code here to return the shortest distance between two numbers!
-        return Math.abs(players.get(0) - balls.get(0));
+        return Math.abs(players[0] - balls[0]);
     }
 
     public static void testAll() {
@@ -32,12 +32,7 @@ public class ClosestBall {
         int[][] input = { { 3 }, { 5 } };
         int correctAnswer = 2;
 
-        ArrayList<Integer> players = new ArrayList<Integer>();
-        ArrayList<Integer> balls = new ArrayList<Integer>();
-        for (int i : input[0]) players.add(i);
-        for (int i : input[1]) balls.add(i);
-
-        int output = new ClosestBall().computeClosest(players, balls);
+        int output = new ClosestBall().computeClosest(input[0], input[1]);
 
         if (output != correctAnswer)
             outputFail("testSinglePair",
@@ -51,12 +46,7 @@ public class ClosestBall {
         int[][] input = { { 7 }, { 4 } };
         int correctAnswer = 3;
 
-        ArrayList<Integer> players = new ArrayList<Integer>();
-        ArrayList<Integer> balls = new ArrayList<Integer>();
-        for (int i : input[0]) players.add(i);
-        for (int i : input[1]) balls.add(i);
-
-        int output = new ClosestBall().computeClosest(players, balls);
+        int output = new ClosestBall().computeClosest(input[0], input[1]);
 
         if (output != correctAnswer)
             outputFail("testSinglePairInv",
@@ -73,12 +63,7 @@ public class ClosestBall {
         };
         int correctAnswer = 8 - 7;
 
-        ArrayList<Integer> players = new ArrayList<Integer>();
-        ArrayList<Integer> balls = new ArrayList<Integer>();
-        for (int i : input[0]) players.add(i);
-        for (int i : input[1]) balls.add(i);
-
-        int output = new ClosestBall().computeClosest(players, balls);
+        int output = new ClosestBall().computeClosest(input[0], input[1]);
 
         if (output != correctAnswer)
             outputFail("test1",
@@ -95,12 +80,7 @@ public class ClosestBall {
         };
         int correctAnswer = 19 - 16;
 
-        ArrayList<Integer> players = new ArrayList<Integer>();
-        ArrayList<Integer> balls = new ArrayList<Integer>();
-        for (int i : input[0]) players.add(i);
-        for (int i : input[1]) balls.add(i);
-
-        int output = new ClosestBall().computeClosest(players, balls);
+        int output = new ClosestBall().computeClosest(input[0], input[1]);
 
         if (output != correctAnswer)
             outputFail("test2",
@@ -117,12 +97,7 @@ public class ClosestBall {
         };
         int correctAnswer = 82 - 77;
 
-        ArrayList<Integer> players = new ArrayList<Integer>();
-        ArrayList<Integer> balls = new ArrayList<Integer>();
-        for (int i : input[0]) players.add(i);
-        for (int i : input[1]) balls.add(i);
-
-        int output = new ClosestBall().computeClosest(players, balls);
+        int output = new ClosestBall().computeClosest(input[0], input[1]);
 
         if (output != correctAnswer)
             outputFail("test3",
@@ -139,12 +114,7 @@ public class ClosestBall {
             };
         int correctAnswer = 0;
 
-        ArrayList<Integer> players = new ArrayList<Integer>();
-        ArrayList<Integer> balls = new ArrayList<Integer>();
-        for (int i : input[0]) players.add(i);
-        for (int i : input[1]) balls.add(i);
-
-        int output = new ClosestBall().computeClosest(players, balls);
+        int output = new ClosestBall().computeClosest(input[0], input[1]);
 
         if (output != correctAnswer)
             outputFail("test4",
@@ -183,11 +153,11 @@ public class ClosestBall {
 
     private static long timeTest(int n) {
         long t1 = System.nanoTime();
-        ArrayList<Integer> players = new ArrayList<Integer>(n);
-        ArrayList<Integer> balls = new ArrayList<Integer>(n);
+	int[] players = new int[n];
+	int[] balls = new int[n];
         for (int i = 0; i < n; ++i) {
-            players.add((int) (i * 982451653L % 413158511L));
-            balls.add((int) (i * 413158511L % 982451653L));
+            players[i] = (int) (i * 982451653L % 413158511L);
+            balls[i] = (int) (i * 413158511L % 982451653L);
         }
         new ClosestBall().computeClosest(players, balls);
         long t2 = System.nanoTime();
@@ -214,10 +184,10 @@ public class ClosestBall {
         for (int t = 0; t < testcases; ++t) {
             int n = sc.nextInt();
             int m = sc.nextInt();
-            ArrayList<Integer> players = new ArrayList<Integer>();
-            ArrayList<Integer> balls = new ArrayList<Integer>();
-            for (int i = 0; i < n; ++i) players.add(sc.nextInt());
-            for (int i = 0; i < m; ++i) balls.add(sc.nextInt());
+	    int[] players = new int[n];
+	    int[] balls = new int[m];
+            for (int i = 0; i < n; ++i) players[i] = sc.nextInt();
+            for (int i = 0; i < m; ++i) balls[i] = sc.nextInt();
             System.out.println(new ClosestBall().computeClosest(players, balls));
         }
     }

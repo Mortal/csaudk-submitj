@@ -12,7 +12,7 @@ For instance, if the input array contains these ten elements
 then your program should return `97`.
 
 **Concretely,** you must implement a public method named
-`computeMaximum` that takes an `ArrayList<Integer> input` as argument
+`computeMaximum` that takes an `int[] input` as argument
 and returns an `int`.
 Use the skeleton
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/max/Maximum.java">

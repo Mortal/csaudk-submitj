@@ -50,7 +50,7 @@ and the
 `Submit` program</a>
 inside IntelliJ (right click and choose "Save link as").
 You must implement the method `checkParentheses` in `Dyck`
-which takes an `ArrayList<Character> input` and returns a `boolean`.
+which takes an `char[] input` and returns a `boolean`.
 
 You may assume that the input only contains the characters `'('`, `')'`, `'['`, `']'`,
 so you do not have to check if there are any other kinds of characters in the input.
@@ -61,6 +61,3 @@ so you do not have to check if there are any other kinds of characters in the in
 
 **Hint:** Use a stack containing the open parentheses.
 An O(N) time algorithm is fast enough.
-
-If you use the `remove()` method on the input `ArrayList`,
-your program might take O(N²) time and not be fast enough.

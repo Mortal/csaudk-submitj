@@ -28,8 +28,8 @@ and the balls at positions
 then your program should output `5 = |82 - 77|`.
 
 **Concretely,** you must implement a public method named
-`computeClosest` that takes an `ArrayList<Integer> players`
-and an `ArrayList<Integer> balls` as arguments
+`computeClosest` that takes an `int[] players`
+and an `int[] balls` as arguments
 and returns an `int`.
 Use the skeleton
 <a href="https://github.com/Mortal/csaudk-submitj/raw/master/tasks/ball/ClosestBall.java">
@@ -52,5 +52,5 @@ inside IntelliJ (right click and choose "Save link as").
 
 An O(N log N + M log M) solution is fast enough to get the extra point.
 
-**Hint** for the fast solution: You're allowed to use `Collections.sort()`
+**Hint** for the fast solution: You're allowed to use `Arrays.sort()`
 just like in [the `closest` exercise](../closest).
