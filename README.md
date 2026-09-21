@@ -22,7 +22,7 @@ See also the list of [common mistakes](#common-mistakes).
 Step-by-step guide for IntelliJ
 ------------------
 1. Install IntelliJ and Java by following this [guide](https://magnus-madsen.github.io/course-intprog/technical-help.html). If you already have IntelliJ installed skip this step.
-1. Create a new project in IntelliJ. Untick the `add sample code` option.
+1. Create a new project in IntelliJ. Untick the `Add sample code` option.
 ![](pictures/20260921_14h17m49s_grim.png)
 1. Find the task you want to solve. For this demo we solve the `maxdelsum` problem. Note the task id which for this task is `maxdelsum-2`. We will need this later.
 ![](pictures/20260921_14h44m03s_grim.png)
@@ -32,7 +32,7 @@ Step-by-step guide for IntelliJ
 1. Save the `Submit` program in the `src` folder in your project. The `Submit` program is the same for all tasks.
 ![](pictures/20260921_14h20m52s_grim.png)
 ![](pictures/20260921_14h20m55s_grim.png)
-1. Open the task file(s) and implement your solution. Edit only in the function(s) which you are supposed to implemnent. In particular DO NOT edit the main method.
+1. Open the task file(s) and implement your solution. Edit only in the function(s) which you are supposed to implement. In particular DO NOT edit the main method of the task file(s).
 ![](pictures/20260921_14h21m17s_grim.png)
 ![](pictures/20260921_14h23m20s_grim.png)
 1. To test the implementation, open the Submit.java file. In the main method at the top, add calls to the static test methods in the provided files for the task, and run the code (Using the green triangle. Do not run it from the terminal). For this example the test method is `Maxdelsum.testAll`. In the `max` task this would be `Maximum.testAll`.
@@ -44,13 +44,13 @@ We see that the tests pass.
 ![](pictures/20260921_14h24m50s_grim.png)
 ![](pictures/20260921_14h26m01s_grim.png)
 
-Step-by-step guide for VSCode
+Guide for VSCode
 ------------------
 Follow the guide for IntelliJ. Instead of creating a new project create a folder and open that folder in VSCode. Create a folder called `src` in the project. Place all files there. Run the `Submit.java` file through VSCode e.g. by pressing `f5`.
 
 Manual Submisson
 ------------------
-In case there are problems with submitting via `Submit.java`, manual submission can be done [online](https://domjudge.cs.au.dk/team/problems). Note that for problems where you can get two points the problem exists twice e.g. ball1 and ball2. You have to submit to both to get both points.
+In case there are problems with submitting via `Submit.java`, manual submission can be done in your browser: [Submit](https://domjudge.cs.au.dk/team/problems). Note that for problems where you can get two points the problem exists twice e.g. ball1 and ball2. You have to submit to both to get both points.
 
 
 Common mistakes
@@ -62,6 +62,9 @@ Common mistakes
   when submitting your code, since it looks at the output of the main() method
   to determine if your solution is correct.
   Remember to comment out any System.out-lines in your own code before calling submit()!
+
+* **NullPointerExeption when trying to submit with Submit.java**
+  This happens if you run `java Submit.java` from the command line in the src folder. The program assumes that the working directory is the root of the project as IntelliJ and VSCode does that by default. Either run the Submit.java file through IntelliJ or VSCode or place `Submit.java` outside the src folder. Alternatively you can manually submit thorugh your browser.
 
 If you believe there are other common mistakes that should be mentioned in this list,
 let us know on the Brightpsace discussion board.
