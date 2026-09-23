@@ -63,8 +63,5 @@ Common mistakes
   to determine if your solution is correct.
   Remember to comment out any System.out-lines in your own code before calling submit()!
 
-* **NullPointerExeption when trying to submit with Submit.java**
-  This happens if you run `java Submit.java` from the command line in the src folder. The program assumes that the working directory is the root of the project as IntelliJ and VSCode does that by default. Either run the Submit.java file through IntelliJ or VSCode or place `Submit.java` outside the src folder. Alternatively you can manually submit thorugh your browser.
-
 If you believe there are other common mistakes that should be mentioned in this list,
 let us know on the Brightpsace discussion board.

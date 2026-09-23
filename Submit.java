@@ -1,4 +1,4 @@
-// Version: 20220920
+// Version: 20260923
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -435,7 +435,7 @@ public class Submit {
             System.out.println("Error: Multiple task files found (" +
                     join(", ", r) + ").");
             System.out.println("       You need to make a new " +
-                    "IntelliJ project for each task.");
+                    "project for each task.");
             return false;
         }
         if (r.size() == 0) {
@@ -471,15 +471,29 @@ public class Submit {
 
     private List<String> getFilenames() {
         List<String> r = new ArrayList<String>();
-        String dir = "./src/";
-        String end = "src/";
-        for (final File fileEntry : new File(dir).listFiles()) {
-            String n = fileEntry.getName();
-            if (n.startsWith("_") || n.startsWith(".") || n.equals("Submit.java")) {
-                continue;
+        // Check both the working directory and the src subfolder. This should work with IntelliJ as well as a flat structure.
+        File root = new File("./");
+        if (root != null && root.listFiles() != null) {
+            for (final File fileEntry : root.listFiles()) {
+                String n = fileEntry.getName();
+                if (n.startsWith("_") || n.startsWith(".") || n.equals("Submit.java")) {
+                    continue;
+                }
+                if (n.endsWith(".java")) {
+                    r.add(n);
+                }
             }
-            if (n.endsWith(".java")) {
-                r.add(end + n);
+        }
+        File src = new File("./src/");
+        if (src != null && src.listFiles() != null) {
+            for (final File fileEntry : src.listFiles()) {
+                String n = fileEntry.getName();
+                if (n.startsWith("_") || n.startsWith(".") || n.equals("Submit.java")) {
+                    continue;
+                }
+                if (n.endsWith(".java")) {
+                    r.add("src/" + n);
+                }
             }
         }
         return r;
