@@ -1,4 +1,4 @@
-// Version: 20260923
+// Version: 20261027
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -9,7 +9,7 @@ public class Submit {
         
         // Uncomment the following line, and add the needed task id, username and password
         // to submit the code to the server
-        // submit("<id>", "<username>", "<password>");
+	// submit("<id>", "<username>", "<password>");
     }
 
     private static void debug(String m) { /*System.out.println(m);*/ }
@@ -107,9 +107,9 @@ public class Submit {
     }
 
     public String doSubmit() throws IOException {
-        int contestId = getContestId();
-        int problemId = getProblemId(contestId);
-        if (problemId == -1) {
+        String contestId = getContestId();
+        String problemId = getProblemId(contestId);
+        if (problemId == "") {
             System.out.println("Could not find any task of name " + task + ".");
             if (multiTask > 1) {
                 System.out.println("Maybe this problem only has " + (multiTask-1) + " parts.");
@@ -151,16 +151,16 @@ public class Submit {
         return contents.substring(i + needle.length(), j);
     }
 
-    private int getContestId() throws IOException {
+    private String getContestId() throws IOException {
         URL url = new URL(host + "/api/v4/contests");
         URLConnection conn = url.openConnection();
         HttpURLConnection http = (HttpURLConnection) conn;
         http.setDoOutput(true);
         String contents = readResponse(http);
-        return Integer.parseInt(getJsonNaive(contents, "id", 0));
+        return getJsonNaive(contents, "id", 0);
     }
 
-    private int getProblemId(int contestId) throws IOException {
+    private String getProblemId(String contestId) throws IOException {
         URL url = new URL(host + "/api/v4/contests/" + contestId + "/problems");
         URLConnection conn = url.openConnection();
         HttpURLConnection http = (HttpURLConnection) conn;
@@ -170,10 +170,10 @@ public class Submit {
         while (i != -1) {
             String shortName = getJsonNaive(contents, "short_name", i);
             if (task.equals(shortName))
-                return Integer.parseInt(getJsonNaive(contents, "id", i));
+                return getJsonNaive(contents, "id", i);
             i = contents.indexOf("{", i+1);
         }
-        return -1;
+        return "";
     }
 
     public boolean outputFeedback(String judging) {
@@ -373,7 +373,7 @@ public class Submit {
         return makeLoginRequest(true);
     }
 
-    private HttpURLConnection makePostSubmissionRequest(int contestId) throws IOException {
+    private HttpURLConnection makePostSubmissionRequest(String contestId) throws IOException {
         URL url = new URL(host + "/api/v4/contests/" + contestId + "/submissions");
         URLConnection conn = url.openConnection();
         HttpURLConnection http = (HttpURLConnection) conn;
@@ -447,7 +447,7 @@ public class Submit {
         return true;
     }
 
-    private void sendSubmissionForm(HttpURLConnection http, int problemId) throws IOException {
+    private void sendSubmissionForm(HttpURLConnection http, String problemId) throws IOException {
         try(OutputStream out = http.getOutputStream()) {
             for (String filename : getFilenames()) {
                 try(InputStream file = new FileInputStream(filename)) {
